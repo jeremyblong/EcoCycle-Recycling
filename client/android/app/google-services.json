@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "73523458468",
+    "project_id": "electronic-recycling",
+    "storage_bucket": "electronic-recycling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73523458468:android:a700907ac9ac191360d131",
+        "android_client_info": {
+          "package_name": "com.client"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73523458468-rmvmd1emfhmogaohmbai7tk5n1e2sl8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXfAaJX5jyivvOmoiib6v9iSWjy2lev5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73523458468-rmvmd1emfhmogaohmbai7tk5n1e2sl8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

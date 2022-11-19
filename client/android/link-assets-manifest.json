@@ -1,0 +1,1209 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/adaptive-icon.png",
+      "sha1": "19b53640a95efdc2ccc7fc20f3ea4d0d381bb5c4"
+    },
+    {
+      "path": "assets/favicon.png",
+      "sha1": "cb25ca74ddc488c91522b0ae68fc846fac7f4174"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Bold.ttf",
+      "sha1": "3a54407a2b26ff4718708a4726b10cb070d16534"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Light.ttf",
+      "sha1": "83879cec4c934d446eca63aa5cfedcebfd60d610"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Medium.ttf",
+      "sha1": "65a98832079c4d2c67f3acc4f4ce2de630fe6cb0"
+    },
+    {
+      "path": "assets/fonts/Montserrat-Regular.ttf",
+      "sha1": "d25b35242deb1c6ff888b8162ca2aacc356d3899"
+    },
+    {
+      "path": "assets/fonts/Montserrat-SemiBold.ttf",
+      "sha1": "f829de4c176fb2ccf5e33360920f48de6794434e"
+    },
+    {
+      "path": "assets/icon.png",
+      "sha1": "3f71f5a8458c06b83424cc33e1f2481f601199ea"
+    },
+    {
+      "path": "assets/images/auth-icon.png",
+      "sha1": "46693a8dd81af8ad11d549b01d3e9d03df0965b1"
+    },
+    {
+      "path": "assets/images/blank-profile-pic.png",
+      "sha1": "e1f46907b7844a4480a3ca57080f8cc2bce02bae"
+    },
+    {
+      "path": "assets/images/blurred-gradient.png",
+      "sha1": "d421b34e9df5626a36be3b010a3aab46545717db"
+    },
+    {
+      "path": "assets/images/camera-back.png",
+      "sha1": "9b7084081eecdd20209eb65dbdc0a5e4a9385e5e"
+    },
+    {
+      "path": "assets/images/contract.png",
+      "sha1": "fd4d2ce19cf1cdae030ba3b951206d5cf2c86362"
+    },
+    {
+      "path": "assets/images/crypto_icon/bch.png",
+      "sha1": "0a69e31f032c48a457946927aa359cf0ce2550d5"
+    },
+    {
+      "path": "assets/images/crypto_icon/bnb.png",
+      "sha1": "cf40ff55a8a552a815012c1fcd9ab990ecbfb26f"
+    },
+    {
+      "path": "assets/images/crypto_icon/btc.png",
+      "sha1": "3dc24b1050b2323a1eab7e5a1c22f468bf2d2168"
+    },
+    {
+      "path": "assets/images/crypto_icon/eos.png",
+      "sha1": "1f10c632a4b61cb391847b3dfe4d286014b0a352"
+    },
+    {
+      "path": "assets/images/crypto_icon/eth.png",
+      "sha1": "9d636e4ede74b4442a7b709d84c023c572b586d0"
+    },
+    {
+      "path": "assets/images/crypto_icon/ltc.png",
+      "sha1": "f502a66a332077006fb2804073902c8d1a77c72b"
+    },
+    {
+      "path": "assets/images/crypto_icon/usdt.png",
+      "sha1": "f369c70783187f1a028cfe809a28b8f4a3c0fb52"
+    },
+    {
+      "path": "assets/images/crypto_icon/xmr.png",
+      "sha1": "1c5ca90667cbfaa79d894876c02569e9adb84c3b"
+    },
+    {
+      "path": "assets/images/crypto_icon/xrp.png",
+      "sha1": "f7e599a6ead8217688cffd3a87d316f300e836d5"
+    },
+    {
+      "path": "assets/images/e-waste-1.jpg",
+      "sha1": "f0f369b338f7d112d4a5c5746916f4a56730be01"
+    },
+    {
+      "path": "assets/images/e-waste-2.jpg",
+      "sha1": "0da10bf3fbcb5af084077f41db37f7549c57fd79"
+    },
+    {
+      "path": "assets/images/e-waste-3.jpg",
+      "sha1": "f000e9d7a22d39461c8fd3fc4769f1d484326bfd"
+    },
+    {
+      "path": "assets/images/edited.pdf",
+      "sha1": "17e230eabdf2b616adcab283a5a768a17f90fcb6"
+    },
+    {
+      "path": "assets/images/electronic-stock-1.jpg",
+      "sha1": "c664e0477141dc3bffb1878f722a0a9799758811"
+    },
+    {
+      "path": "assets/images/electronic-stock-2.jpg",
+      "sha1": "a647c1cf557337410cc014a85a6584ce1b5fab00"
+    },
+    {
+      "path": "assets/images/electronic-stock-3.jpg",
+      "sha1": "921bff54c860bad1e6c9e631f6ab6612e9408eef"
+    },
+    {
+      "path": "assets/images/electronic-stock-4.jpg",
+      "sha1": "88a2fb1bf0f3586a087542e3ea5ebcdb82b8dbd5"
+    },
+    {
+      "path": "assets/images/electronic-stock-5.jpg",
+      "sha1": "f9b4489df5f2c066608c1dcec5a677aa84b0e4c7"
+    },
+    {
+      "path": "assets/images/electronic-stock-6.jpg",
+      "sha1": "f9b4489df5f2c066608c1dcec5a677aa84b0e4c7"
+    },
+    {
+      "path": "assets/images/electronic-stock-7.jpg",
+      "sha1": "c1136dfce52a563aee9b251c5ecf3e04583b26b0"
+    },
+    {
+      "path": "assets/images/ewaste-banner.jpg",
+      "sha1": "1c0f7a9b8b91df2ecab6ea30f295ff3cf9bc6ec6"
+    },
+    {
+      "path": "assets/images/facebook.png",
+      "sha1": "fb2bfef74ef8c10ce1045fa00b42789ec28aba0d"
+    },
+    {
+      "path": "assets/images/google.png",
+      "sha1": "0896bb9d4fecc2d79088564ef5dc1788e99a4df0"
+    },
+    {
+      "path": "assets/images/gradient-1.jpg",
+      "sha1": "db5a5a27f54e802f9f057f6c4fdd8a8521768a69"
+    },
+    {
+      "path": "assets/images/gradient-2.jpg",
+      "sha1": "d9e6584f7ae5987c9c9622d25933f1b39bb8f3e7"
+    },
+    {
+      "path": "assets/images/gradient-3.jpg",
+      "sha1": "eeb4d308c4c6c1fad0889e67cc10c483108d02f2"
+    },
+    {
+      "path": "assets/images/gradient-4.jpg",
+      "sha1": "3493d511a8d939979e9b9becc0d1c040addcb35d"
+    },
+    {
+      "path": "assets/images/gradient-5.jpg",
+      "sha1": "2a1d2cf345992f6707806a494adb4308fea79a1b"
+    },
+    {
+      "path": "assets/images/gradient-6.jpg",
+      "sha1": "0933b71d42d375daa8e10364e663f9bcb7d9215a"
+    },
+    {
+      "path": "assets/images/gradient-7.jpg",
+      "sha1": "53ae7098d383417f293500e134de6a48857cfaaf"
+    },
+    {
+      "path": "assets/images/gradient-8.jpg",
+      "sha1": "834c327708e885ee18339e3a582d8fc5f114d353"
+    },
+    {
+      "path": "assets/images/icon/about.png",
+      "sha1": "796601c5353b10ad97f234158ba1234f6a5126bb"
+    },
+    {
+      "path": "assets/images/icon/account.png",
+      "sha1": "651e8a2b5127d73ae93078a63544f2e6beccb90a"
+    },
+    {
+      "path": "assets/images/icon/activate.png",
+      "sha1": "08ee28b6dd31a83c5e7554753479d5b38992e06c"
+    },
+    {
+      "path": "assets/images/icon/add-64.png",
+      "sha1": "74746ef0947a619235992974e67655cec3e2ff6a"
+    },
+    {
+      "path": "assets/images/icon/agreement-96.png",
+      "sha1": "88b9c5fa3982ab915f1cc3c337951a37cc293a91"
+    },
+    {
+      "path": "assets/images/icon/alert.png",
+      "sha1": "2e0eb6a2614dd8bdecae2cecc65c07abd72596c4"
+    },
+    {
+      "path": "assets/images/icon/ambulance.png",
+      "sha1": "380248c1648f38ee101b0f3f29ba6c71aad4a38f"
+    },
+    {
+      "path": "assets/images/icon/backspace.png",
+      "sha1": "566bd550849e324ee98c25080f3d18aaa026c128"
+    },
+    {
+      "path": "assets/images/icon/bullet-cam.png",
+      "sha1": "2ecd87a5fdfa224e25312bbcb7d6af69206d2c70"
+    },
+    {
+      "path": "assets/images/icon/camera-2.png",
+      "sha1": "cdc18bf6ded548778d6779aaf050ab6a2a71db6f"
+    },
+    {
+      "path": "assets/images/icon/camera.png",
+      "sha1": "db9dceda0a2eaef33be28d580ccc24e9c586d5c7"
+    },
+    {
+      "path": "assets/images/icon/car.png",
+      "sha1": "c437a2b8eda747ec491a76223f23faa62653377c"
+    },
+    {
+      "path": "assets/images/icon/cart-64.png",
+      "sha1": "53797a5936190feba46e9f16a704ca052b68b15d"
+    },
+    {
+      "path": "assets/images/icon/change-96.png",
+      "sha1": "a2a219883960936c8a68bafcf9019e45fed2ed57"
+    },
+    {
+      "path": "assets/images/icon/chat-1.png",
+      "sha1": "4dd88d47b304bafce22c305a542f833037431315"
+    },
+    {
+      "path": "assets/images/icon/chat-2.png",
+      "sha1": "2f283e0ffc1d1b5b9e08a93ec676eb5c0f63a9d9"
+    },
+    {
+      "path": "assets/images/icon/checked-circle.png",
+      "sha1": "abe706230393faf68ba3ce0ad14bb7ee1913988d"
+    },
+    {
+      "path": "assets/images/icon/checked.png",
+      "sha1": "c79b25db5723e1b5a4cf172711b1d93687528b8c"
+    },
+    {
+      "path": "assets/images/icon/checkmark-circled-green.png",
+      "sha1": "ecf987f05401f1bd3060b52e9ffb7a63b7a5ea0f"
+    },
+    {
+      "path": "assets/images/icon/choice.png",
+      "sha1": "801df8056c3c5a1998782a6d2277fb3a847836db"
+    },
+    {
+      "path": "assets/images/icon/circled-heart.png",
+      "sha1": "4152d9f91e6b48bff3700659e2a4372d0aa2c51f"
+    },
+    {
+      "path": "assets/images/icon/circled-map-icon.png",
+      "sha1": "6ea430fc4b543fef9d4a3383c66fcb7ac9c43c98"
+    },
+    {
+      "path": "assets/images/icon/circled-map-icon.svg",
+      "sha1": "c7c3b8e3af1797f1bac23ad70c8196a3894bc6f5"
+    },
+    {
+      "path": "assets/images/icon/close-100.png",
+      "sha1": "4bb2d7875c857fcb5d6da266fd1c59c67e69e9f2"
+    },
+    {
+      "path": "assets/images/icon/close-160.png",
+      "sha1": "b750730e8e07a662b0f87f3cf100b66203173e51"
+    },
+    {
+      "path": "assets/images/icon/close-64.png",
+      "sha1": "79d302e83825b8c466dab6d8d04b141e99b3c726"
+    },
+    {
+      "path": "assets/images/icon/close-sign.png",
+      "sha1": "1ecfbc4949db9a04e8f17b09450f7919f85c9c47"
+    },
+    {
+      "path": "assets/images/icon/close.png",
+      "sha1": "2e51b7a5a4d5d84bdcbf172b91b3ba3ace919d14"
+    },
+    {
+      "path": "assets/images/icon/comment-reply.png",
+      "sha1": "fcf82ec15024a0d716ce915faf73490cf3a99089"
+    },
+    {
+      "path": "assets/images/icon/contract-64.png",
+      "sha1": "946cda74289ebed66ce5918c4befece22af8e53b"
+    },
+    {
+      "path": "assets/images/icon/contract.png",
+      "sha1": "68a6073c93928377b556d6f880992bed6da56b26"
+    },
+    {
+      "path": "assets/images/icon/copy.png",
+      "sha1": "3bc80d1bbd9864a4f4d4e4b855b1eb8fcf628abf"
+    },
+    {
+      "path": "assets/images/icon/danger-neon.png",
+      "sha1": "f390edac05fd864bcf203d215025557e11b78b1a"
+    },
+    {
+      "path": "assets/images/icon/danger.png",
+      "sha1": "5d765a5754fe498d6a3f4c0512de04f47e661573"
+    },
+    {
+      "path": "assets/images/icon/dashboard.png",
+      "sha1": "6cccc64b74bd96c09734ef63f464080317581e58"
+    },
+    {
+      "path": "assets/images/icon/database.png",
+      "sha1": "98595d871e01b456ea1c218e0ef987175e675c8e"
+    },
+    {
+      "path": "assets/images/icon/delivery-door.png",
+      "sha1": "a26f032471cfdd42025661eeda63df8490374d58"
+    },
+    {
+      "path": "assets/images/icon/depot.png",
+      "sha1": "a03bc3867cd657a79b7334dc9ae3174cc0d71782"
+    },
+    {
+      "path": "assets/images/icon/description.png",
+      "sha1": "81516975fbdf46f728f12542f2f3dcdbb58fa346"
+    },
+    {
+      "path": "assets/images/icon/detailed-warehouse.png",
+      "sha1": "dc7c5fb9bd61f98bc4f31c8afa8e431a98e78450"
+    },
+    {
+      "path": "assets/images/icon/dollar-circled.png",
+      "sha1": "0b4ba9406e891b1f96d9d8a1f716f9123f55cbaa"
+    },
+    {
+      "path": "assets/images/icon/dollar-crisp.png",
+      "sha1": "8211cc57862fb5083911275fc0d5d2a291233f20"
+    },
+    {
+      "path": "assets/images/icon/dotted-circle.png",
+      "sha1": "e9c04c273c14bf0eef569a24fc15a952968a4c13"
+    },
+    {
+      "path": "assets/images/icon/down-arrow-main.png",
+      "sha1": "c726e61edf5c64c6805f74fbe0e36b8c4a282f12"
+    },
+    {
+      "path": "assets/images/icon/down.png",
+      "sha1": "37f80b2a643ef2a8d0fb69f6ba2a5c6a4fa6e7ca"
+    },
+    {
+      "path": "assets/images/icon/electronic-64.png",
+      "sha1": "7eff6078cf2a006a945c1c5cdd9ba7a8aaf9586f"
+    },
+    {
+      "path": "assets/images/icon/empty-star-dotted.png",
+      "sha1": "aa4db1ef3d01c2a940ab270019c8cfe9147ee49d"
+    },
+    {
+      "path": "assets/images/icon/enter-key.png",
+      "sha1": "057b52da918a610abdae34022e5fb1df718d7c05"
+    },
+    {
+      "path": "assets/images/icon/eye-filled.png",
+      "sha1": "c459ed7ea48ca30ed98dad53ccad2b3234921195"
+    },
+    {
+      "path": "assets/images/icon/eye-outlined.png",
+      "sha1": "a3d6cf2391534fe991e69f410c58b2af1f1a0edb"
+    },
+    {
+      "path": "assets/images/icon/facebook.png",
+      "sha1": "d6c94f324967e02228b7ee260adbe216185b5d32"
+    },
+    {
+      "path": "assets/images/icon/favorite-filled.png",
+      "sha1": "6a2bfce4215efdc399f99a90bc8e0ddfbddc2c53"
+    },
+    {
+      "path": "assets/images/icon/favorite-hollow.png",
+      "sha1": "1a62761bbca42d1bb8b4c6553e5288ddad7435c9"
+    },
+    {
+      "path": "assets/images/icon/favorite.png",
+      "sha1": "fc5ca49364f767e5787f9ff18c1a1ed9c8478456"
+    },
+    {
+      "path": "assets/images/icon/feed.png",
+      "sha1": "0f99bfa4916947f1f6d6e24dececb6184239ee29"
+    },
+    {
+      "path": "assets/images/icon/firetruck.png",
+      "sha1": "a9779e5f7aecb3d1b50d179edcc5ac3f239bb924"
+    },
+    {
+      "path": "assets/images/icon/freight.png",
+      "sha1": "d469d71134b9e8618dc66a7110d4bd33e3d10fe3"
+    },
+    {
+      "path": "assets/images/icon/garage-96.png",
+      "sha1": "cf2b8eb099aca67135f21ea298f6e1be7d716b66"
+    },
+    {
+      "path": "assets/images/icon/go-back-looped.png",
+      "sha1": "b20619649e0f0d86e419fe35c6ab83f1a5099e9d"
+    },
+    {
+      "path": "assets/images/icon/green-dot.png",
+      "sha1": "6f93cae25f01dcd21f90724e7f1a8cc4d926c0b5"
+    },
+    {
+      "path": "assets/images/icon/grey/home.png",
+      "sha1": "af366205bc4ad6b783ab1f9a8d798aa1b9208ce2"
+    },
+    {
+      "path": "assets/images/icon/grey/portfolio.png",
+      "sha1": "0cdc85f370bc20f8ad3b551459ea768e244bfdbf"
+    },
+    {
+      "path": "assets/images/icon/grey/statistic.png",
+      "sha1": "4223ac4f01b789398de66eefdf14fbb6727d92d0"
+    },
+    {
+      "path": "assets/images/icon/grey/user.png",
+      "sha1": "ee1aca9d5869122f0d986fbdebdd45853661dbe3"
+    },
+    {
+      "path": "assets/images/icon/heart-100.png",
+      "sha1": "e97565fe6911da53b0e03c6856f95de523fb5b80"
+    },
+    {
+      "path": "assets/images/icon/help-icon.png",
+      "sha1": "34c243f781de6e74c0fce7bd80468dd0d15639db"
+    },
+    {
+      "path": "assets/images/icon/help.png",
+      "sha1": "50bf3d590b8cffa4d717fb1a7c4474dd7d8ddeb0"
+    },
+    {
+      "path": "assets/images/icon/home-gradient.png",
+      "sha1": "2d99fbdb4b8da4ec79f1bf30da7ddf7599ef29cd"
+    },
+    {
+      "path": "assets/images/icon/home.png",
+      "sha1": "fd1dba2921b75b249c49a047e13374982e995567"
+    },
+    {
+      "path": "assets/images/icon/incident.png",
+      "sha1": "4c006ae7f403fb441ce341f066e49d460ffb04c5"
+    },
+    {
+      "path": "assets/images/icon/info.png",
+      "sha1": "a433a23825b07431eeffb6f533c0b0405941a3c1"
+    },
+    {
+      "path": "assets/images/icon/instagram.png",
+      "sha1": "77ed98cf397d90b877f3e718ab9818a9e01acbed"
+    },
+    {
+      "path": "assets/images/icon/lease-96.png",
+      "sha1": "df12069066975fd50e82dcf0f3c192c91063fa79"
+    },
+    {
+      "path": "assets/images/icon/left.png",
+      "sha1": "b110f120495237e5b54aedf27081c5c79ac20e08"
+    },
+    {
+      "path": "assets/images/icon/light-blue-heart.png",
+      "sha1": "2a8c63cf7f2232e654aac6cd907766ea842313a7"
+    },
+    {
+      "path": "assets/images/icon/lightbulb.png",
+      "sha1": "c44704d624694dd305e0767ec1b95409a7af863d"
+    },
+    {
+      "path": "assets/images/icon/like-heart.png",
+      "sha1": "af916ccbbf728a6e0960a58380aa453ad27b1200"
+    },
+    {
+      "path": "assets/images/icon/list-space/animals-restricted.png",
+      "sha1": "a6b6a8c3ff4065658085cbaf3236e10c44d9cfc5"
+    },
+    {
+      "path": "assets/images/icon/list-space/attic.png",
+      "sha1": "e0e75c56ad7c30cc3ef0ee9ba7ce9a40dc4de245"
+    },
+    {
+      "path": "assets/images/icon/list-space/basement.png",
+      "sha1": "f914638e301f975a01289234fa7a34da0fd90960"
+    },
+    {
+      "path": "assets/images/icon/list-space/bedroom.png",
+      "sha1": "66a5c51800328bfbc31c1d72f1aafa014a03c6c5"
+    },
+    {
+      "path": "assets/images/icon/list-space/box.png",
+      "sha1": "16554a2284d70a944e324aa85cb7ca032e77a068"
+    },
+    {
+      "path": "assets/images/icon/list-space/broom.png",
+      "sha1": "8334d26a81dc34ce1a3d69d5bfc92f1c76023863"
+    },
+    {
+      "path": "assets/images/icon/list-space/camera.png",
+      "sha1": "85f0b50c7803748d0365d1cbffdda03248972fce"
+    },
+    {
+      "path": "assets/images/icon/list-space/closet.png",
+      "sha1": "3cf0ee3be2997427e7e2e9262fc5cb1e3c6fd1ec"
+    },
+    {
+      "path": "assets/images/icon/list-space/container.png",
+      "sha1": "826887963e0e02508d6ef343b456ddb47d953ec3"
+    },
+    {
+      "path": "assets/images/icon/list-space/crosshair-1.png",
+      "sha1": "7585e490e9ef0fae015b4bf6f0ca9e95e5cb7240"
+    },
+    {
+      "path": "assets/images/icon/list-space/crosshair-2.png",
+      "sha1": "a3884d58ac6e645c62ac31370beb1669a6e89b56"
+    },
+    {
+      "path": "assets/images/icon/list-space/garage.png",
+      "sha1": "ef8e3d85ea112c6c752198901621ad895cd35976"
+    },
+    {
+      "path": "assets/images/icon/list-space/icons8-private-100.png",
+      "sha1": "a16c37148aa9fab67370085f8fa501531d94636f"
+    },
+    {
+      "path": "assets/images/icon/list-space/interior.png",
+      "sha1": "0228e381f833dc0675726dfe9bdea534f3851d28"
+    },
+    {
+      "path": "assets/images/icon/list-space/lighting.png",
+      "sha1": "391d65d43c4376043e18b1c255aa63d6b2a041d0"
+    },
+    {
+      "path": "assets/images/icon/list-space/locked.png",
+      "sha1": "ac5e19af16c1ed24f9e1cd906c0899b5ffa953e2"
+    },
+    {
+      "path": "assets/images/icon/list-space/no.png",
+      "sha1": "b4e902230a59588c0339286be08aefce9dd76a36"
+    },
+    {
+      "path": "assets/images/icon/list-space/outdoor.png",
+      "sha1": "ccd1cf78a9d7be0c1d57120e7c7190449a715402"
+    },
+    {
+      "path": "assets/images/icon/list-space/private-1.png",
+      "sha1": "48d526c9f052d62aa81e35c1c65ecc2974b8189c"
+    },
+    {
+      "path": "assets/images/icon/list-space/private-entrance.png",
+      "sha1": "a25cd9995224e996835de94298cba876f6f41dc7"
+    },
+    {
+      "path": "assets/images/icon/list-space/question.png",
+      "sha1": "f393415f0df6a24676ef784291ad6faf3a6f0dd8"
+    },
+    {
+      "path": "assets/images/icon/list-space/security-system.png",
+      "sha1": "a0a5951775d500b46b7e81c7db3e1a5b30f01832"
+    },
+    {
+      "path": "assets/images/icon/list-space/shed.png",
+      "sha1": "3220287d430804fa1ef7374c6f407714e097bf4d"
+    },
+    {
+      "path": "assets/images/icon/list-space/staircase.png",
+      "sha1": "bbf31082996fc5f4c69e1eff8a8155372ef41b9c"
+    },
+    {
+      "path": "assets/images/icon/list-space/storage.png",
+      "sha1": "b37f067b5fa853c34c22f8926bf2b0432019e280"
+    },
+    {
+      "path": "assets/images/icon/list-space/temperature-controlled.png",
+      "sha1": "c4e1dfa39b5841fa9b5e89350d967615eb6670ab"
+    },
+    {
+      "path": "assets/images/icon/list-space/warehouse.png",
+      "sha1": "cec5be716f9b7b8ead6c4b29fa2877dde543deba"
+    },
+    {
+      "path": "assets/images/icon/list-space/yes.png",
+      "sha1": "b456b91af4464026b6622e0eb1505b683a917b9c"
+    },
+    {
+      "path": "assets/images/icon/logout.png",
+      "sha1": "7fcdd0256461f1e54c638a00270f78815491f916"
+    },
+    {
+      "path": "assets/images/icon/logs.png",
+      "sha1": "ceb9ff2eb7fec136de646ce4e374a6703c6a5cd5"
+    },
+    {
+      "path": "assets/images/icon/marker-1.png",
+      "sha1": "e8932b901a20b6168e6ed8bf01153c850ce76a1c"
+    },
+    {
+      "path": "assets/images/icon/marker-2.png",
+      "sha1": "00e53114a2ca0a5fb1cc33557d5a140f1d788faa"
+    },
+    {
+      "path": "assets/images/icon/marker-3.png",
+      "sha1": "a3811444806f67febf45cb37aa8c766290b742d1"
+    },
+    {
+      "path": "assets/images/icon/marker-callout.png",
+      "sha1": "996848fc9221ac803349c8e360af244bd087ac4c"
+    },
+    {
+      "path": "assets/images/icon/market-cap.png",
+      "sha1": "30fdf025a0cbb86d293a0425cac35bface6b63f0"
+    },
+    {
+      "path": "assets/images/icon/measure-tape.png",
+      "sha1": "8141c6b6b70cf005633fbb054d772fd7d35fe3fa"
+    },
+    {
+      "path": "assets/images/icon/menu.png",
+      "sha1": "394234838794ad47ff73c0d356ac7b2d71d710a8"
+    },
+    {
+      "path": "assets/images/icon/messaging-chat.png",
+      "sha1": "6a0f26fec2e485d2cba724a07916e502a1b5a0c5"
+    },
+    {
+      "path": "assets/images/icon/monitoring.png",
+      "sha1": "6acf3e32af5aecae227f002777b101b850187d8b"
+    },
+    {
+      "path": "assets/images/icon/more-teal.png",
+      "sha1": "f323c54b1caecec47e075760cb6be53b75b662f9"
+    },
+    {
+      "path": "assets/images/icon/new-invite.png",
+      "sha1": "2b558789bb3f10fb852ed506a9724962781a6a12"
+    },
+    {
+      "path": "assets/images/icon/notification.png",
+      "sha1": "62a9c44636605f617c119dec5d3a27ca91bb7e5f"
+    },
+    {
+      "path": "assets/images/icon/numbers/1.png",
+      "sha1": "22726906b21e5c4f16a45fc4d8570304476fa1be"
+    },
+    {
+      "path": "assets/images/icon/numbers/10.png",
+      "sha1": "a66fa0504cf422d5a0ffaccb437428a0c9f16ed5"
+    },
+    {
+      "path": "assets/images/icon/numbers/2.png",
+      "sha1": "62e5a272884fa5e9e6789cc67483f036eb5dbd25"
+    },
+    {
+      "path": "assets/images/icon/numbers/20.png",
+      "sha1": "bb38e54d407cadf8b0ba82d01d19ca80ae3f0554"
+    },
+    {
+      "path": "assets/images/icon/numbers/3.png",
+      "sha1": "89f1d068898a6f9cdeba1ae5337607857ee92e76"
+    },
+    {
+      "path": "assets/images/icon/numbers/30.png",
+      "sha1": "54fe070c93b5c089a801db7e700ef8e50efe0ae8"
+    },
+    {
+      "path": "assets/images/icon/numbers/4.png",
+      "sha1": "b370fae8299bc58b5075f170759c25ddc4b02495"
+    },
+    {
+      "path": "assets/images/icon/numbers/45.png",
+      "sha1": "3d6fec7631a41b95f175dc6836351b25c2abe205"
+    },
+    {
+      "path": "assets/images/icon/numbers/5.png",
+      "sha1": "49a69240624b65302af0150c2cda63efb43c4d5e"
+    },
+    {
+      "path": "assets/images/icon/numbers/6.png",
+      "sha1": "20c406bcb63eb2418570985ceff3f47ea2b6300c"
+    },
+    {
+      "path": "assets/images/icon/numbers/60.png",
+      "sha1": "9de93c0ded0fd3c728346f3fda4c62a470891e1f"
+    },
+    {
+      "path": "assets/images/icon/numbers/7.png",
+      "sha1": "b78b1bea083288fc9fef0b5c6fb4001da4e592fa"
+    },
+    {
+      "path": "assets/images/icon/numbers/8.png",
+      "sha1": "5c40506a7026281703024be5b693184bf4ec5722"
+    },
+    {
+      "path": "assets/images/icon/numbers/9.png",
+      "sha1": "91e1a671b006fba7c61f668375c8d1e94019c334"
+    },
+    {
+      "path": "assets/images/icon/numbers/90.png",
+      "sha1": "134059fba5580c3f27183411fbb37c4d11f6e390"
+    },
+    {
+      "path": "assets/images/icon/open-sign.png",
+      "sha1": "288657118f2f8adfa1086a8d39febc91cd42e95e"
+    },
+    {
+      "path": "assets/images/icon/outdoors-96.png",
+      "sha1": "ffe100120f2864e821ad01761bbb4389ff410d80"
+    },
+    {
+      "path": "assets/images/icon/packaging.png",
+      "sha1": "3196d2e5e19949199426740eda35cdc40e95f245"
+    },
+    {
+      "path": "assets/images/icon/paperclip.png",
+      "sha1": "941d51b40cf6f517f2b6828aac68935d7099f52e"
+    },
+    {
+      "path": "assets/images/icon/phone-boxed.png",
+      "sha1": "b53471ca4c350b2bcc8e5ee0d75ac29afbc23ed9"
+    },
+    {
+      "path": "assets/images/icon/plus.png",
+      "sha1": "002d665cd128d2d77578af8f8782fd6226a9c8ce"
+    },
+    {
+      "path": "assets/images/icon/police.png",
+      "sha1": "ae0f16a8ad2ad6fb6b14eea085e871ff820c7f60"
+    },
+    {
+      "path": "assets/images/icon/portfolio.png",
+      "sha1": "f88074a47cd38d069cce5a7f17c9d2a633070a4c"
+    },
+    {
+      "path": "assets/images/icon/post-new-comment.png",
+      "sha1": "85b9b4b1e8cfe6eb6026d95d1c0f74a5cb75b7f7"
+    },
+    {
+      "path": "assets/images/icon/primary-color/home.png",
+      "sha1": "7697eac084a614ae292dbbf6f79474aede2a10e7"
+    },
+    {
+      "path": "assets/images/icon/primary-color/portfolio.png",
+      "sha1": "6d402fb7447f1d76a42773b8c976a6fad85114dd"
+    },
+    {
+      "path": "assets/images/icon/primary-color/statistic.png",
+      "sha1": "18941250a76e6179bf453dba4c717696bf4d3214"
+    },
+    {
+      "path": "assets/images/icon/primary-color/user.png",
+      "sha1": "5eb026a4e70571124eba16a7de6d9ed37d15fd4b"
+    },
+    {
+      "path": "assets/images/icon/primary-color/wallet.png",
+      "sha1": "f77e7da2b220f313b9d0151157cb2a52e0e19d68"
+    },
+    {
+      "path": "assets/images/icon/rank.png",
+      "sha1": "7b38ea81732c9ab755bd65cf5e1ab0b27036a139"
+    },
+    {
+      "path": "assets/images/icon/record.png",
+      "sha1": "f4421a22b4c690bbf8c4db3408f2c641d3bbf82e"
+    },
+    {
+      "path": "assets/images/icon/recycle-96.png",
+      "sha1": "77c72a80b028fdf8d5e7f9e99d9bf2f80b839798"
+    },
+    {
+      "path": "assets/images/icon/red-dot.png",
+      "sha1": "b0a9172ac672b9498e3cde23be038ead5fd809c5"
+    },
+    {
+      "path": "assets/images/icon/register.png",
+      "sha1": "f62e19cb272bccd68c60f4551c5657ca1d50728f"
+    },
+    {
+      "path": "assets/images/icon/review.png",
+      "sha1": "7128899fd7a416763e36282fef64d952e0f454c0"
+    },
+    {
+      "path": "assets/images/icon/rewind-time.png",
+      "sha1": "53215bc2493facd0aade86bab6629045fc997623"
+    },
+    {
+      "path": "assets/images/icon/right-arrow-custom.png",
+      "sha1": "2927a4627520e7aa922189eda6c83e82935db517"
+    },
+    {
+      "path": "assets/images/icon/right-arrow.png",
+      "sha1": "216ce7ad21ffb17b8a8974996ef1eb37cfaf0596"
+    },
+    {
+      "path": "assets/images/icon/right.png",
+      "sha1": "b6a4624d3b904ecd180cf52d69a52dbdbe9b9cb7"
+    },
+    {
+      "path": "assets/images/icon/search-100.png",
+      "sha1": "e9a0bd06fdcb744dc2347577442edee9d68afb9e"
+    },
+    {
+      "path": "assets/images/icon/search.png",
+      "sha1": "74cc3c5942248625a4a978deb5209b3ffac11d13"
+    },
+    {
+      "path": "assets/images/icon/security.png",
+      "sha1": "b98956b30ab2667f64d37133f0718a5c4a176f19"
+    },
+    {
+      "path": "assets/images/icon/semi-truck-moving.png",
+      "sha1": "e513e44e07063c4c4c8a468fc74d4b345abab277"
+    },
+    {
+      "path": "assets/images/icon/settings-gradient.png",
+      "sha1": "025ec26972614731ba2ff86c13d995b247527d30"
+    },
+    {
+      "path": "assets/images/icon/settings-pretty.png",
+      "sha1": "0096c6834ba322997883d5cdcad6b1b192fd43a6"
+    },
+    {
+      "path": "assets/images/icon/share-large.png",
+      "sha1": "29448ea523193caf095de500df314177fa9c3c01"
+    },
+    {
+      "path": "assets/images/icon/shield.png",
+      "sha1": "96d5c3091ad55d6e5660286ee904c27cbceaf84c"
+    },
+    {
+      "path": "assets/images/icon/shopping-cart.png",
+      "sha1": "1a104ee4bc8838aaad52fa65e4f8bdf1d88d461f"
+    },
+    {
+      "path": "assets/images/icon/signout.png",
+      "sha1": "dd9ce0fc0bb725be087e381e30420023359bec7a"
+    },
+    {
+      "path": "assets/images/icon/social-location.png",
+      "sha1": "af0aa6df2150a5614e8ad1df9a99cb47e88688b6"
+    },
+    {
+      "path": "assets/images/icon/star-64.png",
+      "sha1": "42f86a434b5db9d6c6ed92289833245d26dcf1ab"
+    },
+    {
+      "path": "assets/images/icon/star-circle.png",
+      "sha1": "630b281eb0d05eafd39a49ba04ca39574a4cf7c5"
+    },
+    {
+      "path": "assets/images/icon/star.png",
+      "sha1": "42f86a434b5db9d6c6ed92289833245d26dcf1ab"
+    },
+    {
+      "path": "assets/images/icon/statistic.png",
+      "sha1": "f65a20c10d5c841b64611388853d867c15d4ec3e"
+    },
+    {
+      "path": "assets/images/icon/storage.png",
+      "sha1": "de5182fcdba6fe846fd2e5acebeffb9fb47e1591"
+    },
+    {
+      "path": "assets/images/icon/subject.png",
+      "sha1": "552e1b08d703afdb123645106194c5e43cfdebb6"
+    },
+    {
+      "path": "assets/images/icon/supply.png",
+      "sha1": "95bfc523efd3cc7e965bcc526c8e0ad78f5eb349"
+    },
+    {
+      "path": "assets/images/icon/support.png",
+      "sha1": "69f85099503cf2659472ac0f6c9bb7c81b3dd160"
+    },
+    {
+      "path": "assets/images/icon/swipe-right-64.png",
+      "sha1": "bdd26d30b72f528d7e9f5df906ed775a8df340ee"
+    },
+    {
+      "path": "assets/images/icon/telephone.png",
+      "sha1": "fa90a1d84ee7113ed67c43306be8cec8fc5cc12a"
+    },
+    {
+      "path": "assets/images/icon/therma.png",
+      "sha1": "9182f82d4e65e7183773d583e541b954a1ce2fd8"
+    },
+    {
+      "path": "assets/images/icon/thumbs_down.png",
+      "sha1": "e5a9de0f8e0afc7442e75f412625867dff8e46eb"
+    },
+    {
+      "path": "assets/images/icon/thumbs_up.png",
+      "sha1": "d36522ad1c3751acb346ea5f93fa61cdfa22ff1d"
+    },
+    {
+      "path": "assets/images/icon/timeline-1.png",
+      "sha1": "4a48147f0669ced26f87992f8c4f0157ca5874e5"
+    },
+    {
+      "path": "assets/images/icon/timeline-2.png",
+      "sha1": "da1102f18ae135287999151b1c26883a889218c0"
+    },
+    {
+      "path": "assets/images/icon/timeline-3.png",
+      "sha1": "d736d148eb2840a55108dbb9f570fb2996b76011"
+    },
+    {
+      "path": "assets/images/icon/timeline-4.png",
+      "sha1": "6b6ddddd466f0380af262ef505721a1fee82a447"
+    },
+    {
+      "path": "assets/images/icon/tracking-96.png",
+      "sha1": "296cbbc88265f054a1ffff2d311623a5d2a45eb1"
+    },
+    {
+      "path": "assets/images/icon/trucking.png",
+      "sha1": "4b7f8e7e3bd168984b864d069a4795a0efe818a3"
+    },
+    {
+      "path": "assets/images/icon/twitter.png",
+      "sha1": "2318fab7706f01efc2ee433b65c4bcd123cf4a17"
+    },
+    {
+      "path": "assets/images/icon/typing.png",
+      "sha1": "a819e2d745e96db85b73d1472d7d30d73425ac0c"
+    },
+    {
+      "path": "assets/images/icon/unchecked.png",
+      "sha1": "d151789eeffdfae10f18858c7846a216d99394c3"
+    },
+    {
+      "path": "assets/images/icon/up-arrow-2.png",
+      "sha1": "b84510b31c4485c609ae36c707311af010c6c343"
+    },
+    {
+      "path": "assets/images/icon/up-arrow-main.png",
+      "sha1": "40a30acd787921ad8299f74e69e55642ad4bf972"
+    },
+    {
+      "path": "assets/images/icon/up-arrow.png",
+      "sha1": "96a37c27cdea849de6074800d549c86d0f7b7cde"
+    },
+    {
+      "path": "assets/images/icon/up-circled-arrow.png",
+      "sha1": "5c83fcd88c6b40f85cefc497728a13d5fb5e7db4"
+    },
+    {
+      "path": "assets/images/icon/up-hooked-arrow.png",
+      "sha1": "c7914998abbc04bace68d257aec6162b64f81fbf"
+    },
+    {
+      "path": "assets/images/icon/up-right-arrow.png",
+      "sha1": "9e515e74bc2ffb87c597df13292c773edb79ac87"
+    },
+    {
+      "path": "assets/images/icon/up.png",
+      "sha1": "052a10f7874b011081e4a1e40cf5460e4917aca1"
+    },
+    {
+      "path": "assets/images/icon/update-neon.png",
+      "sha1": "d4b3ab06b772fa5cf362ac38247e86f91513190b"
+    },
+    {
+      "path": "assets/images/icon/update.png",
+      "sha1": "92fe50d6536d3be27c6fda761f5944098080716f"
+    },
+    {
+      "path": "assets/images/icon/upload-64.png",
+      "sha1": "e2eacc42ea5f9bdee183e391e5129bd1ccff3de8"
+    },
+    {
+      "path": "assets/images/icon/user-2.png",
+      "sha1": "b03246d79233427ba5fdc1904f518ddfeb841353"
+    },
+    {
+      "path": "assets/images/icon/user-default.png",
+      "sha1": "2b6a7c37947f22185d9c8a5ee6acbf9d0321756e"
+    },
+    {
+      "path": "assets/images/icon/user.png",
+      "sha1": "76fced7ab0bc54871b3e3f952dd26e17dc577ca7"
+    },
+    {
+      "path": "assets/images/icon/video-on.png",
+      "sha1": "94498f6c203a2ddb028c61bf6f64b9ddffbc8e6b"
+    },
+    {
+      "path": "assets/images/icon/view-64.png",
+      "sha1": "85d98fc5ffaae9468576cf59b12af5fc6025b0b4"
+    },
+    {
+      "path": "assets/images/icon/voucher.png",
+      "sha1": "95a59882a7f474b898820a4b0ca1555e55740cb1"
+    },
+    {
+      "path": "assets/images/icon.png",
+      "sha1": "cde4aee75a3f0517a6299bb193bd2ebbb2c869f7"
+    },
+    {
+      "path": "assets/images/illustrations/no-results-1.png",
+      "sha1": "97c9befab75461e0e020494245331401ff6dcd73"
+    },
+    {
+      "path": "assets/images/illustrations/no-results.png",
+      "sha1": "042636692404cd5c3bc6dc4a9b6b27efdfedd881"
+    },
+    {
+      "path": "assets/images/iot.jpg",
+      "sha1": "b16ccb69252188fa5a76fe1771fdb779e5493335"
+    },
+    {
+      "path": "assets/images/lock-background.jpg",
+      "sha1": "0a1fb5188137e1728a944f0815d246fe303515c5"
+    },
+    {
+      "path": "assets/images/logo.png",
+      "sha1": "2d711316a9f8fc8702dc2040873c462096c1b983"
+    },
+    {
+      "path": "assets/images/no-image.jpg",
+      "sha1": "ebd34369328a42e15172e05e1946896ecfd145b3"
+    },
+    {
+      "path": "assets/images/no-results-1.png",
+      "sha1": "42b6d02104c37748d56a0f0536fa45ced4ef4854"
+    },
+    {
+      "path": "assets/images/no-results-2.jpg",
+      "sha1": "d228325151fcd6e7499e9e9d31ae048fb3f1ee3d"
+    },
+    {
+      "path": "assets/images/notification-empty.jpg",
+      "sha1": "8ec7d5b8438b445cf0b0535657d2aeec44a7d27a"
+    },
+    {
+      "path": "assets/images/placeholder-2-img.jpg",
+      "sha1": "e0f02bc36b445fdde0dfcaaca8108dc3beb2ee32"
+    },
+    {
+      "path": "assets/images/police-phone.png",
+      "sha1": "70875fda659da5ee1c119e12003ccf6f3ae0a196"
+    },
+    {
+      "path": "assets/images/security-banner-1.jpg",
+      "sha1": "9c31205b876019f5814961111b941f7fe1c2341b"
+    },
+    {
+      "path": "assets/images/security.jpg",
+      "sha1": "34b59708f789652f7bf5fb1e12a32c3991e3c510"
+    },
+    {
+      "path": "assets/images/smart-tinted-full.jpeg",
+      "sha1": "8296904f444d0d575a6aaaaaa966e9fb9275226e"
+    },
+    {
+      "path": "assets/images/smart-tinted.jpeg",
+      "sha1": "90ae7939feae27a5e5d856466b7cf5b0a87ba53a"
+    },
+    {
+      "path": "assets/images/smart.jpg",
+      "sha1": "19530eb7773e9daebcaedf355b45e86aeee075a3"
+    },
+    {
+      "path": "assets/images/space-1.jpg",
+      "sha1": "0e7e6a56ba3ed8ba8407cd814293281fe69f5dd9"
+    },
+    {
+      "path": "assets/images/space-2.jpg",
+      "sha1": "3cb42daa5dafca6dbab539be8c5025d7b82ede1f"
+    },
+    {
+      "path": "assets/images/tech-misc-1.jpg",
+      "sha1": "950bffbd6a4ee834cb3a956f6db761bfb16a1d31"
+    },
+    {
+      "path": "assets/images/tinted-ewaste.jpeg",
+      "sha1": "98d5b2f606cdef8f50d64d8d026e81b7cdd77f8c"
+    },
+    {
+      "path": "assets/images/trash-1.jpg",
+      "sha1": "294f96dca1c8add4f1f5724a5424c52ce2899266"
+    },
+    {
+      "path": "assets/images/trash-10.jpg",
+      "sha1": "9b824cd3030f1ca470083a3e91019889d4431163"
+    },
+    {
+      "path": "assets/images/trash-11.jpg",
+      "sha1": "8c1cab4e386f1211e9eae78367eacdaa4f355b46"
+    },
+    {
+      "path": "assets/images/trash-2.jpg",
+      "sha1": "16c8747f0ae5605285eb7bdee605059dcb6c324a"
+    },
+    {
+      "path": "assets/images/trash-3.jpg",
+      "sha1": "5ee8fefc37b95bd23bb6206641f7c8fe2b3a4612"
+    },
+    {
+      "path": "assets/images/trash-4.jpg",
+      "sha1": "a776b64083aae64ee91db8faea49bda08229f97c"
+    },
+    {
+      "path": "assets/images/trash-5.jpg",
+      "sha1": "da66b1dbe2c0dbb769ce303a5c379b1fdcb71c6d"
+    },
+    {
+      "path": "assets/images/trash-6.jpg",
+      "sha1": "cf133e695f32e530891e32f835c95b0f5941f92b"
+    },
+    {
+      "path": "assets/images/trash-7.jpg",
+      "sha1": "2c70f46539bb0d4970dc8ed7d8663f9ec38dadf6"
+    },
+    {
+      "path": "assets/images/trash-8.jpg",
+      "sha1": "a59c7d756f5323a7e145868365d644e22331c8ff"
+    },
+    {
+      "path": "assets/images/trash-9.jpg",
+      "sha1": "4625387058e7af5bfb31e79215c978ad36b2d9e4"
+    },
+    {
+      "path": "assets/images/upload.png",
+      "sha1": "5a4a1f2a4c46643c2e91d62ed44d65b764f2cbd8"
+    },
+    {
+      "path": "assets/images/user/user_1.jpg",
+      "sha1": "17fa67028abc7a6e635926008cac0e4ed62f6de4"
+    },
+    {
+      "path": "assets/images/user/user_10.jpg",
+      "sha1": "af108a486a9a4675cfb3644ce7041c404ee3ba9a"
+    },
+    {
+      "path": "assets/images/user/user_11.jpg",
+      "sha1": "050b1664a5301e41392e2c8fa995e65a5ee40e72"
+    },
+    {
+      "path": "assets/images/user/user_12.jpg",
+      "sha1": "395009794393b7ec5f8c3faaf9823b0a3692032b"
+    },
+    {
+      "path": "assets/images/user/user_13.jpg",
+      "sha1": "b8e80fa6386f7e827ed68466f0dcdede5e6aaa2e"
+    },
+    {
+      "path": "assets/images/user/user_14.jpg",
+      "sha1": "09edbc1c2ea2f60897be8368f54cc9d55bbefd21"
+    },
+    {
+      "path": "assets/images/user/user_15.jpg",
+      "sha1": "2470aa607bdf1f128394703173f150fcc671f746"
+    },
+    {
+      "path": "assets/images/user/user_2.jpg",
+      "sha1": "0b34af989cce5e54297f16547b3eff1ace44dad5"
+    },
+    {
+      "path": "assets/images/user/user_3.jpg",
+      "sha1": "70a66f4228592383decc4b8e3663f255664236cb"
+    },
+    {
+      "path": "assets/images/user/user_4.jpg",
+      "sha1": "bd594b6dae6acc8b9b33b422022da2f5cd949bbd"
+    },
+    {
+      "path": "assets/images/user/user_5.jpg",
+      "sha1": "88bae33eba5a1879ca860c9d8af9dab8ee8619a1"
+    },
+    {
+      "path": "assets/images/user/user_6.jpg",
+      "sha1": "d8ee99eee43700e1495f34a63133c80a3cd76bd9"
+    },
+    {
+      "path": "assets/images/user/user_7.jpg",
+      "sha1": "2ff6e90276ebafc2b689dac80f1165231f8ae28b"
+    },
+    {
+      "path": "assets/images/user/user_8.jpg",
+      "sha1": "e1e1059a01d6e0b0eb2c934cf023d70bfa5ebfcd"
+    },
+    {
+      "path": "assets/images/user/user_9.jpg",
+      "sha1": "a8f32356a22420ab63cb28b346e4b86e3c765bc6"
+    },
+    {
+      "path": "assets/images/user.png",
+      "sha1": "145c139afd50e52ad4070bdc7a0abdf8ebcfe23e"
+    },
+    {
+      "path": "assets/splash.png",
+      "sha1": "5be4c92f9917e5ef4ff518e84277aaf03399420b"
+    }
+  ]
+}

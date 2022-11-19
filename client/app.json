@@ -1,0 +1,7 @@
+{
+  "name": "client",
+  "displayName": "client",
+  "updates": {
+    "fallbackToCacheTimeout": 0
+  }
+}
