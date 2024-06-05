@@ -483,6 +483,11 @@ class PaneMapDisplayFiltrationResultsHelper extends Component {
                         ListHeaderComponentStyle={styles.listheaderStyles}
                         ListHeaderComponent={this.renderListHeaderOnly}
                         ListEmptyComponent={this.renderSkeletonEmptyList}
+                        ListFooterComponent={() => (
+                            <Fragment>
+                                <View style={{ marginBottom: 225 }} />
+                            </Fragment> 
+                        )}
                         keyExtractor={(item) => `${item.id}`}
                         data={locationsNearby}
                         renderItem={this.renderListItem}

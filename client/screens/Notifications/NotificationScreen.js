@@ -168,7 +168,7 @@ constructor(props) {
         return (
             <Fragment>
                 <ScrollView style={styles.background}>
-                    <Image resizeMode={"contain"} source={require("../../assets/images/notification-empty.jpg")} style={styles.myImage} />
+                    <Image resizeMode={"contain"} source={require("../../assets/images/bell.jpg")} style={[styles.myImage, { marginTop: 0, borderRadius: 1 }]} />
                     <View style={{ marginTop: 20 }} />
                     <View style={styles.marginLarge}>
                         <Text style={styles.headText}>Oh no! You don't have any new or pending notifications, interact with the community and get the ball rolling...!</Text>

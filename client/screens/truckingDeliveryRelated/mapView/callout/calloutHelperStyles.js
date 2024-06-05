@@ -10,17 +10,18 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     headerTitleMain: {
-        color: "#fff",
+        color: "#000",
         textDecorationLine: "underline",
         fontSize: 18.75
     },
     calloutInnerWrapperCardContainer: {
-        backgroundColor: "black", 
+        backgroundColor: "#fff", 
         borderRadius: 11.5,
         borderWidth: 2.25,
         borderColor: Colors.primaryColor,
         width: width * 0.7875, 
         maxWidth: width * 0.7875,
+        minHeight: height * 0.625,
         marginBottom: 22.5
     },
     columnFullWidth: {
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
     },
     hrThick: {
         borderBottomColor: Colors.primaryColor,
-        borderBottomWidth: 1.75,
+        borderBottomWidth: 1.25,
         marginTop: 9.75,
         marginBottom: 9.75,
         width: "100%"
@@ -54,17 +55,17 @@ const styles = StyleSheet.create({
         textAlign: "left",
         marginTop: 12.5,
         fontSize: 15,
-        color: "#fff"
+        color: "#000"
     },
     likesDislikesText: {
         textAlign: "left",
         marginTop: 12.5,
         fontSize: 15,
-        color: "#fff"
+        color: "#000"
     },
     calloutInnerStyle: {},
     nativeTextInner: {
-        color: "#fff", 
+        color: "#000", 
         textDecorationLine: "underline", 
         fontWeight: "bold", 
         textAlign: "center"

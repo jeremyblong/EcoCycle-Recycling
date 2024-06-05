@@ -4,11 +4,6 @@ const moment = require("moment");
 const { Connection } = require("../../../mongoUtil.js");
 const passport = require("passport");
 const { v4: uuidv4 } = require('uuid');
-const fetch = require("node-fetch");
-const config = require("config");
-const { decryptString } = require("../../../crypto.js");
-const qs = require('qs');
-
 
 router.post("/", (req, resppppp, next) => {
     // authenticate via passport auth flow/logic...
@@ -23,7 +18,6 @@ router.post("/", (req, resppppp, next) => {
                     message: "User could NOT be authenticated - make sure you're using a valid 'phone number' and 'password' combination."
                 })
             } else {
-
                 const { deviceInfo } = passedReq.body;
 
                     const newDeviceInfoOBJ = {

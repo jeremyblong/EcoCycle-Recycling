@@ -492,7 +492,7 @@ const PostNewDeliveryAvailableJob = ({ }) => {
         return (
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 42.5, flexGrow: 1 }}>
                 <View style={styles.margined}>
-                    <Text style={styles.titleTopText}>We will now need to <Text style={styles.underlineBoldTextBlack}>collect</Text> core information before posting your new 'available freight shipment'.</Text>
+                    <Text style={styles.titleTopText}>We will now need to <Text style={styles.underlineBoldTextBlack}>collect</Text> core information before posting your new 'request to have freight picked up'.</Text>
                     <Text style={styles.labelUnique}><Text style={styles.underlineBoldText}>Please</Text> be as <Text style={styles.underlineBoldText}>precise/accurate</Text> as possible with your details as our freight transporters (CDL-Drivers) use this information to appropriately guage what they <Text style={styles.underlineBoldText}>can</Text> and <Text style={styles.underlineBoldText}>can't</Text> transport along with the other load items.{"\n"}{"\n"}You could be <Text style={styles.underlineBoldText}>fined</Text> if your information is <Text style={styles.underlineBoldText}>far from accurate</Text> as this causes major problems with our transportation system(s).</Text>
                     <View style={styles.thinishHR} />
                     <Text style={styles.labeledTop}>Briefly describe what you need to move...</Text>

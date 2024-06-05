@@ -23,7 +23,7 @@ const socket = io(BASE_URL, { transports: ["websocket"] });
 
 const { width, height } = Dimensions.get("window");
 
-const GOOGLE_MAPS_APIKEY = "API_KEY_HERE";
+const GOOGLE_MAPS_APIKEY = process.env.GOOGLE_MAPS_API;
 const COST_PER_MILE = 2.15;
 
 const deafultLocation = { latitude: 45.516869, longitude: -122.682838, latitudeDelta: 0.0325, longitudeDelta: 0.0325 };

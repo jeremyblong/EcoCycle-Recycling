@@ -98,7 +98,7 @@ class CollapsingToolbar extends Component {
 
         return (
             <View style={styles.fill}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <Animated.ScrollView
                     style={styles.fill}
                     scrollEventThrottle={1}

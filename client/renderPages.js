@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Platform } from "react-native";
+import { Platform, StatusBar } from "react-native";
 import BottomTabBarScreen from "./component/bottomTabBarScreen";
 import TotalBalanceScreen from "./screens/balance/totalBalanceScreen";
 import SuccessScreen from "./screens/success/successScreen";
@@ -68,6 +68,7 @@ import WithdrawlPaymentFunding from "./screens/paymentRelated/withdrawl/withdraw
 import ViewAvailableBalances from "./screens/paymentRelated/available/viewAvailableBalance.js";        
 import DepositPaymentHelper from "./screens/paymentRelated/deposit/depositPayment.js";  
 import AddNewPaymentMethodMain from "./screens/paymentRelated/addNewPaymentMethod/newPaymentAdd.js";
+import GenerateQRCodeAndMarkShip from "./screens/distributorAccount/QRCodeAndShipOff/generateAndShip.js";
 
 const Stack = createStackNavigator();
 
@@ -198,6 +199,7 @@ const RenderPages = (props) => {
 
   return (
     <Provider store={store}>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen options={renderHeaderOptions("Splash/Loading...")} name="Splash" component={SplashScreen} /> 
@@ -213,7 +215,7 @@ const RenderPages = (props) => {
           <Stack.Screen options={renderHeaderOptions("Edit/Editing Profile")} name="EditProfile" component={EditProfileScreen} />
           <Stack.Screen options={renderHeaderOptions("Support/Help")} name="Support" component={SupportScreen} />
           <Stack.Screen options={renderHeaderOptions("Privacy Policy")} name="PrivacyPolicy" component={PrivacyPolicyScreen} />
-          <Stack.Screen options={renderHeaderOptions("Search(ing)")} name="Search" component={SearchScreen} />
+          <Stack.Screen options={renderHeaderOptions("Search")} name="Search" component={SearchScreen} />
           <Stack.Screen options={renderHeaderOptions("Boost Your Account/Profile")} name="BoostProfileDropoffAccount" component={BoostAccountDropoffDepotProfile} />
           {/* <Stack.Screen options={renderHeaderOptions("Time Slot(s)")} name="TimeSlots" component={TimeSlotScreen} /> */}
           {/* <Stack.Screen options={renderHeaderOptions("Payment Method(s)")} name="PaymentMethod" component={PaymentMethodScreen} /> */}
@@ -254,6 +256,7 @@ const RenderPages = (props) => {
           <Stack.Screen options={renderHeaderOptions("View Available Balance(s)")} name="ViewAvailableBalances" component={ViewAvailableBalances} />
           <Stack.Screen options={renderHeaderOptions("Deposit Funds/Funding To Account")} name="DepositFundingIntoAccount" component={DepositPaymentHelper} />
           <Stack.Screen options={renderHeaderOptions("Add New Payment Method")} name="AddNewPaymentMethod" component={AddNewPaymentMethodMain} />
+          <Stack.Screen options={renderHeaderOptions("QR Code Managment & Ship Off")} name="PrintQRCodeShipOff" component={GenerateQRCodeAndMarkShip} />
         </Stack.Navigator>
         <Toast />
         <FlashMessage position="top" />

@@ -174,8 +174,8 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
                                     <Marker 
                                         image={require("../../../../assets/images/icon/depot.png")}
                                         coordinate={{
-                                            latitude: currentApproxLocation.geo.coordinates[0],
-                                            longitude: currentApproxLocation.geo.coordinates[1]
+                                            latitude: _.has(currentApproxLocation, "geo") && _.has(currentApproxLocation.geo, "coordinates") ? currentApproxLocation.geo.coordinates[0] : 39.739235,
+                                            longitude: _.has(currentApproxLocation, "geo") && _.has(currentApproxLocation.geo, "coordinates") ? currentApproxLocation.geo.coordinates[1] : -104.990250,
                                         }}
                                         title={`${firstName} ${lastName} ~ ${username}`}
                                     >
@@ -224,24 +224,64 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
                         })}
                     </MapView> : <Fragment>
                         <SkeletonPlaceholder>
-                            <View style={{ width: "100%", minHeight: 75, height: 75, borderRadius: 42.5 }} />
+                            <View style={{ width: "90%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
                         </SkeletonPlaceholder>
                         <View style={{ marginTop: 7.5 }} />
                         <SkeletonPlaceholder>
-                            <View style={{ width: "100%", minHeight: 75, height: 75, borderRadius: 42.5 }} />
+                            <View style={{ width: "70%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "50%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "80%", height: 20, borderRadius: 5, marginTop: 5 }} />
                         </SkeletonPlaceholder>
                         <View style={{ marginTop: 7.5 }} />
                         <SkeletonPlaceholder>
-                            <View style={{ width: "100%", minHeight: 75, height: 75, borderRadius: 42.5 }} />
+                            <View style={{ width: "60%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "40%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                            <View style={{ width: "70%", height: 20, borderRadius: 5, marginTop: 5 }} />
                         </SkeletonPlaceholder>
                         <View style={{ marginTop: 7.5 }} />
                         <SkeletonPlaceholder>
-                            <View style={{ width: "100%", minHeight: 75, height: 75, borderRadius: 42.5 }} />
+                            <View style={{ width: "50%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "90%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "60%", height: 20, borderRadius: 5, marginTop: 5 }} />
                         </SkeletonPlaceholder>
                         <View style={{ marginTop: 7.5 }} />
                         <SkeletonPlaceholder>
-                            <View style={{ width: "100%", minHeight: 75, height: 75, borderRadius: 42.5 }} />
+                            <View style={{ width: "80%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "30%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 5 }} />
                         </SkeletonPlaceholder>
+                        <SkeletonPlaceholder>
+                            <View style={{ width: "90%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        </SkeletonPlaceholder>
+                        <View style={{ marginTop: 7.5 }} />
+                        <SkeletonPlaceholder>
+                            <View style={{ width: "70%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "50%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "80%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                        </SkeletonPlaceholder>
+                        <View style={{ marginTop: 7.5 }} />
+                        <SkeletonPlaceholder>
+                            <View style={{ width: "60%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "40%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                            <View style={{ width: "70%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                        </SkeletonPlaceholder>
+                        <View style={{ marginTop: 7.5 }} />
+                        <SkeletonPlaceholder>
+                            <View style={{ width: "50%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "90%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "60%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                        </SkeletonPlaceholder>
+                        <View style={{ marginTop: 7.5 }} />
+                        <SkeletonPlaceholder>
+                            <View style={{ width: "80%", height: 42.5, borderRadius: 42.5 }} />
+                            <View style={{ width: "30%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                            <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                        </SkeletonPlaceholder>
+                        <View style={{ marginTop: 7.5 }} />
                     </Fragment>}
                     <Button onPress={() => sheetRef.current.open()} title={"Open/Populate Selected QR Item Data"} buttonStyle={styles.buttonStyleBottom} style={{ width: "100%" }} color={Colors.secondaryColor} />
                 </View>
@@ -251,35 +291,62 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
         return (
             <Fragment>
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "90%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "70%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "50%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "80%", height: 20, borderRadius: 5, marginTop: 5 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "60%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "40%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    <View style={{ width: "70%", height: 20, borderRadius: 5, marginTop: 5 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "50%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "90%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "60%", height: 20, borderRadius: 5, marginTop: 5 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "80%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "30%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                </SkeletonPlaceholder>
+                <SkeletonPlaceholder>
+                    <View style={{ width: "90%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "70%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "50%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "80%", height: 20, borderRadius: 5, marginTop: 5 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "60%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "40%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    <View style={{ width: "70%", height: 20, borderRadius: 5, marginTop: 5 }} />
                 </SkeletonPlaceholder>
                 <View style={{ marginTop: 7.5 }} />
                 <SkeletonPlaceholder>
-                    <View style={{ width: "100%", minHeight: 92.5, height: 92.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "50%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "90%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "60%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                </SkeletonPlaceholder>
+                <View style={{ marginTop: 7.5 }} />
+                <SkeletonPlaceholder>
+                    <View style={{ width: "80%", height: 42.5, borderRadius: 42.5 }} />
+                    <View style={{ width: "30%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 5 }} />
                 </SkeletonPlaceholder>
             </Fragment>
         );

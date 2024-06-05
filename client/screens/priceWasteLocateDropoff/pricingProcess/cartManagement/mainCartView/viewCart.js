@@ -76,7 +76,7 @@ const ViewManageCartOfEWasteDisposalItemsPending = ({ cartData, saveItemToEWaste
                 <View style={styles.hrMid} />
                 <View style={styles.justFlexOnly}>
                     <View style={styles.emptyListView}>
-                        <Image source={require("../../../../../assets/images/tech-misc-1.jpg")} style={styles.largeIllustration}/>
+                        <Image source={require("../../../../../assets/images/dropoff_prev_ui.png")} style={styles.largeIllustration}/>
                     </View>
                 </View>
             </View>

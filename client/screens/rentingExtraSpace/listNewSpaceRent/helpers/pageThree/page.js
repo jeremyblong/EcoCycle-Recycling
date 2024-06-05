@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useRef } from "react";
+import React, { Fragment, useState, useRef, useCallback } from "react";
 import {
     View,
     Text,
@@ -9,6 +9,7 @@ import {
     Dimensions,
     FlatList
 } from "react-native";
+import { debounce } from 'lodash';
 import AwesomeButtonBlue from "react-native-really-awesome-button/src/themes/blue";
 import { Badge, ListItem } from '@rneui/themed';
 import stylesOne from "../pageStyles.js";
@@ -26,6 +27,7 @@ import axios from "axios";
 import uuid from 'react-native-uuid';
 import { Colors, Sizes } from "../../../../../constants/styles.js";
 import RBSheet from "react-native-raw-bottom-sheet";
+import Autocomplete from "react-native-autocomplete-input";
 
 const styles = { ...stylesOne, ...stylesTwo };
 
@@ -271,7 +273,7 @@ const stateOptionsSelection = [
 const { width, height } = Dimensions.get("window");
 
 const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicData, setCurrentViewState, setManualAddressEntry, handleSubItemSelection, currentView, manualAddressEntry }) => {
-    
+    const [ searchingValue, setSearchingValue ] = useState("");
     const [ inputsAreActive, setActiveInputState ] = useState(false);
     const [ isChecked, setCheckedState ] = useState(false);
     const [ selected, setSelected ] = useState(null);
@@ -418,7 +420,10 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
                             }
                         })
     
+                        console.log("matches", matches);
+                        
                         if (matches) {
+                            // searchableDropdownInput.current.blur();
 
                             setSearchableItemsState(matches);
                         }
@@ -469,6 +474,8 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
                         })
     
                         if (matches) {
+                            console.log("matches", matches);
+                            // searchableDropdownInput.current.blur();
 
                             setSearchableItemsState(matches);
                         }
@@ -529,40 +536,76 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
         })
     }
 
+    const debouncedSearch = useCallback(
+        debounce((value) => handleSearchRelevantAddress(value), 2000),
+        []
+    );
+
     const switchBetweenAddressViews = () => {
         
         if (currentView === true) {
 
             const renderConditionalSearchable = () => {
                 if (selected === null) {
+                    console.log("searchableItems", searchableItems);
                     return (
                         <Fragment>
-                            <SearchableDropdown
+                            <Autocomplete
+                                data={searchableItems}
+                                placeholder="Street Address (Manual Entry...)"
+                                placeholderTextColor={"#b3b3b3"}
+                                value={searchingValue}
+                                onChangeText={(text) => {
+                                    debouncedSearch(text);
+                                    
+                                    setSearchingValue(text);
+                                }}
+                                flatListProps={{
+                                    keyExtractor: (_, idx) => idx.toString(),
+                                    renderItem: ({ item, index }) => {
+                                        return (
+                                            <TouchableOpacity 
+                                                key={index}
+                                                onPress={() => {
+                                                    console.log("itemmmmmmmmmmmmmmmmmmmmmmmm", item)
+                                                    setSelected(item);
+    
+                                                    setSearchingValue("");
+                                                }} 
+                                                style={{ backgroundColor: "#fff" }}
+                                            >
+                                                <Text>{item.name}</Text>
+                                            </TouchableOpacity>
+                                        )
+                                    }
+                                }}
+                            />
+                            {/* <SearchableDropdown
                                 placeholder="Street Address (Manual Entry...)"
                                 placeholderTextColor={"#b3b3b3"}
                                 selectedItems={selected}
-                                onTextChange={(value) => handleSearchRelevantAddress(value)}
+                                onTextChange={(value) => debouncedSearch(value)}
                                 containerStyle={{ padding: 5 }}
                                 blurOnSubmit={true}
-                                onBlur={() => selected === null ? searchableDropdownInput.current.focus() : null}
+                                // onBlur={() => searchableDropdownInput.current.blur()}
                                 onItemSelect={(item) => setSelected(item)}
-                                defaultIndex={2}
+                                // defaultIndex={2}
                                 onRemoveItem={(item, index) => setSelected(null)}
-                                setSort={(item, searchedText) => console.log("item, searchedText", item, searchedText)}
+                                setSort={(item, searchedText) => {
+                                    console.log("item, searchedText", item, searchedText);
+                                }}
                                 itemStyle={styles.addressItemStyle}
                                 itemTextStyle={{ color: '#222' }}
                                 itemsContainerStyle={{ maxHeight: 250, flex: 1, zIndex: 99999999999999999999 }}
                                 items={searchableItems}
                                 resetValue={false}
-                                textInputProps={
-                                    {
-                                        flex: 1,
-                                        style: styles.addressInput,
-                                        ref: searchableDropdownInput
-                                    }
-                                } 
+                                textInputProps={{
+                                    flex: 1,
+                                    style: styles.addressInput,
+                                    ref: searchableDropdownInput
+                                }} 
                                 listProps={styles.listAddressProps}
-                            />
+                            /> */}
                         </Fragment>
                     );
                 } else {
@@ -812,7 +855,7 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
     return (
         <ScrollView keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false} style={{ flexGrow: 1 }} contentContainerStyle={{ paddingBottom: 42.5, flexGrow: 1, minHeight: 925 }}>
             <KeyboardAwareScrollView keyboardShouldPersistTaps='always' contentContainerStyle={inputsAreActive === true ? { paddingBottom: 150 } : { paddingBottom: 0 }}>
-                {renderHeaderLogicData("What's the address of your space?", "We'll only give your address to renters after you approve their reservation.")}
+                {renderHeaderLogicData("What's the address of your space?", "We'll only give your address to electronic dropoff requests after you approve their reservation.")}
                 <AwesomeButtonBlue style={styles.buttonAddy} disabled={calculateMapDisabledDoubledCheck()} type={"secondary"} onPress={() => gatherCurrentLocationData()} backgroundShadow={"black"} stretch={true}><View style={styles.centerButtonContent}>
                     <Image source={require("../../../../../assets/images/icon/list-space/crosshair-1.png")} style={styles.buttonedIcon} />
                     <Text style={styles.awesomeButtonText}>Use Current Position</Text>

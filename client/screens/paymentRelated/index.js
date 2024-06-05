@@ -64,7 +64,7 @@ const MainDisplayViewPaymentRelated = ({ authData }) => {
         </TouchableOpacity> */}
             {/* <View style={styles.hrBottom} /> */}
             <View style={styles.centered}>
-                <Image resizeMode='contain' style={styles.illustration} source={require("../../assets/images/payment-illustration.png")} />
+                <Image resizeMode='contain' style={[styles.illustration, { borderRadius: 12.25 }]} source={require("../../assets/images/paying.jpg")} />
             </View>
         </ScrollView>
     );

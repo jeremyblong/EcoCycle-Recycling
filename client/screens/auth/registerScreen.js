@@ -22,21 +22,79 @@ const { width, height } = Dimensions.get("window");
 const optionsAccountType = [
     {
         label: "Transporter/Transportation Account",
-        value: "transport-account"
+        value: "transport-account",
+        description: "This account type is for individuals or businesses that provide transportation services for e-waste. Responsibilities include picking up e-waste from collection points and delivering it to designated recycling facilities using freight pallet-style shipping.",
+        responsibilities: [
+            "Pick up e-waste from collection depots or storage locations",
+            "Ensure safe and secure transport of e-waste",
+            "Deliver e-waste to recycling facilities efficiently",
+            "Maintain accurate records of transported materials",
+            "Handle logistics of freight pallet shipping"
+        ],
+        benefits: [
+            "Earn revenue based on volume transported",
+            "Contribute to environmental sustainability",
+            "Flexible working hours and routes",
+            "Potential for long-term contracts and steady income"
+        ]
     },
     {
-        label: "3rd Party Distribution Account",
-        value: "3rd-party-distribution-account"
+        label: "3rd Party Distributor Account",
+        value: "3rd-party-distribution-account",
+        description: "This account type is for recycling plants or companies that we partner with to receive and process e-waste. They process the waste and pay our company in exchange for the e-waste.",
+        responsibilities: [
+            "Receive and process e-waste from transporters",
+            "Ensure proper recycling and disposal of e-waste",
+            "Manage payments to the e-waste collection company (us)",
+            "Maintain compliance with environmental regulations",
+            "Optimize recycling operations for efficiency and sustainability"
+        ],
+        benefits: [
+            "Revenue from processing e-waste",
+            "Access to a steady supply of e-waste materials",
+            "Enhanced reputation for supporting sustainability",
+            "Opportunities for business growth and expansion"
+        ]
     },
     {
         label: "Collection Agent (Gathering E-Waste)",
-        value: "collection-agent-account"
+        value: "collection-agent-account",
+        description: "This account type is for individuals or businesses that collect e-waste from various sources, such as homes, businesses, and public drop-off points. Responsibilities include promoting the service, collecting e-waste, and ensuring proper handling and delivery to storage depots.",
+        responsibilities: [
+            "Collect e-waste from assigned locations and drop-off points",
+            "Promote e-waste recycling services to the community",
+            "Drive e-waste to storage depots or recycling facilities",
+            "Ensure safe handling and storage of e-waste during collection",
+            "Maintain accurate records of collected materials",
+            "Refer and encourage more people to donate e-waste"
+        ],
+        benefits: [
+            "Earn revenue based on volume collected and referrals",
+            "Engage with the community and promote sustainability",
+            "Flexible working schedule",
+            "Potential to build a network and increase earnings"
+        ]
     },
     {
         label: "Storage/Drop-Off Agent",
-        value: "storage-dropoff-agent-account"
+        value: "storage-dropoff-agent-account",
+        description: "This account type is for individuals or businesses that provide storage facilities for collected e-waste. Responsibilities include maintaining secure and organized storage until the e-waste is picked up for recycling.",
+        responsibilities: [
+            "Provide secure storage for collected e-waste",
+            "Organize and manage e-waste inventory",
+            "Coordinate with transporters for timely pickup",
+            "Ensure compliance with environmental regulations",
+            "Facilitate community drop-offs and manage space efficiently"
+        ],
+        benefits: [
+            "Revenue share from storage services",
+            "Minimal active management required",
+            "Support the e-waste recycling process",
+            "Opportunity to contribute to environmental sustainability",
+            "Potential to earn additional income from hosting storage space"
+        ]
     }
-]
+];
 
 class RegisterScreen extends Component {
 constructor (props) {
@@ -51,6 +109,7 @@ constructor (props) {
         password: "",
         confirm: "",
         phoneNumber: "",
+        fullAccountType: null,
         loading: false,
         accountType: null,
         referralCode: ""
@@ -224,7 +283,12 @@ constructor (props) {
     
     logo = () => {
         return (
-            <SvgComponentAuth />
+            <View style={{ justifyContent: "center", alignContent: "center", alignItems: "center" }}>
+                <Image source={require('../../assets/images/FINALLOGO_prev_ui.png')}
+                    style={{ height: 200, width: 250 }}
+                    resizeMode="cover"
+                />
+            </View>
         )
     }
 
@@ -391,7 +455,7 @@ constructor (props) {
 
                     this.props.authentication({ ...res.data.user, authenticated: false });
 
-                    const authKey = 'b108b20893e34ab1fbdb012f210aa1d99f1f2ff4';
+                    const authKey = process.env.COMET_CHAT_API_KEY;
                     const uid = res.data.user.uniqueId;
 
                     CometChat.login(uid, authKey).then((user) => {
@@ -506,17 +570,56 @@ constructor (props) {
         )
     }
     renderAccountType = () => {
+
+        console.log("this.state.accountType", this.state.accountType);
+
+        const renderAccountTypeConditional = () => {
+            if (this.state.accountType !== null) {
+                return (
+                    <Fragment>
+                        <Text style={{ color: "#000" }}>{this.state.fullAccountType.description}</Text>
+                        <View style={{ paddingTop: 8.25 }} />
+                        <View style={{ borderBottomColor: "blue", borderBottomWidth: 1 }} />
+                        <View style={{ paddingTop: 8.25 }} />
+                        <Text style={{ color: "#000" }}>{"Responsibilities"}</Text>
+                        {this.state.fullAccountType.responsibilities.map((item) => {
+                            const unicodeCharacter = String.fromCharCode(0x21AA);
+                            return (
+                                <Fragment>
+                                    <Text style={{ color: "#000" }}>{unicodeCharacter} {item}</Text>
+                                </Fragment>
+                            );
+                        })}
+                        <View style={{ paddingTop: 8.25 }} />
+                        <View style={{ borderBottomColor: "blue", borderBottomWidth: 1 }} />
+                        <View style={{ paddingTop: 8.25 }} />
+                        <Text style={{ color: "#000" }}>{"Benefits"}</Text>
+                        {this.state.fullAccountType.benefits.map((item) => {
+                            const unicodeCharacter = String.fromCharCode(0x21AA);
+                            return (
+                                <Fragment>
+                                    <Text style={{ color: "#000" }}>{unicodeCharacter} {item}</Text>
+                                </Fragment>
+                            );
+                        })}
+                    </Fragment>
+                );
+            }   
+        }
         return (
             <Fragment>
                 <View style={styles.textFieldContainerStyle}>
                     <RNPickerSelect 
-                        onValueChange={(value) => {
+                        onValueChange={(value, values) => {
+                            console.log("value., values", value, values)
                             this.setState({
-                                accountType: value
+                                accountType: value,
+                                fullAccountType: optionsAccountType[values - 1]
                             })
                         }}
                         items={optionsAccountType}
                     />
+                    {renderAccountTypeConditional()}
                 </View>
             </Fragment>
         );
@@ -545,7 +648,7 @@ constructor (props) {
         console.log("this.state", this.state);
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor, height }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <ImageBackground source={require("../../assets/images/tinted-ewaste.jpeg")} style={styles.linearGradient}>
                     <ScrollView contentContainerStyle={styles.contentContainer} style={{ flexGrow: 1 }}>
                         <Icon name="arrow-left" size={25} color="black"
@@ -564,6 +667,7 @@ constructor (props) {
                         {this.renderReferralCode()}
                         {this.renderProfilePictureSelection()}
                         {this.continueButton()}
+                        <View style={{ paddingBottom: 35 }} />
                     </ScrollView>
                 </ImageBackground>
             </SafeAreaView>

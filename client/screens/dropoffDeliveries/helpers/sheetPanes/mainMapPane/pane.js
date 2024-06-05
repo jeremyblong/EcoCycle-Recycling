@@ -32,35 +32,35 @@ const PaneSheetSelectTransportType = (props) => {
             minutes: 15,
             subtext: `${moment(randomDate(new Date(2022, 10, 1), new Date())).format("hh:mm A")} - ${Math.floor(Math.random() * (30 - 1 + 1) + 1)} mi. away`,
             id: uuid.v4(),
-            price: (Math.floor(Math.random() * (32500 - 100) + 100) / 100).toFixed(2)
+            price: (30).toFixed(2)
         }, {
             image: require("../../../../../assets/images/icon/numbers/30.png"),
             label: "30 Min Pick-Up Window",
             minutes: 30,
             subtext: `${moment(randomDate(new Date(2022, 10, 1), new Date())).format("hh:mm A")} - ${Math.floor(Math.random() * (30 - 1 + 1) + 1)} mi. away`,
             id: uuid.v4(),
-            price: (Math.floor(Math.random() * (32500 - 100) + 100) / 100).toFixed(2)
+            price: (25).toFixed(2)
         }, {
             image: require("../../../../../assets/images/icon/numbers/45.png"),
             label: "45 Min Pick-Up Window",
             minutes: 45,
             subtext: `${moment(randomDate(new Date(2022, 10, 1), new Date())).format("hh:mm A")} - ${Math.floor(Math.random() * (30 - 1 + 1) + 1)} mi. away`,
             id: uuid.v4(),
-            price: (Math.floor(Math.random() * (32500 - 100) + 100) / 100).toFixed(2)
+            price: (20).toFixed(2)
         }, {
             image: require("../../../../../assets/images/icon/numbers/60.png"),
             label: "60 Min Pick-Up Window",
             minutes: 60,
             subtext: `${moment(randomDate(new Date(2022, 10, 1), new Date())).format("hh:mm A")} - ${Math.floor(Math.random() * (30 - 1 + 1) + 1)} mi. away`,
             id: uuid.v4(),
-            price: (Math.floor(Math.random() * (32500 - 100) + 100) / 100).toFixed(2)
+            price: (15).toFixed(2)
         }, {
             image: require("../../../../../assets/images/icon/numbers/90.png"),
             label: "90 Min Pick-Up Window",
             minutes: 90,
             subtext: `${moment(randomDate(new Date(2022, 10, 1), new Date())).format("hh:mm A")} - ${Math.floor(Math.random() * (30 - 1 + 1) + 1)} mi. away`,
             id: uuid.v4(),
-            price: (Math.floor(Math.random() * (32500 - 100) + 100) / 100).toFixed(2)
+            price: (10).toFixed(2)
         }];
 
         setState(prevState => {

@@ -27,7 +27,7 @@ class WithdrawScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#FAFAFA' }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <View style={{ flex: 1, justifyContent: 'center' }}>
                     {currentBalanceInfo()}
                     {this.amountTextField()}

@@ -19,7 +19,10 @@ const styles = StyleSheet.create({
     },
     highestTiered: {
         position: "relative",
+        padding: 17.25,
         zIndex: 9999999999999999999999999999,
+        minHeight: height * 1.65,
+        backgroundColor: "#fff"
     },
     centeredTopPortion: {
         justifyContent: "center",
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
         bottom: 5.25
     },
     renderedItemHR: {
-        borderBottomColor: Colors.primaryColor,
+        borderBottomColor: Colors.whiteColor,
         borderBottomWidth: 2.25,
         marginTop: 25,
         marginBottom: 12.75,

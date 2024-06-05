@@ -242,8 +242,8 @@ const BoostAccountDropoffDepotProfile = ({ authData }) => {
                 </TouchableOpacity>
                 <View style={styles.savedButtonWrapStyle}>
                     <Image
-                        source={require('../../../assets/images/icon/rocket-colored.png')}
-                        style={{ width: 42.5, height: 42.5 }}
+                        source={require('../../../assets/images/rocket_prev_ui.png')}
+                        style={{ width: 60, height: 60 }}
                     />
                 </View>
             </View>
@@ -364,11 +364,11 @@ const BoostAccountDropoffDepotProfile = ({ authData }) => {
     const header = () => {
         return (
             <View style={styles.headerWrapStyle}>
-                <Text style={{ ...Fonts.whiteColor20Regular, color: "#fff" }}>
+                <Text style={{ ...Fonts.whiteColor20Regular, color: "#000" }}>
                     Promote/'Boost' Your Dropoff Account
                 </Text>
                 <Image
-                    source={require('../../../assets/images/icon/rocket-colored.png')}
+                    source={require('../../../assets/images/rocket2_prev_ui.png')}
                     style={{ position: 'absolute', left: 12.0, width: 42.5, height: 42.5 }}
                 />
             </View>
@@ -377,7 +377,7 @@ const BoostAccountDropoffDepotProfile = ({ authData }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bodyBackColor }}>
-            <StatusBar backgroundColor={Colors.primaryColor} />
+            {/* <StatusBar backgroundColor={Colors.primaryColor} /> */}
             <View style={{ flex: 1 }}>
                 {header()}
                 <ScrollView

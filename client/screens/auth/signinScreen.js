@@ -32,15 +32,14 @@ import { CometChat } from '@cometchat-pro/react-native-chat';
 import messaging from '@react-native-firebase/messaging';
 
 GoogleSignin.configure({
-  webClientId: "137910212655-tpo3qj5s3g15ajps6tf7nnj0s9r20hbp.apps.googleusercontent.com"
+  webClientId: "73523458468-4qkrfbec5nrtgc1ial8aa76j7uufn9sd.apps.googleusercontent.com"
 });
 
-
 class SignInScreen extends Component {
-constructor (props) {
-    super(props);
-    
-}
+    constructor (props) {
+        super(props);
+        
+    }
 
     componentDidMount() {
         BackHandler.addEventListener('hardwareBackPress', this.handleBackButton.bind(this));
@@ -389,7 +388,7 @@ const Signin = (props) => {
         
                             handleDBUpdateLocationOnly(locationObj, user.uniqueId);
         
-                            const authKey = 'b108b20893e34ab1fbdb012f210aa1d99f1f2ff4';
+                            const authKey = process.env.COMET_CHAT_API_KEY;
                             const uid = user.uniqueId;
         
                             CometChat.login(uid, authKey).then((user) => {
@@ -542,7 +541,12 @@ const Signin = (props) => {
 
     const logo = () => {
         return (
-            <SvgComponentAuth />
+            <View style={{ justifyContent: "center", alignContent: "center", alignItems: "center" }}>
+                <Image source={require('../../assets/images/FINALLOGO_prev_ui.png')}
+                    style={{ height: 200, width: 250 }}
+                    resizeMode="cover"
+                />
+            </View>
         )
     }
 
@@ -561,7 +565,7 @@ const Signin = (props) => {
                     <TouchableOpacity onPress={() => {
                         navigation.navigate("Register")
                     }} style={{}}>
-                        <Text style={styles.registrationTxt}>Register new user - raw data</Text>
+                        <Text style={styles.registrationTxt}>Manually Register</Text>
                     </TouchableOpacity>
                 </Fragment>
             );
@@ -580,7 +584,7 @@ const Signin = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-            <StatusBar backgroundColor={Colors.primaryColor} />
+            {/* <StatusBar backgroundColor={Colors.primaryColor} /> */}
             <ImageBackground source={require("../../assets/images/tinted-ewaste.jpeg")} style={styles.linearGradient}>
                 <ScrollView contentContainerStyle={styles.contentContainer} style={{ flex: 1 }}>
                     {logo()}
@@ -589,10 +593,11 @@ const Signin = (props) => {
                     {renderPasswordSignin()}
                     {renderRegistrationTextLink()}
                     {continueButton()}
-                    {sendOTPInfo()}
+                    {/* {sendOTPInfo()} */}
                     {loginWithFacebookButton()}
                     {loginWithGoogleButton()}
                     {renderRedirectToHomepageAuthed()}
+                    <View style={{ paddingBottom: 40 }} />
                 </ScrollView>
             </ImageBackground>
         </SafeAreaView>

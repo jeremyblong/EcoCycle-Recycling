@@ -35,7 +35,7 @@ const AddNewPaymentMethodMain = ({ navigation }) => {
     
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
             <View style={{ marginTop: 22.5 }} />
             <CreditCardInput onChange={_onChange} />
             <View style={styles.hr} />

@@ -7,7 +7,7 @@ const { width, height } = Dimensions.get("window");
 const styles = StyleSheet.create({
     headerWrapStyle: {
         height: 56.0,
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: "#ccc",
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -18,6 +18,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         borderWidth: 1.25,
         padding: 7.25,
+        borderRadius: 11.25,
         borderColor: "#000"
     },
     rowItem: {
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
         borderRadius: Sizes.fixPadding - 5.0,
     },
     savedButtonWrapStyle: {
-        backgroundColor: Colors.blackColor,
+        // backgroundColor: Colors.blackColor,
         width: 55.0,
         height: 55.0,
         borderRadius: 27.5,

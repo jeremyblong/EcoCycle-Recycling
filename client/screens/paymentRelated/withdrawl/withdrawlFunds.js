@@ -135,7 +135,7 @@ const WithdrawlPaymentFunding = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#FAFAFA' }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
             {header()}
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
                 {currentBalanceInfo()}

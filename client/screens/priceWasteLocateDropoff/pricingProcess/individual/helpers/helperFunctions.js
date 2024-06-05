@@ -20,7 +20,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>
@@ -108,7 +108,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>
@@ -192,7 +192,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>
@@ -267,7 +267,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>
@@ -354,7 +354,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>
@@ -449,7 +449,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>
@@ -536,7 +536,7 @@ const handleSwitchRenderFunction = (compoundedRating, individual, type) => {
                                 spacing={10}
                                 count={5}
                                 starSize={50}
-                                fullStar={require('../../../../../assets/images/icon/star.png')}
+                                fullStar={require('../../../../../assets/images/icon/vibrantstar_prev_ui.png')}
                                 emptyStar={require('../../../../../assets/images/icon/empty-star-dotted.png')}
                             />
                         </View>

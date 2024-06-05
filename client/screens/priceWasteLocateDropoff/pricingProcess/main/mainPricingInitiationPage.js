@@ -135,7 +135,7 @@ const MainPricingIdentificationInitiationPage = (props) => {
                     <Text style={styles.noResultText}>We could NOT find any results/products for your desired search query/term...</Text>
                 </View>
                 <View style={styles.centeredBothWays}>
-                    <Image resizeMode={"contain"} source={require("../../../../assets/images/placeholder-2-img.jpg")} style={styles.resultsNotFoundImage} />
+                    <Image resizeMode={"contain"} source={require("../../../../assets/images/pricing_prev_ui.png")} style={styles.resultsNotFoundImage} />
                 </View>
             </Fragment>
         );

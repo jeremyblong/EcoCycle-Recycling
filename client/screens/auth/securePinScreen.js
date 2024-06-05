@@ -195,7 +195,7 @@ class SecurePinScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <ImageBackground source={require("../../assets/images/tinted-ewaste.jpeg")} style={styles.linearGradient}>
                     {this.needHelpScreen()}
                     {logo()}

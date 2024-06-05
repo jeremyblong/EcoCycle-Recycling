@@ -297,7 +297,7 @@ const ViewMapAvailableDeliveriesContracts = (props) => {
                         }
                     })}
                     showCountdown={true}
-                    rightComponent={<TouchableOpacity onPress={() => handleNewDataSearch(searchValue)}><Image style={styles.innerIconInput} source={require("../../../assets/images/icon/search.png")} /></TouchableOpacity>}
+                    rightComponent={<TouchableOpacity onPress={() => handleNewDataSearch(searchValue)}><Image style={[styles.innerIconInput, { borderRadius: 11.25 }]} source={require("../../../assets/images/mag.jpg")} /></TouchableOpacity>}
                     togglePassword={false}
                     containerStyles={styles.containerStyles}
                     inputStyles={styles.inputStyles}

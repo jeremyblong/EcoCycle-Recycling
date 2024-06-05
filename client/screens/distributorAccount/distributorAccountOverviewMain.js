@@ -16,7 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const { width, height } = Dimensions.get("window");
 
-const chartData = [Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100];
+const chartData = [Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100, Math.random() * 100];
 
 const chartConfig = {
     backgroundColor: Colors.primaryColor,
@@ -121,7 +121,7 @@ const DistributorAccountOverview = (props) => {
                         <Text style={styles.lineChartText}>Recent Earning Snap-Shot</Text>
                         <LineChart
                             data={{
-                                labels: ['1st Week', '2nd Week', '3rd Week', '4th Week'],
+                                labels: ['1st', '2nd', '3rd', '4th', "5th", "6th", "7th", "8th"],
                                 datasets: [
                                     {
                                         data: chartData
@@ -140,6 +140,38 @@ const DistributorAccountOverview = (props) => {
                                 borderRadius: 16
                             }}
                         />
+                        <View style={{ paddingTop: 15 }} />
+                        <ProgressChart
+                            data={{
+                                labels: ["Earned", "Pending", "Available"], // optional
+                                data: [0.8, 0.625, 0.68]
+                            }}
+                            width={width}
+                            height={height * 0.25625}
+                            strokeWidth={16}
+                            radius={32}
+                            chartConfig={chartConfig}
+                            hideLegend={false}
+                            style={{ borderRadius: 12.5 }}
+                        />
+                        <View style={{ paddingTop: 15 }} />
+                        <BarChart
+                            style={{ borderRadius: 12.5 }}
+                            data={{
+                                labels: ["Jab.", "Feb.", "Mar.", "Apr.", "May", "June"],
+                                datasets: [
+                                  {
+                                    data: [90, 45, 45, 80, 99, 43]
+                                  }
+                                ]
+                            }}
+                            width={width}
+                            height={height * 0.3125}
+                            yAxisLabel="$"
+                            chartConfig={chartConfig}
+                            verticalLabelRotation={30}
+                        />
+                         <View style={{ paddingTop: 15 }} />
                     </View>
                 </View>
                 <View style={{ backgroundColor: "#fff" }}>

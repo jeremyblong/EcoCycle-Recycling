@@ -175,16 +175,17 @@ const HomeScreen = ({ userData, systemState }) => {
     const newlyLanched = () => {
         return (
             <ImageBackground
-                source={require('../../assets/images/ewaste-banner.jpg')}
+                source={require('../../assets/images/banner.jpg')}
                 resizeMode="cover"
                 style={{
-                    height: 112.5,
+                    height: 115,
                     marginTop: Sizes.fixPadding + 5.0,
                     marginHorizontal: Sizes.fixPadding + 2.25,
                     borderColor: "#fff",
-                    borderWidth: 6.25,
-                    borderTopWidth: 0,
-                    borderRadius: 12.5,
+                    borderWidth: 4.25,
+                    borderTopWidth: 2.25,
+                    // borderBottomWidth: 1.5,
+                    borderRadius: 2.5,
                     shadowColor: Colors.primaryColor,
                     shadowOffset: {
                         width: 0,
@@ -270,7 +271,7 @@ const HomeScreen = ({ userData, systemState }) => {
                                     <Text style={styles.topLineText}>{verificationCompleted === true ? "Account Verified!" : "Not Verified."}</Text>
                                     <Text style={styles.bottomLineText}>{totalUniqueViews} Profile View's</Text>
                                 </View>
-                                <Image source={require("../../assets/images/icon/star.png")} style={{ ...styles.iconed, marginTop: 6.25, marginLeft: 2.25 }} />
+                                <Image source={require("../../assets/images/icon/vibrantstar_prev_ui.png")} style={{ ...styles.iconed, marginTop: 14.5, marginLeft: 2.25, maxWidth: 25, maxHeight: 25 }} />
                                 <Text style={styles.starTextNum}>({calculation})</Text>
                             </View>
                         </View>
@@ -324,7 +325,7 @@ const HomeScreen = ({ userData, systemState }) => {
                                     <Text style={styles.topLineText}>{verificationCompleted === true ? "Account Verified!" : "Not Verified."}</Text>
                                     <Text style={styles.bottomLineText}>{totalUniqueViews} Profile View's</Text>
                                 </View>
-                                <Image source={require("../../assets/images/icon/star.png")} style={{ ...styles.iconed, marginTop: 6.25, marginLeft: 2.25 }} />
+                                <Image source={require("../../assets/images/icon/vibrantstar_prev_ui.png")} style={{ ...styles.iconed, marginTop: 6.25, marginLeft: 2.25 }} />
                                 <Text style={styles.starTextNum}>({calculation})</Text>
                             </View>
                         </View>
@@ -339,7 +340,7 @@ const HomeScreen = ({ userData, systemState }) => {
 
         const refRBSheet = useRef();
         const [city, setSelectedItem] = useState('Wallington');
-        const menuQuickLinks = ["Setup A New Device (All Ranges)", "Manage Existing Devices", "Help & Support", "Shop New Device's & Additions", "Manage Account", "View Your 'Logs'"];
+        const menuQuickLinks = ["Donate/Sell electronic waste", "Price your ewaste value", "Help & Support", "View payments & earnings", "Manage Account", "View Your 'Logs'"];
 
         return (
             <View style={styles.headerStyle}>
@@ -375,8 +376,8 @@ const HomeScreen = ({ userData, systemState }) => {
                             )}
                         </View>
                     </RBSheet>
-                    <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 82.5, marginBottom: 32.5 }}>
-                        <Image source={require("../../assets/images/icon/menu.png")} style={styles.iconed} />
+                    <View style={{ flexDirection: 'row', alignItems: 'center', paddingTop: 42.5, marginBottom: 2.5 }}>
+                        <Image source={require("../../assets/images/menu_prev_ui.png")} style={{ width: 50, height: 50 }} />
                         <Text style={{ ...Fonts.black18Regular, marginLeft: 10.0, color: "white", fontWeight: "bold" }}>Quick Link(s)/Redirect(s)</Text>
                     </View>
                 </TouchableOpacity>
@@ -436,9 +437,9 @@ const HomeScreen = ({ userData, systemState }) => {
                 <View style={styles.centralBtnContainer}>
                     <View style={styles.columnFullWidth}>
                         <View style={[styles.columnOnly, { width: width * 0.975 }]}>
-                            <View style={styles.centerOnly}>
+                            {/* <View style={styles.centerOnly}>
                                 <View style={styles.thickerHR} />
-                            </View>
+                            </View> */}
                             <AwesomeButtonBlue type={"secondary"} backgroundShadow={"black"} backgroundColor={Colors.greenColor} onPress={() => navigation.navigate("MainDisplayInvitePoolingResources")} stretch={true}>
                                 <Text style={[styles.innerBtnText, { color: "#fff" }]}>Invite Friend(s) To "Pool" Electronic's</Text>
                             </AwesomeButtonBlue>
@@ -767,7 +768,7 @@ const HomeScreen = ({ userData, systemState }) => {
                 isHeaderFixed={false}
                 parallaxHeight={145}
                 fadeOutParallaxForeground={true}
-                renderParallaxBackground={({ animatedValue }) => <ImageBackground imageStyle={{ resizeMode: "cover" }} style={{ minWidth: width, minHeight: 300, maxHeight: 300 }} source={require("../../assets/images/trash-8.jpg")} />}
+                renderParallaxBackground={({ animatedValue }) => <ImageBackground imageStyle={{ resizeMode: "cover" }} style={{ minWidth: width, minHeight: 300, maxHeight: 300 }} source={require("../../assets/images/ewaste10.jpg")} />}
                 renderParallaxForeground={({ animatedValue }) => {
                     return (
                         <View>
@@ -776,7 +777,7 @@ const HomeScreen = ({ userData, systemState }) => {
 
                             }}>
                                 <View style={styles.searchStyle}>
-                                    <Image source={require("../../assets/images/icon/search.png")} style={styles.iconed} />
+                                    <Image source={require("../../assets/images/icon/mag_prev_ui.png")} style={styles.iconed} />
                                     <Text style={{ ...Fonts.gray17Regular, marginLeft: Sizes.fixPadding }}>Search for a specific user?</Text>
                                 </View>
                             </TouchableOpacity>
@@ -836,7 +837,7 @@ const HomeScreen = ({ userData, systemState }) => {
     }
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: 'white', }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primary} />
+            {/* <StatusBar translucent={false} backgroundColor={"#fff"} /> */}
             {renderContent()}
         </SafeAreaView>
     );

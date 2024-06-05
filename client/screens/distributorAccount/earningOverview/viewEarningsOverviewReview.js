@@ -302,7 +302,7 @@ const RenderEarningsPaymentsOverviewDistributor = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
-            <StatusBar translucent={true} backgroundColor={'transparent'} />
+            {/* <StatusBar translucent={true} backgroundColor={'transparent'} /> */}
             <View style={{ flex: 1 }}>
                 {creatorProfileInfo()}
                 <FlatList

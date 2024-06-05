@@ -11,7 +11,7 @@ class StatisticScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <View style={{
                     flexDirection: 'row',
                     justifyContent: 'space-between',

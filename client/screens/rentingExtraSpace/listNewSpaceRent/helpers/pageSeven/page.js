@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import AwesomeButtonBlue from "react-native-really-awesome-button/src/themes/blue";
 import { Badge } from '@rneui/themed';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const styles = { ...stylesOne, ...stylesTwo };
 
@@ -135,98 +136,100 @@ const RenderPageSevenHelperData = ({ renderHeaderLogicData, storageData, handleS
     }
     return (
         <View style={{ flex: 1 }}>
-            {renderHeaderLogicData("How large is your space?", "Accurate measurements help renters know if they can fit their items in your space. Here are a few things to consider/remember:")}
-            <View style={styles.wrapperMainTopContainer}>
-                <View style={styles.topChunkWrapper}>
-                    <View style={styles.leftIconStyleWrapper}>
-                        <Image source={require("../../../../../assets/images/icon/checkmark-circled-green.png")} style={styles.leftIconStyle} />
+            <KeyboardAwareScrollView keyboardShouldPersistTaps='always' contentContainerStyle={{ paddingBottom: 82.5 }}>
+                {renderHeaderLogicData("How large is your space?", "Accurate measurements help renters know if they can fit their items in your space. Here are a few things to consider/remember:")}
+                <View style={styles.wrapperMainTopContainer}>
+                    <View style={styles.topChunkWrapper}>
+                        <View style={styles.leftIconStyleWrapper}>
+                            <Image source={require("../../../../../assets/images/icon/checkmark-circled-green.png")} style={styles.leftIconStyle} />
+                        </View>
+                        <View style={styles.rightMainStyle}>
+                            <Text style={styles.titledHeaderText}>Accurate Measurement(s)</Text>
+                            <Text style={styles.subbedText}>If you list a 10' x 10' space, renters need to be able to use all 10' x 10'. If you can't visit or access your property right now, you can give it your best guess/estimate - just make sure you come back to update it later to it's actual/appropriate measurements so it's accurate.</Text>
+                        </View>
                     </View>
-                    <View style={styles.rightMainStyle}>
-                        <Text style={styles.titledHeaderText}>Accurate Measurement(s)</Text>
-                        <Text style={styles.subbedText}>If you list a 10' x 10' space, renters need to be able to use all 10' x 10'. If you can't visit or access your property right now, you can give it your best guess/estimate - just make sure you come back to update it later to it's actual/appropriate measurements so it's accurate.</Text>
+                    <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
+                    <View style={styles.bottomChunkWrapper}>
+                        <View style={styles.leftIconStyleWrapper}>
+                            <Image source={require("../../../../../assets/images/icon/measure-tape.png")} style={styles.leftIconStyle} />
+                        </View>
+                        <View style={styles.rightMainStyle}>
+                            <Text style={styles.titledHeaderText}>Different ways to measure</Text>
+                            <Text style={styles.subbedText}>Use a tape measure if you can (ideal tool/way), or if you're in a pinch you can just ballpark the general measurements and come back to confirm your estimates or make adjustments if needed.</Text>
+                        </View>
                     </View>
+                    <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
+                    <View style={styles.lowestBottomChunkWrapper}>
+                        <View style={styles.thirdColumn}>
+                            <TextInput
+                                value={measurements.length}
+                                placeholderTextColor={"darkgray"}
+                                blurOnSubmit={true}
+                                ref={lengthInputRef}
+                                onSubmitEditing={() => widthInputRef.current.focus()}
+                                placeholder={"Length (ft)"}
+                                keyboardType={"numeric"}
+                                style={styles.thirdLengthInput}
+                                onChangeText={(value) => setMeasurements(prevState => {
+                                    return {
+                                        ...prevState,
+                                        length: value
+                                    }
+                                })}
+                            />
+                        </View>
+                        <View style={styles.thirdColumn}>
+                            <TextInput
+                                value={measurements.width}
+                                placeholderTextColor={"darkgray"}
+                                blurOnSubmit={true}
+                                ref={widthInputRef}
+                                onSubmitEditing={() => heightInputRef.current.focus()}
+                                placeholder={"Width (ft)"}
+                                keyboardType={"numeric"}
+                                style={styles.thirdLengthInput}
+                                onChangeText={(value) => setMeasurements(prevState => {
+                                    return {
+                                        ...prevState,
+                                        width: value
+                                    }
+                                })}
+                            />
+                        </View>
+                        <View style={styles.thirdColumn}>
+                            <TextInput
+                                value={measurements.height}
+                                placeholderTextColor={"darkgray"}
+                                blurOnSubmit={true}
+                                ref={heightInputRef}
+                                placeholder={"Height (ft)"}
+                                keyboardType={"numeric"}
+                                style={styles.thirdLengthInput}
+                                onChangeText={(value) => setMeasurements(prevState => {
+                                    return {
+                                        ...prevState,
+                                        height: value
+                                    }
+                                })}
+                            />
+                        </View>
+                    </View>
+                    <View style={[styles.hr, { left: 7.5, marginTop: 17.5, marginBottom: 12.5 }]} />
+                    <Text style={styles.commonSpacesText}>Common garage size(s)</Text>
+                    <FlatList
+                        contentContainerStyle={styles.contentContainerHorizontal}
+                        data={horizontalSuggestions}
+                        showsHorizontalScrollIndicator={false}
+                        style={{ flexGrow: 1, flex: 1 }}
+                        keyExtractor={(item) => `${item.id}`}
+                        renderItem={renderHorizontalItem}
+                        horizontal={true}
+                    />
                 </View>
-                <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
-                <View style={styles.bottomChunkWrapper}>
-                    <View style={styles.leftIconStyleWrapper}>
-                        <Image source={require("../../../../../assets/images/icon/measure-tape.png")} style={styles.leftIconStyle} />
-                    </View>
-                    <View style={styles.rightMainStyle}>
-                        <Text style={styles.titledHeaderText}>Different ways to measure</Text>
-                        <Text style={styles.subbedText}>Use a tape measure if you can (ideal tool/way), or if you're in a pinch you can just ballpark the general measurements and come back to confirm your estimates or make adjustments if needed.</Text>
-                    </View>
+                <View style={styles.bottomWrapperContainer}>
+                    <AwesomeButtonBlue style={styles.absoluteButtonBottom} disabled={calculateDisabledButtonConditional()} type={"secondary"} onPress={() => handleSubItemSelection(6, 7, { spaceMeasurementsDimensionsFeet: measurements })} backgroundShadow={"black"} stretch={true}>Submit & Continue</AwesomeButtonBlue>
                 </View>
-                <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
-                <View style={styles.lowestBottomChunkWrapper}>
-                    <View style={styles.thirdColumn}>
-                        <TextInput
-                            value={measurements.length}
-                            placeholderTextColor={"darkgray"}
-                            blurOnSubmit={true}
-                            ref={lengthInputRef}
-                            onSubmitEditing={() => widthInputRef.current.focus()}
-                            placeholder={"Length (ft)"}
-                            keyboardType={"numeric"}
-                            style={styles.thirdLengthInput}
-                            onChangeText={(value) => setMeasurements(prevState => {
-                                return {
-                                    ...prevState,
-                                    length: value
-                                }
-                            })}
-                        />
-                    </View>
-                    <View style={styles.thirdColumn}>
-                        <TextInput
-                            value={measurements.width}
-                            placeholderTextColor={"darkgray"}
-                            blurOnSubmit={true}
-                            ref={widthInputRef}
-                            onSubmitEditing={() => heightInputRef.current.focus()}
-                            placeholder={"Width (ft)"}
-                            keyboardType={"numeric"}
-                            style={styles.thirdLengthInput}
-                            onChangeText={(value) => setMeasurements(prevState => {
-                                return {
-                                    ...prevState,
-                                    width: value
-                                }
-                            })}
-                        />
-                    </View>
-                    <View style={styles.thirdColumn}>
-                        <TextInput
-                            value={measurements.height}
-                            placeholderTextColor={"darkgray"}
-                            blurOnSubmit={true}
-                            ref={heightInputRef}
-                            placeholder={"Height (ft)"}
-                            keyboardType={"numeric"}
-                            style={styles.thirdLengthInput}
-                            onChangeText={(value) => setMeasurements(prevState => {
-                                return {
-                                    ...prevState,
-                                    height: value
-                                }
-                            })}
-                        />
-                    </View>
-                </View>
-                <View style={[styles.hr, { left: 7.5, marginTop: 17.5, marginBottom: 12.5 }]} />
-                <Text style={styles.commonSpacesText}>Common garage size(s)</Text>
-                <FlatList
-                    contentContainerStyle={styles.contentContainerHorizontal}
-                    data={horizontalSuggestions}
-                    showsHorizontalScrollIndicator={false}
-                    style={{ flexGrow: 1, flex: 1 }}
-                    keyExtractor={(item) => `${item.id}`}
-                    renderItem={renderHorizontalItem}
-                    horizontal={true}
-                />
-            </View>
-            <View style={styles.bottomWrapperContainer}>
-                <AwesomeButtonBlue style={styles.absoluteButtonBottom} disabled={calculateDisabledButtonConditional()} type={"secondary"} onPress={() => handleSubItemSelection(6, 7, { spaceMeasurementsDimensionsFeet: measurements })} backgroundShadow={"black"} stretch={true}>Submit & Continue</AwesomeButtonBlue>
-            </View>
+            </KeyboardAwareScrollView>
         </View>
     );
 }

@@ -22,7 +22,7 @@ class PrivacyPolicyScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <View>
                     {privacyPolicyInfo()}
                     {termsOfUseInfo()}

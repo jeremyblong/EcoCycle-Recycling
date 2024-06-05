@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, useState } from "react";
 import { BackHandler, SafeAreaView, View, StatusBar, Dimensions, TextInput, TouchableOpacity, FlatList, ImageBackground, Image, Text } from "react-native";
 import { withNavigation } from "react-navigation";
 import { Colors, Fonts, Sizes, } from "../../../constants/styles.js";
@@ -14,6 +14,7 @@ import { Button } from "@rneui/base";
 import RBSheet from "react-native-raw-bottom-sheet";
 import SelectAndSendInvitationSheetPane from "./panes/sendInviteToUserPane.js";
 import { connect } from "react-redux";
+import { Rating, AirbnbRating } from 'react-native-ratings';
 
 const collectionCategoryList = [
     {
@@ -38,7 +39,152 @@ const collectionCategoryList = [
     },
 ];
 
+const STAR_IMAGE = require('../../../assets/images/icon/vibrantstar_prev_ui.png')
+
 const { width, height } = Dimensions.get('window');
+
+const ReviewsProfileScreen = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+    const [appointments, setAppointments] = useState([
+        {
+            "id": 1,
+            "title": "Review for Drop-off 1",
+            "name": "Jake Handolf",
+            "date": "2023-05-18",
+            "feedback": "Easy drop-off process and friendly staff.",
+            "attendees": [
+                { "id": 1, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar1.png" },
+                { "id": 2, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar2.png" },
+                { "id": 3, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar8.png" },
+                { "id": 4, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar1.png" },
+                { "id": 5, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar3.png" },
+                { "id": 6, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar5.png" }
+            ],
+            "description": "The dropoff process was incredibly smooth and hassle-free. The staff were friendly and guided me through each step with ease. I was in and out in no time!",
+            "backgroundColor": "#ffdcb2",
+            "rating": 4.5,
+            "titleColor": "#ff8c00"
+        },
+        {
+            "id": 2,
+            "name": "Tom Hingletoff",
+            "title": "Review for Drop-off 2",
+            "date": "2023-05-19",
+            "feedback": "Quick and efficient service.",
+            "attendees": [
+                { "id": 7, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar2.png" },
+                { "id": 8, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar4.png" },
+                { "id": 9, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar6.png" }
+            ],
+            "backgroundColor": "#bfdfdf",
+            "description": "I had a fantastic experience with the dropoff process. The location was convenient, and the staff were very helpful. The whole process was quick and efficient",
+            "rating": 3.25,
+            "titleColor": "#008080"
+        },
+        {
+            "id": 3,
+            "name": "bethany Watkins",
+            "title": "Review for Drop-off 3",
+            "date": "2023-05-19",
+            "feedback": "Convenient location and helpful staff.",
+            "attendees": [
+                { "id": 10, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar2.png" },
+                { "id": 11, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar4.png" },
+                { "id": 12, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar1.png" },
+                { "id": 13, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar3.png" },
+                { "id": 14, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar5.png" }
+            ],
+            "backgroundColor": "#e2caf8",
+            "description": "Dropping off my e-waste was a breeze. The staff were welcoming and made sure everything went smoothly. I appreciate the easy and fast service!",
+            "rating": 5,
+            "titleColor": "#8a2be2"
+        },
+        {
+            "id": 4,
+            "name": "Whomella Tommula",
+            "title": "Review for Drop-off 4",
+            "date": "2023-05-19",
+            "feedback": "Smooth process from drop-off to pick-up.",
+            "attendees": [
+                { "id": 15, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar2.png" },
+                { "id": 16, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar4.png" },
+                { "id": 17, "remoteImage": "https://bootdey.com/img/Content/avatar/avatar6.png" }
+            ],
+            "backgroundColor": "#d8e4fa",
+            "description": "The dropoff experience was seamless and straightforward. The friendly staff assisted me promptly, making the entire process quick and painless. Highly recommended!",
+            "rating": 4.77,
+            "titleColor": "#6495ed"
+        }
+    ]);
+  
+    const renderAppointmentCard = ({ item }) => (
+        <View style={[styles.card, { backgroundColor: item.backgroundColor }]}>
+            <Text style={[styles.cardTitle, { color: item.titleColor }]}>{item.title}</Text>
+            <View style={styles.cardDates}>
+                <Text style={styles.cardDate}>{item.description}</Text>
+                <Text style={styles.cardDate}> - {item.endDate}</Text>
+            </View>
+            <View style={styles.cardContent}>
+                <View style={{ flexDirection: "row", display: "flex" }}>
+                    <Rating
+                        type='custom'
+                        ratingImage={STAR_IMAGE}
+                        ratingColor='#3498db'
+                        showRating={true}
+                        rating={Math.round(item.rating)}
+                        ratingCount={5}
+                        defaultRating={item.rating}
+                        ratingBackgroundColor='#c8c7c8'
+                        imageSize={42.25}
+                        isDisabled={true}
+                        onFinishRating={() => {}}
+                        style={{ marginBottom: 16.255 }}
+                    />
+                </View>
+                <View style={styles.attendeesContainer}>
+                    <Text style={[styles.cardTitle, { color: item.titleColor, marginRight: 22.25 }]}>Likes:</Text>
+                    {item.attendees.map((attendee) => (
+                        <Image key={attendee.id} source={{ uri: attendee.remoteImage }} style={styles.attendeeImage} />
+                    ))}
+                </View>
+                <View style={styles.buttonsContainer}>
+                    <TouchableOpacity style={styles.actionButton}>
+                        <Text style={styles.buttonText}>{item.name}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.actionButton}>
+                        <Text style={styles.buttonText}>{moment(item.date).fromNow(false)}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.actionButton}>
+                        <Text style={styles.buttonText}>{item.rating}</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </View>
+    );
+  
+    const searchFilter = (item) => {
+      const query = searchQuery.toLowerCase();
+      return item.title.toLowerCase().includes(query);
+    };
+  
+    return (
+        <View style={styles.container}>
+            <Text style={[styles.title, { marginTop: 12.5 }]}>Reviews & Feedback</Text>
+            <TextInput
+                style={styles.searchInput}
+                placeholder="Search"
+                value={searchQuery}
+                onChangeText={setSearchQuery}
+            />
+            <FlatList 
+                contentContainerStyle={styles.listContainer}
+                data={appointments.filter(searchFilter)}
+                renderItem={renderAppointmentCard}
+                keyExtractor={(item) => item.id.toString()}
+            />
+        </View>
+    );
+};
 
 class InitiateDropOffRequest extends Component {
 constructor(props) {
@@ -143,7 +289,7 @@ constructor(props) {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bodyBackColor }}>
-                <StatusBar translucent={true} backgroundColor={'transparent'} />
+                {/* <StatusBar translucent={true} backgroundColor={'transparent'} /> */}
                 {this.renderMainContent()}
             </SafeAreaView>
         )
@@ -244,10 +390,15 @@ constructor(props) {
                 </Text>
                 {this.linkAndSocialMediaInfo()}
                 {this.profileOtherInfo()}
+                {this.renderReviews()}
             </View>
         )
     }
 
+    renderReviews = () => {
+        return <ReviewsProfileScreen />
+    };
+    
     profileOtherInfo = () => {
         const { registrationDate, totalUniqueViews } = this.state.user;
         return (
@@ -295,17 +446,15 @@ constructor(props) {
         return (
             <View style={{ marginBottom: Sizes.fixPadding * 2.0 }}>
                 <ImageBackground
-                    source={require('../../../assets/images/blurred-gradient.png')}
+                    source={require('../../../assets/images/backing.jpg')}
                     style={styles.imageBacked}
                 >
-                    <View style={styles.backArrowWrapStyle}>
-                        <Icon
-                            name="chevron-left"
-                            color={Colors.whiteColor}
-                            size={26}
-                            onPress={() => this.props.navigation.pop()}
+                    <TouchableOpacity onPress={() => {}} style={styles.backArrowWrapStyle}>
+                        <Image
+                            source={require('../../../assets/images/icon/coloredicon.png')}
+                            style={{ width: 60, height: 60 }}
                         />
-                    </View>
+                    </TouchableOpacity>
                 </ImageBackground>
                 <View style={styles.profileInfoWrapStyle}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>

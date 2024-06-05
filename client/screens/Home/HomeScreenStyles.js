@@ -74,10 +74,10 @@ const styles = StyleSheet.create({
         borderTopWidth: 3
     },
     innerImageIcon: {
-        maxWidth: 65,
-        maxHeight: 65,
-        height: 65,
-        width: 65,
+        maxWidth: 80,
+        maxHeight: 80,
+        height: 80,
+        width: 80,
         paddingBottom: 12.25
     },
     backgroundVideoWrapper: {},

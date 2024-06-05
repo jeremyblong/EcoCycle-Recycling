@@ -14,11 +14,16 @@ passport.use("users", new LocalStrategy({
 }, (req, phoneNumber, password, done) => {
 
     const collection = Connection.db.db("test").collection("users");
+    
+    console.log("ran ------------- :", phoneNumber);
 
     collection.findOne({ phone: phoneNumber }).then((user) => {
         if (!user) {
             return done(null, false, { message: 'Error - a problem occurred...' });
         } else {
+
+            console.log("user", user);
+
             if ((phoneNumber === user.phone) && (password === decryptString(user.password))) {
                 return done(null, user, req);
             } else {

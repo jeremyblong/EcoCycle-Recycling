@@ -780,7 +780,7 @@ const MainProfileScreenHelper = (props) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bodyBackColor }}>
-            <StatusBar translucent={true} backgroundColor={'transparent'} />
+            {/* <StatusBar translucent={true} backgroundColor={'transparent'} /> */}
             <RBSheet
                 ref={sendPrivateMessageRef}
                 height={height}

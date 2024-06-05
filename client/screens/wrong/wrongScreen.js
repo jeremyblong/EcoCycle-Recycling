@@ -23,7 +23,7 @@ export default class WrongScreen extends Component {
     render() {
         return (
             <SafeAreaView style={styles.pageStyle}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <Text style={{ ...Fonts.black19SemiBold, marginTop: Sizes.fixPadding + 5.0 }}>
                     Oops.. Something Went Wrong!
                 </Text>

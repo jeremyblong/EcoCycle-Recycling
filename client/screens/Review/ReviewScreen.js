@@ -91,7 +91,7 @@ const ReviewScreen = () => {
     )
 
     return <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <StatusBar backgroundColor={Colors.primary} />
+        {/* <StatusBar backgroundColor={Colors.primary} /> */}
         <FlatList
             data={userList}
             keyExtractor={(item) => `${item.id}`}

@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import { Text, View, SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import { Text, View, SafeAreaView, StatusBar, StyleSheet, ImageBackground } from "react-native";
 import { Colors, Fonts } from "../constants/styles";
 import { CircleFade } from 'react-native-animated-spinkit';
 import { connect } from "react-redux";
@@ -95,17 +95,17 @@ const SplashScreen = (props) => {
     //     }
     // }
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: Colors.secondaryColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />   
+        <ImageBackground source={require("../assets/images/icon/splash.jpg")} style={{ flex: 1 }}>
+            {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />    */}
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', margin: 22.5 }}>
-                <Text style={{ color: "#000", fontSize: 39.25, fontWeight: "bold", textAlign: "center", lineHeight: 62.5 }}>
-                    <Text style={{ color: "#fff", fontWeight: "bold", textDecorationLine: "underline", textAlign: "center" }}>ElectraCycle {"\n"}E-Waste Recovery</Text> {"\n"}Paying <Text style={{ color: "#fff", textDecorationLine: "underline", fontWeight: "bold" }}>CASH</Text> for used{"\n"}electronics <Text style={{ color: "#fff", textDecorationLine: "underline", fontWeight: "bold" }}>(working or not)</Text>
+                <Text style={{ color: "#000", fontSize: 39.25, fontWeight: "bold", textAlign: "center", lineHeight: 62.5, position: "absolute", top: 10 }}>
+                    <Text style={{ color: "#fff", fontWeight: "bold", textDecorationLine: "underline", textAlign: "center" }}>ElectraCycle {"\n"}E-Waste Recovery</Text>
                 </Text>
                 <CircleFade size={70} color={Colors.whiteColor}
                     style={{ position: 'absolute', bottom: 50.0 }}
                 />
             </View>
-        </SafeAreaView>
+        </ImageBackground>
     )
 }
 

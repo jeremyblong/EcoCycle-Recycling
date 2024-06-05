@@ -32,7 +32,7 @@ class TotalBalanceScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <View style={{ flex: 1 }}>
                     <View style={{ elevation: 3.0, borderBottomColor: 'gray' }}>
                         {this.totalBalanceInfo()}

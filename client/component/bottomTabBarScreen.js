@@ -60,9 +60,9 @@ const MyCustomTabs = (props) => {
                     tabBarIcon: ({ tintColor, focused }) => (
                         focused ?
                             <TouchableOpacity style={styles.circleStyle}>
-                                <Image source={require("../assets/images/icon/contract.png")} style={styles.activeIconCustom} />
+                                <Image source={require("../assets/images/contract.jpg")} style={styles.activeIconCustom} />
                             </TouchableOpacity>
-                            : <Image source={require("../assets/images/icon/contract.png")} style={styles.iconCustom} />
+                            : <Image source={require("../assets/images/contract.jpg")} style={styles.iconCustom} />
                     )
                 }}
             />
@@ -74,9 +74,9 @@ const MyCustomTabs = (props) => {
                     tabBarIcon: ({ tintColor, focused }) => (
                         focused ?
                             <TouchableOpacity style={styles.circleStyle}>
-                                <Image source={require("../assets/images/icon/car.png")} style={styles.activeIconCustom} />
+                                <Image source={require("../assets/images/car.jpg")} style={styles.activeIconCustom} />
                             </TouchableOpacity>
-                            : <Image source={require("../assets/images/icon/car.png")} style={styles.iconCustom} />
+                            : <Image source={require("../assets/images/car.jpg")} style={styles.iconCustom} />
                     )
                 }}
             />
@@ -89,7 +89,7 @@ const MyCustomTabs = (props) => {
                         <View
                             style={{
                                 position: 'absolute',
-                                bottom: 30, // space from bottombar
+                                bottom: 22.25, // space from bottombar
                                 height: 75,
                                 width: 75,
                                 borderRadius: 75,
@@ -100,13 +100,16 @@ const MyCustomTabs = (props) => {
                                 alignItems: 'center',
                             }}>
                             <Image
-                                source={require("../assets/images/icon/home.png")}
+                                source={require("../assets/images/home_prev_ui.png")}
                                 style={{
-                                    width: 40,
-                                    height: 40,
-                                    tintColor: '#f1f6f9',
+                                    width: 65,
+                                    minWidth: 65, 
+                                    minHeight: 65,
+                                    height: 65,
+                                    // tintColor: '#f1f6f9',
                                     alignContent: 'center',
                                 }}
+                                resizeMode="cover"
                             />
                         </View>
                     ),
@@ -127,9 +130,9 @@ const MyCustomTabs = (props) => {
                     tabBarIcon: ({ tintColor, focused }) => (
                         focused ?
                             <TouchableOpacity style={styles.circleStyle}>
-                                <Image source={require("../assets/images/icon/social-location.png")} style={styles.activeIconCustom} />
+                                <Image source={require("../assets/images/map.jpg")} style={styles.activeIconCustom} />
                             </TouchableOpacity>
-                            : <Image source={require("../assets/images/icon/social-location.png")} style={styles.iconCustom} />
+                            : <Image source={require("../assets/images/map.jpg")} style={styles.iconCustom} />
                     ),
                 }}
             >
@@ -144,9 +147,9 @@ const MyCustomTabs = (props) => {
                     tabBarIcon: ({ tintColor, focused }) => (
                         focused ?
                             <TouchableOpacity style={styles.circleStyle}>
-                                <Image source={require("../assets/images/icon/settings-gradient.png")} style={styles.activeIconCustom} />
+                                <Image source={require("../assets/images/gears.jpg")} style={styles.activeIconCustom} />
                             </TouchableOpacity>
-                            : <Image source={require("../assets/images/icon/settings-gradient.png")} style={styles.iconCustom} />
+                            : <Image source={require("../assets/images/gears.jpg")} style={styles.iconCustom} />
                     ),
                 }}
             />
@@ -228,7 +231,8 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         maxWidth: 50,
         maxHeight: 50,
-        tintColor: "#fff"
+        borderWidth: 2.25,
+        borderColor: "#fff"
     },
     iconCustom: {
         minWidth: 50,

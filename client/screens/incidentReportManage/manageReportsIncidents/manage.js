@@ -38,7 +38,7 @@ const DemoScreenPlaceholderWithImageBottom = (props) => {
     return (
         <Fragment>
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primary} />
+            {/* <StatusBar translucent={false} backgroundColor={Colors.primary} /> */}
                 <ScrollView contentContainerStyle={{ backgroundColor: "black", width, height, paddingTop: 25 }}>
 
                     <View style={styles.bottomImageContainer}>

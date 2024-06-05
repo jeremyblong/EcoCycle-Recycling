@@ -2,37 +2,37 @@ export const navigationalLinks = [
     {
         id: '0',
         name: 'Price My Electronic-Waste In-Exchange For Cash NOW!',
-        image: require('../../../assets/images/icon/dollar-crisp.png'),
+        image: require('../../../assets/images/cashsign.jpg'),
         navigationRouteName: "PriceEWasteLocateDropoff"
     },
     {
         id: '1',
         name: `View/Manage Profile Setting's such as core-info, pictures, etc...`,
-        image: require('../../../assets/images/icon/user-default.png'),
+        image: require('../../../assets/images/vibrantprofile.jpg'),
         navigationRouteName: "EditProfile"
     },
     {
         id: '2',
         name: `View Our Available/Bookable Freight-Deliveries`,
-        image: require('../../../assets/images/icon/chat-2.png'),
+        image: require('../../../assets/images/semi.jpg'),
         navigationRouteName: "PrivateMessagingMainView"
     },
     {
         id: '3',
         name: 'View Your Security Log(s) (Logs recording each authentication..)',
-        image: require('../../../assets/images/icon/shield.png'),
+        image: require('../../../assets/images/logs.jpg'),
         navigationRouteName: "ViewSecurityAuthenticationLogs"
     },
     {
         id: '4',
         name: 'Post New Available Storage Space (Dropoff-Depot)',
-        image: require('../../../assets/images/icon/storage.png'),
+        image: require('../../../assets/images/house.jpg'),
         navigationRouteName: "ListNewStorageSpaceForRentDropoff"
     },
     {
         id: '5',
         name: `Messaging & Private/Group Message's`,
-        image: require('../../../assets/images/icon/chat-2.png'),
+        image: require('../../../assets/images/messaging.jpg'),
         navigationRouteName: "PrivateMessagingMainView"
     }
     // {

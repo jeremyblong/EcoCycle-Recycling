@@ -28,6 +28,13 @@ import SkeletonPlaceholder from "react-native-skeleton-placeholder";
 import AwesomeButtonBlue from "react-native-really-awesome-button/src/themes/blue";
 import Dialog from "react-native-dialog";
 import { Fonts, Sizes } from "../../../constants/styles";
+import {
+    Placeholder,
+    PlaceholderMedia,
+    PlaceholderLine,
+    Fade
+} from "rn-placeholder";
+
 
 const {
     renderComponentFooterHelper, 
@@ -195,29 +202,72 @@ const ListNewPropertyFreeSpaceProcess = ({ storageData, saveUpdatePreviousLocati
         } else {
             return (
                 <Fragment>
-                    <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 125, height: 125, borderRadius: 35 }} />
-                    </SkeletonPlaceholder>
-                    <View style={{ marginTop: 7.5 }} />
-                    <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 125, height: 125, borderRadius: 35 }} />
-                    </SkeletonPlaceholder>
-                    <View style={{ marginTop: 7.5 }} />
-                    <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 125, height: 125, borderRadius: 35 }} />
-                    </SkeletonPlaceholder>
-                    <View style={{ marginTop: 7.5 }} />
-                    <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 125, height: 125, borderRadius: 35 }} />
-                    </SkeletonPlaceholder>
-                    <View style={{ marginTop: 7.5 }} />
-                    <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 125, height: 125, borderRadius: 35 }} />
-                    </SkeletonPlaceholder>
-                    <View style={{ marginTop: 7.5 }} />
-                    <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 125, height: 125, borderRadius: 35 }} />
-                    </SkeletonPlaceholder>
+                    <View style={styles.highestTiered}>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                        <Placeholder
+                            Animation={Fade}
+                            Left={PlaceholderMedia}
+                        >
+                            <PlaceholderLine width={80} />
+                            <PlaceholderLine width={width * 0.25} />
+                            <PlaceholderLine width={30} />
+                        </Placeholder>
+                    </View>
                 </Fragment>
             );
         }

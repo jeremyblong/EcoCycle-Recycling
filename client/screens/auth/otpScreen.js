@@ -36,7 +36,7 @@ class OTPScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <ImageBackground source={require("../../assets/images/tinted-ewaste.jpeg")} style={styles.linearGradient}>
                     <Icon name="arrow-left" size={25} color="black"
                         style={{ position: 'absolute', left: 15.0, top: 20.0 }}

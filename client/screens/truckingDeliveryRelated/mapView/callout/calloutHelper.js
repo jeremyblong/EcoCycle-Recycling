@@ -2,6 +2,10 @@ import React, { Fragment } from "react";
 import { View, Dimensions } from "react-native";
 import { Text as NativeText, Card, Icon } from '@rneui/themed';
 import styles from "./calloutHelperStyles.js";
+import moment from "moment";
+import _ from "lodash";
+
+const { width, height } = Dimensions.get("window");
 
 const CustomCalloutRenderPopupViewMapHelperAvailableDeliveries = (props) => {
 
@@ -11,34 +15,59 @@ const CustomCalloutRenderPopupViewMapHelperAvailableDeliveries = (props) => {
     const { description, freightDescription, packagingDescription, deliveryTimespanSpecs, averagePalletSizeOfLoad, destinationZipCode, originZipCode, totalWeightOfLoad, attachedImages } = mainData;
 
     const calculateAppropriateText = (value) => {
-        switch (value) {
+        console.log("log", value.value);
+        switch (value.value) {
             case "two-weeks":
-                return "Must be delivered WITHIN TWO (2) WEEKS."
-                break;
+                return "Within 2 weeks.";
             case "one-week":
-                return "Must be delivered WITHIN ONE (1) WEEKS."
-                break;
+                return "Within 1 week.";
             case "one-specific-date":
-                return "On a SPECIFIC date (see actual listing data for details)"
-                break;
+                return "On a specific date.";
             case "two-specific-dates":
-                return "BETWEEN TWO specific dates (see actual listing data for details)"
-                break;
+                return "Between two dates.";
             case "flexible":
-                return "Flexible - No set-in-stone date of delivery."
-                break;
+                return "Flexible delivery.";
             case "currently-unknown":
-                return "Currently unknown - Will be posted at a later date (contact the user)"
-                break;
+                return "Date unknown (contact user).";
             default:
-                break;
+                return "";
         }
     }
 
+    const renderConditional = () => {
+        if (_.has(mainData.deliveryTimespanSpecs.additionalInfo, "startDatePicked")) {
+                const { startDatePicked, endDatePicked } = mainData.deliveryTimespanSpecs.additionalInfo;
+                return (
+                    <Fragment>
+                        <View style={{ flexDirection: "row", display: "flex" }}>
+                            <View style={styles.column}>
+                                <NativeText style={styles.likesDislikesLabel}>Pickup Date</NativeText>
+                                <NativeText style={styles.baselineSubText}>{moment(startDatePicked.unformattedDate).format("MM/DD/YYYY")}</NativeText>
+                            </View>
+                            <View style={styles.column}>
+                                <NativeText style={styles.likesDislikesLabel}>Dropoff Date</NativeText>
+                                <NativeText style={styles.baselineSubText}>{moment(endDatePicked.unformattedDate).format("MM/DD/YYYY")}</NativeText>
+                            </View>
+                        </View>
+                    </Fragment>
+                );
+        } else {
+            return (
+                <Fragment>
+                    <View style={{ flexDirection: "row", display: "flex" }}>
+                        <View style={styles.column}>
+                            <NativeText style={styles.likesDislikesLabel}>Pickup Date</NativeText>
+                            <NativeText style={styles.baselineSubText}>{moment(mainData.deliveryTimespanSpecs.additionalInfo.unformattedDate).format("MM/DD/YYYY")}</NativeText>
+                        </View>
+                    </View>
+                </Fragment>
+            );
+        }
+    }
     return (
         <Fragment>
             <Card containerStyle={styles.calloutInnerWrapperCardContainer} style={styles.calloutInnerStyle} wrapperStyle={styles.calloutInnerStyle}>
-                <Card.Title style={styles.headerTitleMain}>{`${postedByName} a.k.a. ${postedByUsername}`}</Card.Title>
+                <Card.Title style={styles.headerTitleMain}>{`Posted by ${postedByUsername}`}</Card.Title>
                 <Card.Divider />
                 <View style={{ flexDirection: "row", display: "flex" }}>
                     <View style={styles.column}>
@@ -61,6 +90,8 @@ const CustomCalloutRenderPopupViewMapHelperAvailableDeliveries = (props) => {
                         <NativeText style={styles.baselineSubText}>{calculateAppropriateText(deliveryTimespanSpecs)}</NativeText>
                     </View>
                 </View>
+                <View style={styles.hrThick} />
+                {renderConditional()}
                 <View style={styles.hrThick} />
                 <View style={{ flexDirection: "row", display: "flex" }}>
                     <View style={styles.columnFullWidth}>

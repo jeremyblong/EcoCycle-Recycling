@@ -247,7 +247,7 @@ class EditProfileScreen extends Component {
         const { loading, closable } = this.state;
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.backColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <RenderPromptPane props={this.props} refRBSheet={this.refRBSheet} />
                 <View style={{ flex: 1 }}>
                     {loading ? <ActivityIndicator size="large" style={styles.activity} color="#fff" /> : null}

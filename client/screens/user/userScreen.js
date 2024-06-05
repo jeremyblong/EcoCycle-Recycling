@@ -16,7 +16,7 @@ class UserScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: '#F2F4F6' }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <View style={{ flex: 1, paddingBottom: Sizes.fixPadding * 6.0 }}>
                     <ScrollView>
                         {userInfo()}

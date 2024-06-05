@@ -393,48 +393,48 @@ export const basicsOptionsMapped = [
         icon: require("../../../../assets/images/ogIcons/university.png"),
         id: 6
     },
-    {
-        label: "Gender & Intent",
-        value: "Male & Seeking Relationship",
-        icon: require("../../../../assets/images/ogIcons/gender.png"),
-        id: 7
-    },
-    {
-        label: "Bio",
-        value: "Core biographic information & data",
-        icon: false,
-        id: 8
-    },
-    {
-        label: "Eye Color",
-        value: "Blue/Green",
-        icon: require("../../../../assets/images/ogIcons/eye.png"),
-        id: 9
-    },
-    {
-        label: "Hair Color",
-        value: "Blonde",
-        icon: require("../../../../assets/images/ogIcons/hair.png"),
-        id: 10
-    },
-    {
-        label: "Body Type",
-        value: "Average",
-        icon: require("../../../../assets/images/ogIcons/body-type.png"),
-        id: 11
-    },
-    {
-        label: "Religion",
-        value: "Non-Religious",
-        icon: require("../../../../assets/images/ogIcons/crown.png"),
-        id: 12
-    },
-    {
-        label: "Ethinicity",
-        value: "Caucasian",
-        icon: require("../../../../assets/images/ogIcons/race.png"),
-        id: 13
-    }
+    // {
+    //     label: "Gender & Intent",
+    //     value: "Male & Seeking Relationship",
+    //     icon: require("../../../../assets/images/ogIcons/gender.png"),
+    //     id: 7
+    // },
+    // {
+    //     label: "Bio",
+    //     value: "Core biographic information & data",
+    //     icon: false,
+    //     id: 8
+    // },
+    // {
+    //     label: "Eye Color",
+    //     value: "Blue/Green",
+    //     icon: require("../../../../assets/images/ogIcons/eye.png"),
+    //     id: 9
+    // },
+    // {
+    //     label: "Hair Color",
+    //     value: "Blonde",
+    //     icon: require("../../../../assets/images/ogIcons/hair.png"),
+    //     id: 10
+    // },
+    // {
+    //     label: "Body Type",
+    //     value: "Average",
+    //     icon: require("../../../../assets/images/ogIcons/body-type.png"),
+    //     id: 11
+    // },
+    // {
+    //     label: "Religion",
+    //     value: "Non-Religious",
+    //     icon: require("../../../../assets/images/ogIcons/crown.png"),
+    //     id: 12
+    // },
+    // {
+    //     label: "Ethinicity",
+    //     value: "Caucasian",
+    //     icon: require("../../../../assets/images/ogIcons/race.png"),
+    //     id: 13
+    // }
 ];
 export const bodyTypeOptions = [
     { 

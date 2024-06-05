@@ -105,7 +105,7 @@ class PortfolioScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{ flex: 1 }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primaryColor} /> */}
                 <View>
                     {portfolioInfo()}
                     <FlatList

@@ -41,8 +41,7 @@ const styles = StyleSheet.create({
         paddingTop: 27.25,
         paddingBottom: 5.25,
         width: "100%",
-        minHeight: height * 0.515,
-        height: height * 0.515
+        minHeight: height * 0.515
     }, 
     lineChartText: {
         fontWeight: "bold",

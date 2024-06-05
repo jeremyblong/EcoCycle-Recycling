@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         marginTop: 32.5,
         textAlign: "center",
-        color: Colors.darkerBlue
+        color: Colors.blackColor
     },
     hrMid: {
         borderBottomColor: "lightgrey",
@@ -51,11 +51,11 @@ const styles = StyleSheet.create({
         alignContent: "center"
     }, 
     largeIllustration: {
-        width: width + 50,
+        width: width,
         height: 325,
         flex: 1,
         marginTop: 50,
-        resizeMode: "contain"
+        resizeMode: "cover"
     },
     container: {
         padding: 16,

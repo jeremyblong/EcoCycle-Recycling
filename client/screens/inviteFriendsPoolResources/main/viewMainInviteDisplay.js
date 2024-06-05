@@ -217,7 +217,7 @@ const MainDisplayInvitationComponent = ({ authData }) => {
 
     return (
         <Fragment>
-            <ImageBackground imageStyle={{ resizeMode: "cover" }} style={styles.topBanner} source={require("../../../assets/images/trash-11.jpg")}>
+            <ImageBackground imageStyle={{ resizeMode: "cover" }} style={styles.topBanner} source={require("../../../assets/images/landfill.jpg")}>
                 <View style={styles.mainContainerUnscroll}>
                     <ScrollView showsVerticalScrollIndicator={false} horizontal={false} style={styles.innerScrollview} contentContainerStyle={{ paddingBottom: 32.5 }}>
                             <View style={styles.margin15}>

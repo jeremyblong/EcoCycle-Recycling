@@ -282,12 +282,12 @@ const IndividualPageInformationSelectionPage = ({ saveItemToEWasteCart, route, c
 
     const handleItemAdditionAndRedirect = () => {
 
-        const filteredMatch = cartData.filter(product => product.Model.toLowerCase() === individual.Model.toLowerCase()).length === 0;
+        console.log("cartData", individual);
 
-        if (filteredMatch) {
+        if (typeof cartData === "undefined" || (typeof cartData !== "undefined" && cartData.length === 0)) {
 
             addItemToDropOffCartSelection(individual);
-
+    
             Toast.show({
                 type: 'success',
                 text1: `Successfully added product to cart!`,
@@ -299,8 +299,28 @@ const IndividualPageInformationSelectionPage = ({ saveItemToEWasteCart, route, c
             setTimeout(() => {
                 navigation.navigate('DropOffInformationDialogMap');
             }, 1250);
+
         } else {
-            setConfirmationAlreadyAddedState(true);
+            const filteredMatch = cartData.filter(product => product.Model.toLowerCase() === individual.Model.toLowerCase()).length === 0;
+
+            if (filteredMatch) {
+    
+                addItemToDropOffCartSelection(individual);
+    
+                Toast.show({
+                    type: 'success',
+                    text1: `Successfully added product to cart!`,
+                    text2: `You've successfully added this item/product to your list of future items to be exchanged, we will now 'redirect' you to the next page in the process...`,
+                    visibilityTime: 4250,
+                    position: "bottom"
+                });
+    
+                setTimeout(() => {
+                    navigation.navigate('DropOffInformationDialogMap');
+                }, 1250);
+            } else {
+                setConfirmationAlreadyAddedState(true);
+            }
         }
     }
 
@@ -351,7 +371,7 @@ const IndividualPageInformationSelectionPage = ({ saveItemToEWasteCart, route, c
                                 <Text style={{ ...Fonts.white16SemiBold }}>
                                     4.75
                                 </Text>
-                                <Image source={require("../../../../assets/images/icon/star-64.png")} style={styles.customIconed} />
+                                <Image source={require("../../../../assets/images/icon/vibrantstar_prev_ui.png")} style={styles.customIconed} />
                                 <Text style={{ ...Fonts.white16SemiBold }}>
                                     (11 Reviews)
                                 </Text>
@@ -379,21 +399,63 @@ const IndividualPageInformationSelectionPage = ({ saveItemToEWasteCart, route, c
             return (
                 <View style={{ margin: 15 }}>
                     <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 112.5, height: 112.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "90%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
                     </SkeletonPlaceholder>
                     <View style={{ marginTop: 7.5 }} />
                     <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 112.5, height: 112.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "70%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "50%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "80%", height: 20, borderRadius: 5, marginTop: 5 }} />
                     </SkeletonPlaceholder>
                     <View style={{ marginTop: 7.5 }} />
                     <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 112.5, height: 112.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "60%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "40%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                        <View style={{ width: "70%", height: 20, borderRadius: 5, marginTop: 5 }} />
                     </SkeletonPlaceholder>
                     <View style={{ marginTop: 7.5 }} />
                     <SkeletonPlaceholder>
-                        <View style={{ width: "100%", minHeight: 112.5, height: 112.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "50%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "90%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "60%", height: 20, borderRadius: 5, marginTop: 5 }} />
                     </SkeletonPlaceholder>
                     <View style={{ marginTop: 7.5 }} />
+                    <SkeletonPlaceholder>
+                        <View style={{ width: "80%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "30%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    </SkeletonPlaceholder>
+                    <SkeletonPlaceholder>
+                        <View style={{ width: "90%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                    </SkeletonPlaceholder>
+                    <View style={{ marginTop: 7.5 }} />
+                    <SkeletonPlaceholder>
+                        <View style={{ width: "70%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "50%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "80%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    </SkeletonPlaceholder>
+                    <View style={{ marginTop: 7.5 }} />
+                    <SkeletonPlaceholder>
+                        <View style={{ width: "60%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "40%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                        <View style={{ width: "70%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    </SkeletonPlaceholder>
+                    <View style={{ marginTop: 7.5 }} />
+                    <SkeletonPlaceholder>
+                        <View style={{ width: "50%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "90%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "60%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    </SkeletonPlaceholder>
+                    <View style={{ marginTop: 7.5 }} />
+                    <SkeletonPlaceholder>
+                        <View style={{ width: "80%", height: 42.5, borderRadius: 42.5 }} />
+                        <View style={{ width: "30%", height: 20, borderRadius: 5, marginTop: 10 }} />
+                        <View style={{ width: "100%", height: 20, borderRadius: 5, marginTop: 5 }} />
+                    </SkeletonPlaceholder>
                 </View>
             );
         }

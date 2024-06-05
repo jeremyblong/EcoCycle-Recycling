@@ -108,7 +108,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         {title}
                     </Text>
                 </View>
-                <Image source={require("../../assets/images/icon/right-arrow.png")} style={{ maxWidth: 22.5, maxHeight: 22.5 }} />
+                <Image source={require("../../assets/images/awesomearrow.png")} style={{ maxWidth: 35, maxHeight: 35 }} />
             </View>
         )
 
@@ -171,7 +171,7 @@ const ProfileScreen = ({ authentication, userData }) => {
     return (
         <Fragment>
             <SafeAreaView style={{ flex: 1, backgroundColor: 'white', }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primary} />
+                {/* <StatusBar translucent={false} backgroundColor={Colors.primary} /> */}
                 <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 125, backgroundColor: "#000", }} style={{ flex: 1 }}>
                     <View style={{ flex: 1 }}>
                         {typeof userData !== "undefined" && _.has(userData, "profilePictures") && userData.profilePictures.length > 0 ? userInfo() : <Text style={{ fontSize: 25, fontWeight: "bold" }}>Loading...</Text>}
@@ -180,7 +180,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('EditProfile')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/user-2.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/profile_prev_ui.png")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Profile Data (Main)',
@@ -191,7 +191,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ViewSecurityAuthenticationLogs')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/database.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/logs.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'My Security Log(s)/History',
@@ -202,7 +202,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ViewNotificationScreen')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/notification.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/noti.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'View Notification(s)',
@@ -215,7 +215,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ListNewStorageSpaceForRentDropoff')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/lease-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/dropoff.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Post New Storage Space/Dropoff',
@@ -226,7 +226,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('RequestANewFreightPickupDepot')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/wooden-box.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/drop.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Request A Freight Pick-Up',
@@ -237,7 +237,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('BoostProfileDropoffAccount')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/launch.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/boost.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Boost Your Profile (Drop-Off)',
@@ -250,7 +250,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('DistributorAccountManagementCreation')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/lease-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/dist.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: `Distributor Account Overview`,
@@ -273,7 +273,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ManageDistributorActiveLoads')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/lease-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/manageactiveloads.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: `Manage Active Deliveries/Loads`,
@@ -284,10 +284,21 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('PreviousPaymentChartDataView')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/lease-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/stats.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: `Previous Earnings/Payment's`,
+
+                                }
+                            )}
+                        </TouchableOpacity>
+                        <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('PrintQRCodeShipOff')}>
+                            {infoAll(
+                                {
+                                    icon: <Image source={require("../../assets/images/qrcode.jpg")} style={styles.iconCustom} />,
+                                    backColor: '#fff',
+                                    frontColor: Colors.primaryColor,
+                                    title: `Ship Off / Print Off QR Code`,
 
                                 }
                             )}
@@ -297,7 +308,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('PrivateMessagingMainView')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/messaging-chat.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/chat.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'View/Manage Private Messaging',
@@ -310,7 +321,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('AvailableFreightTruckingDeliveries')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/trucking.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/traffic.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Find Available Freight Deliveries',
@@ -321,10 +332,10 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('PostNewAvailableDeliveryContractForm')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/delivery-door.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/fullpallet.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
-                                    title: 'Post New Freight Delivery Job',
+                                    title: 'Ship Out A Full Pallet!',
 
                                 }
                             )}
@@ -334,7 +345,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ActiveDropOffContractListView')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/tracking-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/icon/drop.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'ACTIVE Drop-Off Contract(s)',
@@ -344,7 +355,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         </TouchableOpacity>
                         {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/agreement-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/managecontracts.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Manage Contract(s)',
@@ -356,7 +367,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ManagePaymentMethodsOverview')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/card-security-gradient.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/paymentdata.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Main Payment Overview'
@@ -366,7 +377,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('PriceEWasteLocateDropoff')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/recycle-96.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/pricemyewaste.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Price My E-Waste & Find Drop-Off',
@@ -377,7 +388,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('CartItemsDisplayEWasteDropOffPreview')}>
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/shopping-cart.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/ewasteshoppingcart.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: "View E-Waste 'Shopping Cart'"
@@ -393,7 +404,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                         >
                             {infoAll(
                                 {
-                                    icon: <Image source={require("../../assets/images/icon/logout.png")} style={styles.iconCustom} />,
+                                    icon: <Image source={require("../../assets/images/logout.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
                                     title: 'Logout/Sign-Out',
@@ -430,7 +441,7 @@ const styles = StyleSheet.create({
     shortDivider: {
         width: "92.75%",
         borderBottomWidth: 1,
-        borderBottomColor: Colors.primaryColor,
+        borderBottomColor: "#fff",
         marginTop: 6.25,
         marginBottom: 6.25
     },
@@ -438,6 +449,7 @@ const styles = StyleSheet.create({
         maxWidth: 42.5,
         maxHeight: 42.5,
         borderRadius: 17.5,
+        resizeMode: "cover",
         minHeight: 42.5,
         minWidth: 42.5
     },  

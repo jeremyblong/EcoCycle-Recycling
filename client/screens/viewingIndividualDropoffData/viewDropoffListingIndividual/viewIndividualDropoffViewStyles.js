@@ -259,7 +259,8 @@ const styles = StyleSheet.create({
         paddingTop: 3.75,
         paddingBottom: 3.75,
         marginBottom: 8.25,
-        borderColor: Colors.secondaryColor
+        borderRadius: 10
+        // borderColor: Colors.secondaryColor
     },
     snackBarStyle: {
         position: 'absolute',

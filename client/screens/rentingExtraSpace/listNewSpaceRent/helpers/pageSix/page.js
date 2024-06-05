@@ -53,7 +53,7 @@ const RenderPageSixHelperData = ({ renderHeaderLogicData, storageData, handleSub
                             </MarkedList>
                         </View>
                     </Collapsible>
-                    <View style={styles.textFieldContainerStyle}>
+                    <View style={[styles.textFieldContainerStyle, { borderRadius: 12.25 }]}>
                         <TextInput
                             value={description}
                             numberOfLines={10}
