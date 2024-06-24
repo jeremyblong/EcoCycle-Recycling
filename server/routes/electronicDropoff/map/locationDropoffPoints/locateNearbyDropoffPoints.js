@@ -2,59 +2,108 @@ const express = require("express");
 const router = express.Router();
 const config = require("config");
 const { Connection } = require("../../../../mongoUtil.js");
+const { isNumber } = require("lodash");
 
 router.get("/", async (req, resppppp) => {
 
-    const { uniqueId } = req.query;
+    const { uniqueId, region } = req.query;
 
+    console.log("region", region);
     const collection = Connection.db.db("test").collection("users");
+    const collectionDropoffs = Connection.db.db("test").collection("dropoffs");
 
     const currentUserLocation = await collection.findOne({ uniqueId });
 
-    if (currentUserLocation !== null) {
+    if (typeof region !== "undefined" || region !== null && isNumber(region)) {
+        const parsedRegion = JSON.parse(region);
 
-        const { latitude, longitude } = currentUserLocation.currentApproxLocation;
+        console.log("region", parsedRegion.longitude)
 
-        const miles = 1;
-        const metersInMile = 1609.34;
-
-        const fieldQuery = { fields: { firstName: 1, lastName: 1, username: 1, email: 1, profilePictures: 1, uniqueId: 1, verificationCompleted: 1, registrationDate: 1, registrationDateString: 1, reviews: 1, totalUniqueViews: 1, stripeAccountVerified: 1, currentApproxLocation: 1 }};
-
-        const customQuery = {
-            "currentApproxLocation.geo": {
-                $near: {
-                    $geometry: {
-                        type: "Point" ,
-                        coordinates: [ latitude, longitude ]
-                    },
-                    $maxDistance: parseInt(metersInMile * miles)
+        if (currentUserLocation !== null) {
+    
+            const miles = 10;
+            const metersInMile = 1609.34;
+    
+            const customQuery = {
+                "newlyConstructedCoordsRandomizedNearby": {
+                    $near: {
+                        $geometry: {
+                            type: "Point" ,
+                            coordinates: [ parsedRegion.longitude, parsedRegion.latitude ]
+                        },
+                        $maxDistance: parseInt(metersInMile * miles)
+                    }
                 }
-            }, fieldQuery
-        };
-
-        collection.find({ accountType: "storage-dropoff-agent-account" }, customQuery).toArray((err, results) => {
-            if (err) {
-
-                console.log("err", err);
+            };
     
-                resppppp.json({
-                    message: "An error occurred while attempting to process appropriate logic...",
-                    err
-                })
-            } else {
-                console.log("results", results);
+            collectionDropoffs.find(customQuery).toArray((err, results) => {
+                if (err) {
     
-                resppppp.json({
-                    message: "Successfully executed logic!",
-                    success: true,
-                    results
-                })
-            }
-        })
+                    console.log("err", err);
+        
+                    resppppp.json({
+                        message: "An error occurred while attempting to process appropriate logic...",
+                        err
+                    })
+                } else {
+                    console.log("results", results);
+        
+                    resppppp.json({
+                        message: "Successfully executed logic!",
+                        success: true,
+                        results
+                    })
+                }
+            })
+        } else {
+            resppppp.json({
+                message: "An error occurred while attempting to process appropriate logic..."
+            })
+        }
     } else {
-        resppppp.json({
-            message: "An error occurred while attempting to process appropriate logic..."
-        })
+        if (currentUserLocation !== null) {
+
+            const { coordinates } = currentUserLocation.currentApproxLocation.geo;
+    
+            const miles = 10;
+            const metersInMile = 1609.34;
+    
+            const customQuery = {
+                "newlyConstructedCoordsRandomizedNearby": {
+                    $near: {
+                        $geometry: {
+                            type: "Point" ,
+                            coordinates: [ coordinates[1], coordinates[0] ]
+                        },
+                        $maxDistance: parseInt(metersInMile * miles)
+                    }
+                }
+            };
+    
+            collectionDropoffs.find(customQuery).toArray((err, results) => {
+                if (err) {
+    
+                    console.log("err", err);
+        
+                    resppppp.json({
+                        message: "An error occurred while attempting to process appropriate logic...",
+                        err
+                    })
+                } else {
+                    console.log("results", results);
+        
+                    resppppp.json({
+                        message: "Successfully executed logic!",
+                        success: true,
+                        results
+                    })
+                }
+            })
+        } else {
+            resppppp.json({
+                message: "An error occurred while attempting to process appropriate logic..."
+            })
+        }
     }
 });
 

@@ -79,7 +79,8 @@ const styles = StyleSheet.create({
     imageBackgroundCustom: {
         minWidth: width,
         height,
-        minHeight: height
+        minHeight: height,
+        backgroundColor: "black"
     },
     label: {
         // fontWeight: "bold",

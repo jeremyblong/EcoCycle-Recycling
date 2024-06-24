@@ -34,6 +34,7 @@
     "fedexFreightShipperAccountNumber": "510087020",
     "fexexFreightBillToAccountNumber": "510087020",
     "fedexShippingAccountNumber": "740561073",
-    "shipEngineSandboxAPI": "yn51VzMp8BVy9s+Bz7JRjlIYBEwxzXxzEszonZR+YVs"
+    "shipEngineSandboxAPI": "yn51VzMp8BVy9s+Bz7JRjlIYBEwxzXxzEszonZR+YVs",
+    "openAIApiKey": "sk-proj-0Umw1epH5iC3B8pn6FR8T3BlbkFJybKH1WmQmE2Zcph7SmRm"
 }
 

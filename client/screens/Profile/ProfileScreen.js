@@ -211,6 +211,19 @@ const ProfileScreen = ({ authentication, userData }) => {
                             )}
                         </TouchableOpacity>
                         {shortDivider()}
+                        {title({ title: 'RECYCLING FACILITIES' })}
+                        <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('RegisterAsRecyclingFacility')}>
+                            {infoAll(
+                                {
+                                    icon: <Image source={require("../../assets/images/qrcode.jpg")} style={styles.iconCustom} />,
+                                    backColor: '#fff',
+                                    frontColor: Colors.primaryColor,
+                                    title: `Register as recycling facility`,
+
+                                }
+                            )}
+                        </TouchableOpacity>
+                        {shortDivider()}
                         {title({ title: 'Storage-Depot/Collector Related' })}
                         <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('ListNewStorageSpaceForRentDropoff')}>
                             {infoAll(
@@ -298,7 +311,7 @@ const ProfileScreen = ({ authentication, userData }) => {
                                     icon: <Image source={require("../../assets/images/qrcode.jpg")} style={styles.iconCustom} />,
                                     backColor: '#fff',
                                     frontColor: Colors.primaryColor,
-                                    title: `Ship Off / Print Off QR Code`,
+                                    title: `Scan, Ship & Print Off QR Code`,
 
                                 }
                             )}

@@ -317,9 +317,9 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
                             setCheckedState(prevState => !prevState);
                         }}
                         checkedImage={<Image source={require('../../../../../assets/images/icon/checked.png')} style={styles.checkboxImage} />}
-                        unCheckedImage={<Image source={require('../../../../../assets/images/icon/unchecked.png')} style={styles.checkboxImage} />}
+                        unCheckedImage={<Image source={require('../../../../../assets/images/icon/unchecked.png')} style={[styles.checkboxImage, { tintColor: "#fff" }]} />}
                         isChecked={isChecked}
-                        rightTextStyle={{ fontWeight: "bold", color: "#000" }}
+                        rightTextStyle={{ fontWeight: "bold", color: "#fff" }}
                         rightText={"I acknowledge that I have permission to rent out this space and understand that if not, I may be held financially and legally responsible for any damage, loss or fees incurred."}
                     />
                 </View>
@@ -620,7 +620,7 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
                     }
                     return (
                         <Fragment>
-                            <Text style={styles.badgeLabel}>You've selected the following address as your selected location/address</Text>
+                            <Text style={[styles.badgeLabel, { color: "#fff" }]}>You've selected the following address as your selected location/address</Text>
                             <Badge
                                 badgeStyle={styles.customizedBadge}
                                 textStyle={styles.tagBadge}
@@ -641,7 +641,7 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
             }
             return (
                 <Fragment>
-                    <Text style={styles.alternativeText}>Alternatively, you can search for your address...</Text>
+                    <Text style={[styles.alternativeText, { color: "#fff" }]}>Alternatively, you can search for your address...</Text>
                     <View style={styles.searchableInputWrapperView}>
                         {renderConditionalSearchable()}
                     </View>
@@ -853,7 +853,7 @@ const RenderThirdPageHelperContent = ({ userData, location, renderHeaderLogicDat
     }
     
     return (
-        <ScrollView keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false} style={{ flexGrow: 1 }} contentContainerStyle={{ paddingBottom: 42.5, flexGrow: 1, minHeight: 925 }}>
+        <ScrollView keyboardShouldPersistTaps='always' showsVerticalScrollIndicator={false} style={{ flexGrow: 1 }} contentContainerStyle={{ paddingBottom: 42.5, flexGrow: 1, minHeight: 925, backgroundColor: "rgba(0, 0, 0, 0.625)", padding: 11.25 }}>
             <KeyboardAwareScrollView keyboardShouldPersistTaps='always' contentContainerStyle={inputsAreActive === true ? { paddingBottom: 150 } : { paddingBottom: 0 }}>
                 {renderHeaderLogicData("What's the address of your space?", "We'll only give your address to electronic dropoff requests after you approve their reservation.")}
                 <AwesomeButtonBlue style={styles.buttonAddy} disabled={calculateMapDisabledDoubledCheck()} type={"secondary"} onPress={() => gatherCurrentLocationData()} backgroundShadow={"black"} stretch={true}><View style={styles.centerButtonContent}>

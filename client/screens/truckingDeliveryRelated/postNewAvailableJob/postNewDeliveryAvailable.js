@@ -12,7 +12,7 @@ import _ from "lodash";
 import Dialog from "react-native-dialog";
 import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
+import RBSheet from "react-native-raw-bottom-sheet";
 
 const { width, height } = Dimensions.get("window");
 
@@ -140,7 +140,7 @@ const preferredDeliveryTimespan = [{
 }];
 
 const PostNewDeliveryAvailableJob = ({ }) => {
-
+    const refSheet = useRef(null);
     const refRelated = {
         inputOne: useRef(null),
         inputTwo: useRef(null),
@@ -160,6 +160,7 @@ const PostNewDeliveryAvailableJob = ({ }) => {
         breifDescription: "",
         freightDescription: "",
         packagingDescription: "",
+        bottomSheetOpen: false,
         averagePalletSize: null,
         totalWeight: 0,
         originZipCode: "",
@@ -492,7 +493,10 @@ const PostNewDeliveryAvailableJob = ({ }) => {
         return (
             <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 42.5, flexGrow: 1 }}>
                 <View style={styles.margined}>
-                    <Text style={styles.titleTopText}>We will now need to <Text style={styles.underlineBoldTextBlack}>collect</Text> core information before posting your new 'request to have freight picked up'.</Text>
+                    <Text style={styles.titleTopText}>You can either automatically ship a pallet by clicking the top button <Text style={styles.underlineBoldTextBlack}>OR</Text> post a listing for a freight shipping delivery driver to transport the pallet.</Text>
+                    <View style={styles.hr} />
+                    <AwesomeButtonBlue type={"primary"} onPress={() => refSheet.current.open()} backgroundShadow={"black"} stretch={true}>Generate shipping request</AwesomeButtonBlue>
+                    <View style={styles.hr} />
                     <Text style={styles.labelUnique}><Text style={styles.underlineBoldText}>Please</Text> be as <Text style={styles.underlineBoldText}>precise/accurate</Text> as possible with your details as our freight transporters (CDL-Drivers) use this information to appropriately guage what they <Text style={styles.underlineBoldText}>can</Text> and <Text style={styles.underlineBoldText}>can't</Text> transport along with the other load items.{"\n"}{"\n"}You could be <Text style={styles.underlineBoldText}>fined</Text> if your information is <Text style={styles.underlineBoldText}>far from accurate</Text> as this causes major problems with our transportation system(s).</Text>
                     <View style={styles.thinishHR} />
                     <Text style={styles.labeledTop}>Briefly describe what you need to move...</Text>
@@ -724,12 +728,78 @@ const PostNewDeliveryAvailableJob = ({ }) => {
         );
     }
     const { progressNumber } = state;
+    const steps = [
+        {
+          number: 1,
+          title: 'Pick a Recycling Company Nearby',
+          subPoints: ['Locate: Use our platform to find a nearby recycling company that handles e-waste.', 'Select: Choose the most convenient and suitable recycling company from the list.']
+        },
+        {
+          number: 2,
+          title: 'Request Pickup to a Local Recycling Company',
+          subPoints: ['Submit Request: Once you\'ve selected a recycling company, request a pickup through our platform.', 'Confirm Details: Provide any necessary details to ensure a smooth pickup process.']
+        },
+        {
+          number: 3,
+          title: 'Provide Estimated Pickup Date or Select a Pickup Date',
+          subPoints: ['Estimated Date: Based on your request, we can provide an estimated pickup date.', 'Select Date: Alternatively, you can select a specific pickup date that works best for you.']
+        },
+        {
+          number: 4,
+          title: 'Freight Pickup and Replacement',
+          subPoints: ['Pickup: A freight pickup vehicle will come to your location to collect your e-waste pallet on the scheduled date.', 'Replacement: Once the shipment is confirmed to be picked up, we will replace your pallet with a new one.']
+        }
+    ];
     return (
         <Fragment>
             <Progress.Bar progress={progressNumber} unfilledColor={"lightgrey"} borderRadius={0} height={7.5} color={"#0BDA51"} width={width} />
-            {confirmationDialog()}
-            <View style={styles.spacerMedium} />
-            <KeyboardAwareScrollView keyboardShouldPersistTaps='always' contentContainerStyle={{ paddingBottom: 37.25 }}>
+                {confirmationDialog()}
+                <RBSheet
+                    ref={refSheet}
+                    closeOnDragDown={true}
+                    closeOnPressMask={true}
+                    dragFromTopOnly={true}
+                    height={height * 0.825}
+                    closeDuration={35}
+                    openDuration={35}
+                    customStyles={{
+                        container: {
+                            paddingHorizontal: Sizes.fixPadding * 2.0,
+                        },
+                        draggableIcon: {
+                            width: width * 0.725
+                        }
+                    }}
+                >
+                    <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: 30 }}>
+                        <View style={styles.container}>
+                            <AwesomeButtonBlue backgroundDarker={"#000"} backgroundColor={"blue"} onPress={() => {
+                                refSheet.current.close();
+
+                                setTimeout(() => {
+                                    navigation.navigate('SelectDropoffFacilityNearby');
+                                }, 625);
+                            }} textColor={"#fff"} backgroundShadow={"black"} stretch={true}>Search for nearby facilities</AwesomeButtonBlue>
+                            <View style={styles.hr} />
+                            <Text style={[styles.headerMain, { paddingBottom: 15 }]}>How it works:</Text>
+                            <Text style={styles.normalText}>Shipping out or requesting a pickup of your e-waste containerized pallet is simple and convenient. Follow these easy steps:</Text>
+                            <View style={styles.hr} />
+                            {steps.map((step) => (
+                                <View key={step.number} style={styles.stepContainer}>
+                                    <Text style={styles.stepNumber}>{step.number}. {step.title}</Text>
+                                    {step.subPoints.map((subPoint, index) => (
+                                        <View key={index} style={styles.subPointContainer}>
+                                            <Text style={styles.bulletPoint}>•</Text>
+                                            <Text style={styles.subPointText}>{subPoint}</Text>
+                                        </View>
+                                    ))}
+                                </View>
+                            ))}
+                        </View>
+                    </ScrollView>
+                </RBSheet>
+                <View style={styles.spacerMedium} />
+                <KeyboardAwareScrollView keyboardShouldPersistTaps='always' contentContainerStyle={{ paddingBottom: 37.25 }}>
                 {renderMainContentConditional()}
             </KeyboardAwareScrollView>
         </Fragment>

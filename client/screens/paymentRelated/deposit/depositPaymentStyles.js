@@ -45,10 +45,10 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     innerIconInput: {
-        maxWidth: 27.25,
-        maxHeight: 27.25,
-        width: 27.25,
-        height: 27.25
+        maxWidth: 41.25,
+        maxHeight: 41.25,
+        width: 41.25,
+        height: 41.25
     }
 })
 

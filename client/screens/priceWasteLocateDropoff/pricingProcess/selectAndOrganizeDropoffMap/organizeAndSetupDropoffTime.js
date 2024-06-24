@@ -75,6 +75,50 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
         }, 500);
     }, []);
 
+    const handleNearbyLocationDropoffPointSearchAgain = (region) => {
+
+        console.log("handleNearbyLocationDropoffPointSearchAgain clicked/ran...", region);
+
+        const config = {
+            params: {
+                uniqueId: userData.uniqueId,
+                region
+            }
+        };
+
+        axios.get(`${BASE_URL}/gather/nearby/dropoff/locations/points`, config).then((res) => {
+            if (res.data.message === "Successfully executed logic!") {
+
+                console.log("ressssssss data:", res.data);
+
+                const { results } = res.data;
+
+                setNearbyUsers(results);
+            } else {
+                console.log("err", res.data);
+
+                Toast.show({
+                    type: 'error',
+                    text1: `An error occurred while executing API request.`,
+                    text2: `An error occurred while attempting to fetch 'nearby users' in your approx. location/region - please contact support if the problem persists!`,
+                    visibilityTime: 4250,
+                    position: "bottom"
+                });
+            }
+        }).catch((err) => {
+            console.log("err", err);
+
+            Toast.show({
+                type: 'error',
+                text1: `An error occurred while executing API request.`,
+                text2: `An error occurred while attempting to fetch 'nearby users' in your approx. location/region - please contact support if the problem persists!`,
+                visibilityTime: 4250,
+                position: "bottom"
+            });
+        })
+    }
+
+
     const handleNearbyLocationDropoffPointSearch = () => {
 
         console.log("handleNearbyLocationDropoffPointSearch clicked/ran...", userData);
@@ -157,7 +201,11 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
                     </RBSheet>
                     {readyData.ready === true ? <MapView
                         customMapStyle={customMapStyle}
-                        onRegionChangeComplete={(region) => setCurrentLocation(region)}
+                        onRegionChangeComplete={(region) => {
+                            setCurrentLocation(region);
+
+                            handleNearbyLocationDropoffPointSearchAgain(region)
+                        }}
                         region={currentLocation}
                         style={styles.map}
                     >
@@ -168,7 +216,7 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
                             description={"This is the approx. location of your estimated current location..."}
                         />
                         {nearbyUsers.map((user, index) => {
-                            const { firstName, lastName, username, profilePictures, verificationCompleted, registrationDate, reviews, totalUniqueViews, currentApproxLocation } = user;
+                            const { postedByName, postedByUsername,  postedByID, profilePictures, verificationCompleted, registrationDate, reviews, totalUniqueViews, currentApproxLocation } = user;
                             return (
                                 <Fragment key={index}>
                                     <Marker 
@@ -177,11 +225,11 @@ const OrganizeAndSetupDropoffTimeViaMap = ({ location, userData }) => {
                                             latitude: _.has(currentApproxLocation, "geo") && _.has(currentApproxLocation.geo, "coordinates") ? currentApproxLocation.geo.coordinates[0] : 39.739235,
                                             longitude: _.has(currentApproxLocation, "geo") && _.has(currentApproxLocation.geo, "coordinates") ? currentApproxLocation.geo.coordinates[1] : -104.990250,
                                         }}
-                                        title={`${firstName} ${lastName} ~ ${username}`}
+                                        title={`${postedByName} ~ ${postedByUsername}`}
                                     >
-                                        <Callout onPress={() => navigation.navigate("InitiateDropOffRequestSendNotification", { user  })} tooltip={true}>
+                                        <Callout onPress={() => navigation.navigate("InitiateDropOffRequestSendNotification", { postedByID })} tooltip={true}>
                                             <View style={styles.topCalloutContainer}>
-                                                <Text style={styles.topCalloutText}>{`${firstName} ${lastName} ~ ${username}`}</Text>
+                                                <Text style={styles.topCalloutText}>{`${postedByName} ~ ${postedByUsername}`}</Text>
                                                     <Text style={styles.centeredCircleIconWrapper}><Image resizeMode='cover' source={{ uri: typeof profilePictures !== "undefined" && profilePictures.length > 0 ? `${BASE_ASSET_URL}/${profilePictures[profilePictures.length - 1].link}` : `${BASE_ASSET_URL}/no-image.jpg` }} style={styles.centeredCircleIcon} /></Text>
                                             </View>
                                             <View style={styles.bottomCalloutContainer}>

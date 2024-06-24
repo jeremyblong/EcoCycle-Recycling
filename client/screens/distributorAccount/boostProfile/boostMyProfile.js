@@ -19,32 +19,32 @@ const { width } = Dimensions.get('screen');
 const boostOptions = [
     {
         id: '1',
-        fieldOrCategory: '1hr Boost!',
-        hours: 1,
+        fieldOrCategory: '1 Day Boost!',
+        hours: 24,
         cost: 100
     },
     {
         id: '2',
-        fieldOrCategory: '2hr Boost!',
-        hours: 2,
+        fieldOrCategory: '2 Day Boost!',
+        hours: 48,
         cost: 200
     },
     {
         id: '1',
-        fieldOrCategory: '6hr Boost!',
-        hours: 6,
+        fieldOrCategory: '3 Day Boost!',
+        hours: 72,
         cost: 500
     },
     {
         id: '2',
-        fieldOrCategory: '9hr Boost!',
-        hours: 9,
+        fieldOrCategory: '4 Day Boost!',
+        hours: 96,
         cost: 750
     },
     {
         id: '1',
-        fieldOrCategory: '12hr Boost!',
-        hours: 12,
+        fieldOrCategory: '5 Day Boost!',
+        hours: 120,
         cost: 1000
     }
 ];

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Platform, StatusBar } from "react-native";
+import { Platform, StatusBar, StyleSheet, View, Dimensions } from "react-native";
 import BottomTabBarScreen from "./component/bottomTabBarScreen";
 import TotalBalanceScreen from "./screens/balance/totalBalanceScreen";
 import SuccessScreen from "./screens/success/successScreen";
@@ -23,7 +23,7 @@ import FlashMessage from "react-native-flash-message";
 import uuid from "react-native-uuid";
 import { showMessage } from "react-native-flash-message";
 import { CometChat } from '@cometchat-pro/react-native-chat';
-import { COMET_CHAT_APP_ID } from "@env";
+import { COMET_CHAT_APP_ID, STRIPE_ACCOUNT_DETAILS_PUBLISHABLE_KEY } from "@env";
 import Orientation from 'react-native-orientation-locker';
 /// main imports... ///  main imports... ///  main imports... /// 
 import NotificationScreen from './screens/Notifications/NotificationScreen';
@@ -69,6 +69,14 @@ import ViewAvailableBalances from "./screens/paymentRelated/available/viewAvaila
 import DepositPaymentHelper from "./screens/paymentRelated/deposit/depositPayment.js";  
 import AddNewPaymentMethodMain from "./screens/paymentRelated/addNewPaymentMethod/newPaymentAdd.js";
 import GenerateQRCodeAndMarkShip from "./screens/distributorAccount/QRCodeAndShipOff/generateAndShip.js";
+import OrchestratePickupFreightToFacility from "./screens/Partners/OrganizeDelivery/pickupFreightAndDeliver.js";
+import RegisterAsRecyclingCompany from "./screens/registerAsRecyclingCo/registerAsCo.js";
+import DraggableMenuIcon from "./draggableMenu.js";
+import Draggable from 'react-native-draggable';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { StripeProvider } from '@stripe/stripe-react-native';
+
+const { width, height } = Dimensions.get("window");
 
 const Stack = createStackNavigator();
 
@@ -199,91 +207,81 @@ const RenderPages = (props) => {
 
   return (
     <Provider store={store}>
-      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen options={renderHeaderOptions("Splash/Loading...")} name="Splash" component={SplashScreen} /> 
-          <Stack.Screen options={renderHeaderOptions("Sign-In")} name="SignIn" component={SigninScreen} />
-          <Stack.Screen options={renderHeaderOptions("Registration")} name="Register" component={RegisterScreen} />
-          <Stack.Screen options={renderHeaderOptions("One-Time Password")} name="OTP" component={OTPScreen} />
-          <Stack.Screen options={renderHeaderOptions("Secure-Pin Entry")} name="SecurePin" component={SecurePinScreen} />
-          <Stack.Screen options={renderHeaderOptions("Homepage/Home")} name="BottomTabScreen" component={BottomTabBarScreen} />
-          <Stack.Screen options={renderHeaderOptions("Success Confirmation")} name="Success" component={SuccessScreen} />
-          <Stack.Screen options={renderHeaderOptions("Wrong Screen/Page")} name="Wrong" component={WrongScreen} />
-          <Stack.Screen options={renderHeaderOptions("Balance")} name="Balance" component={TotalBalanceScreen} />
-          <Stack.Screen options={renderHeaderOptions("Withdraw")} name="Withdraw" component={WithdrawScreen} />
-          <Stack.Screen options={renderHeaderOptions("Edit/Editing Profile")} name="EditProfile" component={EditProfileScreen} />
-          <Stack.Screen options={renderHeaderOptions("Support/Help")} name="Support" component={SupportScreen} />
-          <Stack.Screen options={renderHeaderOptions("Privacy Policy")} name="PrivacyPolicy" component={PrivacyPolicyScreen} />
-          <Stack.Screen options={renderHeaderOptions("Search")} name="Search" component={SearchScreen} />
-          <Stack.Screen options={renderHeaderOptions("Boost Your Account/Profile")} name="BoostProfileDropoffAccount" component={BoostAccountDropoffDepotProfile} />
-          {/* <Stack.Screen options={renderHeaderOptions("Time Slot(s)")} name="TimeSlots" component={TimeSlotScreen} /> */}
-          {/* <Stack.Screen options={renderHeaderOptions("Payment Method(s)")} name="PaymentMethod" component={PaymentMethodScreen} /> */}
-          <Stack.Screen options={renderHeaderOptions("Review(s)")} name="Review" component={ReviewScreen} />
-          {/* <Stack.Screen options={renderHeaderOptions("Message/Messaging")} name="Message" component={MessageScreen} /> */}
-          <Stack.Screen options={renderHeaderOptions("About Us")} name="AboutUs" component={AboutUsScreen} />
-          <Stack.Screen options={renderHeaderOptions("Modifying Profile Data")} name="ProfileModifyData" component={ModifyDataProfileHelper} />
-          <Stack.Screen options={renderHeaderOptions("Individual Incident Report")} name="IndividualIncidentReportView" component={IndividualIncidentReportView} />
-          {/* <Stack.Screen options={renderHeaderOptions("Demo/Placeholder Page")} name="ManageIncidentsAndMore" component={DemoScreenPlaceholderWithImageBottom} /> */}
-          <Stack.Screen options={renderHeaderOptions("View All Connected Logic")} name="ViewMainFeedAllConnectedComponents" component={ViewMainFeedAllConnectedComponents} />
-          <Stack.Screen options={renderHeaderOptions("Individual Live-Stream View")} name="IndividualLiveStreamView" component={ViewIndividualLiveFeedStreamManuver} />
-          <Stack.Screen options={renderHeaderOptions("Inviting Others (Pooling Resources)")} name="MainDisplayInvitePoolingResources" component={MainDisplayInvitationComponent} /> 
-          <Stack.Screen options={renderHeaderOptions("Pricing E-Waste Resource(s)")} name="PriceEWasteLocateDropoff" component={MainPricingIdentificationInitiationPage} />
-          <Stack.Screen options={renderHeaderOptions("Selecting/Delivering E-Waste Product's")} name="IndividualItemInformationSelection" component={IndividualPageInformationSelectionPage} />
-          <Stack.Screen options={renderHeaderOptions("Drop-Off Information Dialog")} name="DropOffInformationDialogMap" component={OrganizeAndSetupDropoffTimeViaMap} />
-          <Stack.Screen options={renderHeaderOptions("Viewing Pending Cart-Item's")} name="CartItemsDisplayEWasteDropOffPreview" component={ViewManageCartOfEWasteDisposalItemsPending} />
-          <Stack.Screen options={renderHeaderOptions("Initiate Drop-Off Request(s)")} name="InitiateDropOffRequestSendNotification" component={InitiateDropOffRequest} />
-          <Stack.Screen options={renderHeaderOptions("Viewing Notification's")} name="ViewNotificationScreen" component={NotificationScreen} /> 
-          <Stack.Screen options={renderHeaderOptions("Active Drop-Off Contract's")} name="ActiveDropOffContractListView" component={ViewingAllActiveContractDropOffList} />
-          <Stack.Screen options={renderHeaderOptions("List Available Storage Space")} name="ListNewStorageSpaceForRentDropoff" component={ListNewPropertyFreeSpaceProcess} />
-          <Stack.Screen options={renderHeaderOptions("Individual Drop-Off Listing View")} name="IndividualDropOffListingViewOnly" component={ViewIndividualDropoffListingStorageViewMain} />
-          <Stack.Screen options={renderHeaderOptions("Authentication Security Log(s)")} name="ViewSecurityAuthenticationLogs" component={SecurityLogsListRenderHelper} />
-          <Stack.Screen options={renderHeaderOptions("View Available Deliveries (Map-View)")} name="AvailableFreightTruckingDeliveries" component={ViewMapAvailableDeliveriesContracts} />
-          <Stack.Screen options={renderHeaderOptions("Post New Available Delivery")} name="PostNewAvailableDeliveryContractForm" component={PostNewDeliveryAvailableJob} />
-          <Stack.Screen options={renderHeaderOptions("Add Photo's To Your Post/Listing")} name="AddPhotosNewAvailableDeliveriesForm" component={UploadImagesRelevantHelperImagesNewDeliveryPost} />
-          <Stack.Screen options={renderHeaderOptions("Individual Freight Availability Listing")} name="IndividualFreightAvailableListingView" component={ViewIndividualFreightAvailableListing} />
-          <Stack.Screen options={renderHeaderOptions("Private/Group Messaging")} name="PrivateMessagingMainView" component={MessagingHomeChannelsHelper} />
-          <Stack.Screen options={renderHeaderOptions("Group-Messaging View")} name="GroupConversationThreadView" component={IndividualGroupConversationHelper} />
-          <Stack.Screen options={renderHeaderOptions("Private-Messaging View")} name="IndividualMessageThreadView" component={IndividualThreadMessagingHelper} />
-          <Stack.Screen options={renderHeaderOptions("Waiting For Order-Fulfillment")} name="DrivingSelectingPendingView" component={WaitingToHaveDeliveryAcceptedHelper} />
-          <Stack.Screen options={renderHeaderOptions("Personal Profile View")} name="MainProfileViewScreen" component={MainProfileScreenHelper} />
-          <Stack.Screen options={renderHeaderOptions("Distributor Account Overview")} name="DistributorAccountManagementCreation" component={DistributorAccountOverview} />
-          <Stack.Screen options={renderHeaderOptions("Distributor Earning's Review")} name="PreviousPaymentChartDataView" component={RenderEarningsPaymentsOverviewDistributor} />
-          <Stack.Screen options={renderHeaderOptions("Manage Active Load's")} name="ManageDistributorActiveLoads" component={ManageDistributorActiveLoads} />
-          <Stack.Screen options={renderHeaderOptions("Organize/Order New Freight Pick-Up")} name="RequestANewFreightPickupDepot" component={NewFreightPickupRequestingMainView} />
-          <Stack.Screen options={renderHeaderOptions("Payment(s) Main Overview")} name="ManagePaymentMethodsOverview" component={MainDisplayViewPaymentRelated} />
-          <Stack.Screen options={renderHeaderOptions("Withdrawl Funds/Funding")} name="WithdrawlFundingPaymentRelated" component={WithdrawlPaymentFunding} />
-          <Stack.Screen options={renderHeaderOptions("View Available Balance(s)")} name="ViewAvailableBalances" component={ViewAvailableBalances} />
-          <Stack.Screen options={renderHeaderOptions("Deposit Funds/Funding To Account")} name="DepositFundingIntoAccount" component={DepositPaymentHelper} />
-          <Stack.Screen options={renderHeaderOptions("Add New Payment Method")} name="AddNewPaymentMethod" component={AddNewPaymentMethodMain} />
-          <Stack.Screen options={renderHeaderOptions("QR Code Managment & Ship Off")} name="PrintQRCodeShipOff" component={GenerateQRCodeAndMarkShip} />
-        </Stack.Navigator>
-        <Toast />
-        <FlashMessage position="top" />
-        <BackgroundLocationTrackingHelper props={props} />
-      </NavigationContainer>
+      <StripeProvider
+        publishableKey={STRIPE_ACCOUNT_DETAILS_PUBLISHABLE_KEY}
+        urlScheme="com.client" // required for 3D Secure and bank redirects
+        merchantIdentifier="merchant.com.E-Waste-Recycling" // required for Apple Pay
+      >
+      <GestureHandlerRootView>
+        <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+          <NavigationContainer>
+            <Stack.Navigator>
+              <Stack.Screen options={renderHeaderOptions("Splash/Loading...")} name="Splash" component={SplashScreen} /> 
+              <Stack.Screen options={renderHeaderOptions("Sign-In")} name="SignIn" component={SigninScreen} />
+              <Stack.Screen options={renderHeaderOptions("Registration")} name="Register" component={RegisterScreen} />
+              <Stack.Screen options={renderHeaderOptions("One-Time Password")} name="OTP" component={OTPScreen} />
+              <Stack.Screen options={renderHeaderOptions("Secure-Pin Entry")} name="SecurePin" component={SecurePinScreen} />
+              <Stack.Screen options={renderHeaderOptions("Homepage/Home")} name="BottomTabScreen" component={BottomTabBarScreen} />
+              <Stack.Screen options={renderHeaderOptions("Success Confirmation")} name="Success" component={SuccessScreen} />
+              <Stack.Screen options={renderHeaderOptions("Wrong Screen/Page")} name="Wrong" component={WrongScreen} />
+              <Stack.Screen options={renderHeaderOptions("Balance")} name="Balance" component={TotalBalanceScreen} />
+              <Stack.Screen options={renderHeaderOptions("Withdraw")} name="Withdraw" component={WithdrawScreen} />
+              <Stack.Screen options={renderHeaderOptions("Edit/Editing Profile")} name="EditProfile" component={EditProfileScreen} />
+              <Stack.Screen options={renderHeaderOptions("Support/Help")} name="Support" component={SupportScreen} />
+              <Stack.Screen options={renderHeaderOptions("Privacy Policy")} name="PrivacyPolicy" component={PrivacyPolicyScreen} />
+              <Stack.Screen options={renderHeaderOptions("Search")} name="Search" component={SearchScreen} />
+              <Stack.Screen options={renderHeaderOptions("Boost Your Account/Profile")} name="BoostProfileDropoffAccount" component={BoostAccountDropoffDepotProfile} />
+              {/* <Stack.Screen options={renderHeaderOptions("Time Slot(s)")} name="TimeSlots" component={TimeSlotScreen} /> */}
+              {/* <Stack.Screen options={renderHeaderOptions("Payment Method(s)")} name="PaymentMethod" component={PaymentMethodScreen} /> */}
+              <Stack.Screen options={renderHeaderOptions("Review(s)")} name="Review" component={ReviewScreen} />
+              {/* <Stack.Screen options={renderHeaderOptions("Message/Messaging")} name="Message" component={MessageScreen} /> */}
+              <Stack.Screen options={renderHeaderOptions("About Us")} name="AboutUs" component={AboutUsScreen} />
+              <Stack.Screen options={renderHeaderOptions("Modifying Profile Data")} name="ProfileModifyData" component={ModifyDataProfileHelper} />
+              <Stack.Screen options={renderHeaderOptions("Individual Incident Report")} name="IndividualIncidentReportView" component={IndividualIncidentReportView} />
+              {/* <Stack.Screen options={renderHeaderOptions("Demo/Placeholder Page")} name="ManageIncidentsAndMore" component={DemoScreenPlaceholderWithImageBottom} /> */}
+              <Stack.Screen options={renderHeaderOptions("View All Connected Logic")} name="ViewMainFeedAllConnectedComponents" component={ViewMainFeedAllConnectedComponents} />
+              <Stack.Screen options={renderHeaderOptions("Individual Live-Stream View")} name="IndividualLiveStreamView" component={ViewIndividualLiveFeedStreamManuver} />
+              <Stack.Screen options={renderHeaderOptions("Inviting Others (Pooling Resources)")} name="MainDisplayInvitePoolingResources" component={MainDisplayInvitationComponent} /> 
+              <Stack.Screen options={renderHeaderOptions("Pricing E-Waste Resource(s)")} name="PriceEWasteLocateDropoff" component={MainPricingIdentificationInitiationPage} />
+              <Stack.Screen options={renderHeaderOptions("Selecting/Delivering E-Waste Product's")} name="IndividualItemInformationSelection" component={IndividualPageInformationSelectionPage} />
+              <Stack.Screen options={renderHeaderOptions("Drop-Off Information Dialog")} name="DropOffInformationDialogMap" component={OrganizeAndSetupDropoffTimeViaMap} />
+              <Stack.Screen options={renderHeaderOptions("Viewing Pending Cart-Item's")} name="CartItemsDisplayEWasteDropOffPreview" component={ViewManageCartOfEWasteDisposalItemsPending} />
+              <Stack.Screen options={renderHeaderOptions("Initiate Drop-Off Request(s)")} name="InitiateDropOffRequestSendNotification" component={InitiateDropOffRequest} />
+              <Stack.Screen options={renderHeaderOptions("Viewing Notification's")} name="ViewNotificationScreen" component={NotificationScreen} /> 
+              <Stack.Screen options={renderHeaderOptions("Active Drop-Off Contract's")} name="ActiveDropOffContractListView" component={ViewingAllActiveContractDropOffList} />
+              <Stack.Screen options={renderHeaderOptions("List Available Storage Space")} name="ListNewStorageSpaceForRentDropoff" component={ListNewPropertyFreeSpaceProcess} />
+              <Stack.Screen options={renderHeaderOptions("Individual Drop-Off Listing View")} name="IndividualDropOffListingViewOnly" component={ViewIndividualDropoffListingStorageViewMain} />
+              <Stack.Screen options={renderHeaderOptions("Authentication Security Log(s)")} name="ViewSecurityAuthenticationLogs" component={SecurityLogsListRenderHelper} />
+              <Stack.Screen options={renderHeaderOptions("View Available Deliveries (Map-View)")} name="AvailableFreightTruckingDeliveries" component={ViewMapAvailableDeliveriesContracts} />
+              <Stack.Screen options={renderHeaderOptions("Post New Available Delivery")} name="PostNewAvailableDeliveryContractForm" component={PostNewDeliveryAvailableJob} />
+              <Stack.Screen options={renderHeaderOptions("Add Photo's To Your Post/Listing")} name="AddPhotosNewAvailableDeliveriesForm" component={UploadImagesRelevantHelperImagesNewDeliveryPost} />
+              <Stack.Screen options={renderHeaderOptions("Individual Freight Availability Listing")} name="IndividualFreightAvailableListingView" component={ViewIndividualFreightAvailableListing} />
+              <Stack.Screen options={renderHeaderOptions("Private/Group Messaging")} name="PrivateMessagingMainView" component={MessagingHomeChannelsHelper} />
+              <Stack.Screen options={renderHeaderOptions("Group-Messaging View")} name="GroupConversationThreadView" component={IndividualGroupConversationHelper} />
+              <Stack.Screen options={renderHeaderOptions("Private-Messaging View")} name="IndividualMessageThreadView" component={IndividualThreadMessagingHelper} />
+              <Stack.Screen options={renderHeaderOptions("Waiting For Order-Fulfillment")} name="DrivingSelectingPendingView" component={WaitingToHaveDeliveryAcceptedHelper} />
+              <Stack.Screen options={renderHeaderOptions("Personal Profile View")} name="MainProfileViewScreen" component={MainProfileScreenHelper} />
+              <Stack.Screen options={renderHeaderOptions("Distributor Account Overview")} name="DistributorAccountManagementCreation" component={DistributorAccountOverview} />
+              <Stack.Screen options={renderHeaderOptions("Distributor Earning's Review")} name="PreviousPaymentChartDataView" component={RenderEarningsPaymentsOverviewDistributor} />
+              <Stack.Screen options={renderHeaderOptions("Manage Active Load's")} name="ManageDistributorActiveLoads" component={ManageDistributorActiveLoads} />
+              <Stack.Screen options={renderHeaderOptions("Organize/Order New Freight Pick-Up")} name="RequestANewFreightPickupDepot" component={NewFreightPickupRequestingMainView} />
+              <Stack.Screen options={renderHeaderOptions("Payment(s) Main Overview")} name="ManagePaymentMethodsOverview" component={MainDisplayViewPaymentRelated} />
+              <Stack.Screen options={renderHeaderOptions("Withdrawl Funds/Funding")} name="WithdrawlFundingPaymentRelated" component={WithdrawlPaymentFunding} />
+              <Stack.Screen options={renderHeaderOptions("View Available Balance(s)")} name="ViewAvailableBalances" component={ViewAvailableBalances} />
+              <Stack.Screen options={renderHeaderOptions("Deposit Funds/Funding To Account")} name="DepositFundingIntoAccount" component={DepositPaymentHelper} />
+              <Stack.Screen options={renderHeaderOptions("Add New Payment Method")} name="AddNewPaymentMethod" component={AddNewPaymentMethodMain} />
+              <Stack.Screen options={renderHeaderOptions("QR Code Managment & Ship Off")} name="PrintQRCodeShipOff" component={GenerateQRCodeAndMarkShip} />
+              <Stack.Screen options={renderHeaderOptions("Orchastrate Shipment Pickup")} name="SelectDropoffFacilityNearby" component={OrchestratePickupFreightToFacility} />
+              <Stack.Screen options={renderHeaderOptions("Register as facility")} name="RegisterAsRecyclingFacility" component={RegisterAsRecyclingCompany} />
+            </Stack.Navigator>
+            <Toast />
+            <FlashMessage position="top" />
+            <BackgroundLocationTrackingHelper props={props} />
+          </NavigationContainer>
+        </GestureHandlerRootView>
+      </StripeProvider>
     </Provider>
   );
 }
+
 export default RenderPages;
-
-// peer chaincode invoke "${TARGET_TLS_OPTIONS[@]}" -C mychannel -n token_erc20 -c '{"function":"Initialize","Args":["ElectraCycle", "ELCT", "2"]}'
-
-// peer chaincode install -n token_erc20 -v 1.0 -p github.com/hyperledger/fabric/examples/chaincode/go/chaincode_example02
-
-
-// ./network.sh deployCC -ccn token_erc20 -ccp ../token-erc-20/chaincode-go -ccl go
-// custom_20_chaincode
-
-// peer chaincode invoke "${TARGET_TLS_OPTIONS[@]}" -C mychannel -n token_erc20 -c '{"function":"Mint","Args":["100000"]}'
-// peer chaincode invoke "${TARGET_TLS_OPTIONS[@]}" -C mychannel -n token_erc20 -c '{"function":"Initialize","Args":["ElectraCoin", "ELC", "2"]}'
-
-
-// ./network.sh deployCC -ccn token_erc20 -ccp ../token-erc-20/chaincode-javascript -ccl javascript
-
-// fabric-ca-client enroll -u https://minter:Jer246355abc123@localhost:7054 --caname ca-org1 -M "${PWD}/organizations/peerOrganizations/org1.example.com/users/minter@org1.example.com/msp" --tls.certfiles "${PWD}/organizations/fabric-ca/org1/tls-cert.pem"
-
-// fabric-ca-client register --caname ca-org1 --id.name minter --id.secret Jer246355abc123 --id.type client --tls.certfiles "${PWD}/organizations/fabric-ca/org1/tls-cert.pem"
-
-
-// configtxgen -profile TwoOrgsApplicationGenesis -outputCreateChannelTx ./channel-artifacts/channel1.tx -channelID mainchannel

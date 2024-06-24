@@ -8,13 +8,14 @@ import { BottomSheet } from "react-native-elements";
 import Dialog from "react-native-dialog";
 import styles from "./initiateRequestStyles.js";
 import SkeletonPlaceholder from "react-native-skeleton-placeholder";
-import { BASE_ASSET_URL } from "@env";
+import { BASE_ASSET_URL, BASE_URL } from "@env";
 import moment from "moment";
 import { Button } from "@rneui/base";
 import RBSheet from "react-native-raw-bottom-sheet";
 import SelectAndSendInvitationSheetPane from "./panes/sendInviteToUserPane.js";
 import { connect } from "react-redux";
 import { Rating, AirbnbRating } from 'react-native-ratings';
+import axios from "axios";
 
 const collectionCategoryList = [
     {
@@ -202,12 +203,33 @@ constructor(props) {
 
     componentDidMount() {
 
+        console.log*("this.props", this.props);
+        
         BackHandler.addEventListener('hardwareBackPress', this.handleBackButton.bind(this));
 
-        const { user } = this.props.route.params;
+        const { postedByID } = this.props.route.params;
 
-        this.setState({
-            user
+        const config = {
+            params: {
+                uniqueId: postedByID
+            }
+        }
+
+        axios.get(`${BASE_URL}/gather/general/information/user`, config).then((res) => {
+            if (res.data.message === "Gathered user successfully!") {
+                console.log(res.data);
+
+                const { user } = res.data;
+
+                this.setState({
+                    user
+                })
+
+            } else {
+                console.log("Err", res.data);
+            }
+        }).catch((err) => {
+            console.log(err);
         })
     }
 
@@ -254,7 +276,7 @@ constructor(props) {
                             }
                         }}
                         >
-                        <SelectAndSendInvitationSheetPane formData={this.props.formData} authenticatedUserData={this.props.authenticatedUserData} sheetRef={this.sheetRef} props={this.props} />
+                        <SelectAndSendInvitationSheetPane formData={this.props.formData} authenticatedUserData={this.props.authenticatedUserData} sheetRef={this.sheetRef} props={this.props} user={this.state.user} />
                     </RBSheet>
                 </Fragment>
             );

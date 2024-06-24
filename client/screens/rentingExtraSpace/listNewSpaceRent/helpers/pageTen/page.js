@@ -331,31 +331,31 @@ const RenderPageTenHelperData = ({ renderHeaderLogicData, storageData, authData,
     const calculateProperInt = (int) => {
         switch (Number(int)) {
             case 0:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/1.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/1.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 1:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/2.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/2.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 2:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/3.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/3.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 3:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/4.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/4.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 4:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/5.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/5.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 5:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/6.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/6.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 6:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/7.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/7.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 7:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/8.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/8.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             case 8:
-                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/9.png")} style={styles.numericalImageIcon} />;
+                return <Image resizeMode={"contain"} source={require("../../../../../assets/images/icon/numbers/9.png")} style={[styles.numericalImageIcon, { tintColor: "#fff" }]} />;
                 break;
             default:
                 break;
@@ -401,8 +401,8 @@ const RenderPageTenHelperData = ({ renderHeaderLogicData, storageData, authData,
                                 <Image source={require("../../../../../assets/images/icon/list-space/broom.png")} style={styles.leftIconStyle} />
                             </View>
                             <View style={styles.rightMainStyle}>
-                                <Text style={styles.titledHeaderText}>Clean up the space</Text>
-                                <Text style={styles.subbedText}>Before taking photos, clean the space and remove any clutter or distracting item's</Text>
+                                <Text style={[styles.titledHeaderText, { color: "#fff" }]}>Clean up the space</Text>
+                                <Text style={[styles.subbedText, { color: "#fff" }]}>Before taking photos, clean the space and remove any clutter or distracting item's</Text>
                             </View>
                         </View>
                         <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
@@ -411,8 +411,8 @@ const RenderPageTenHelperData = ({ renderHeaderLogicData, storageData, authData,
                                 <Image source={require("../../../../../assets/images/icon/list-space/lighting.png")} style={styles.leftIconStyle} />
                             </View>
                             <View style={styles.rightMainStyle}>
-                                <Text style={styles.titledHeaderText}>Size and lighting</Text>
-                                <Text style={styles.subbedText}>Landscape (wide) photos are better than portrait (tall) photos. Do everything you can to make the space as bright as possible for better quality images/pictures.</Text>
+                                <Text style={[styles.titledHeaderText, { color: "#fff" }]}>Size and lighting</Text>
+                                <Text style={[styles.subbedText, { color: "#fff" }]}>Landscape (wide) photos are better than portrait (tall) photos. Do everything you can to make the space as bright as possible for better quality images/pictures.</Text>
                             </View>
                         </View>
                         <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
@@ -421,8 +421,8 @@ const RenderPageTenHelperData = ({ renderHeaderLogicData, storageData, authData,
                                 <Image source={require("../../../../../assets/images/icon/list-space/box.png")} style={styles.leftIconStyle} />
                             </View>
                             <View style={styles.rightMainStyle}>
-                                <Text style={styles.titledHeaderText}>Show what it's like to move your electronics in</Text>
-                                <Text style={styles.subbedText}>Try accurately capturing what it's like to move items into the physical space (driveway, gates, doors, stairs, etc...).</Text>
+                                <Text style={[styles.titledHeaderText, { color: "#fff" }]}>Show what it's like to move your electronics in</Text>
+                                <Text style={[styles.subbedText, { color: "#fff" }]}>Try accurately capturing what it's like to move items into the physical space (driveway, gates, doors, stairs, etc...).</Text>
                             </View>
                         </View>
                     </Fragment>
@@ -431,7 +431,7 @@ const RenderPageTenHelperData = ({ renderHeaderLogicData, storageData, authData,
                 return (
                     <Fragment>
                         <View style={{ margin: 12.5 }}>
-                            <Text style={styles.presentationText}>Your photos will appear in order from top to bottom - "drag to reorder" your images appropriately...</Text>
+                            <Text style={[styles.presentationText, { color: "#fff" }]}>Your photos will appear in order from top to bottom - "drag to reorder" your images appropriately...</Text>
                             <View style={styles.centeredOnly}>
                                 <View style={[styles.midSizedHr, { marginTop: 22.5, marginBottom: 27.5 }]} />
                             </View>

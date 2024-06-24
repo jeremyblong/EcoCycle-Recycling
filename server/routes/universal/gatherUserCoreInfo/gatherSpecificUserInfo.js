@@ -8,7 +8,7 @@ router.get("/", (req, resppppp) => {
 
     const collection = Connection.db.db("test").collection("users");
 
-    collection.findOne({ uniqueId }, { fields: { firstName: 1, lastName: 1, username: 1, email: 1, profilePictures: 1, uniqueId: 1, verificationCompleted: 1, registrationDate: 1, registrationDateString: 1, reviews: 1, totalUniqueViews: 1, stripeAccountVerified: 1 } }).then((user) => {
+    collection.findOne({ uniqueId }, { fields: { firstName: 1, lastName: 1, username: 1, email: 1, profilePictures: 1, uniqueId: 1, verificationCompleted: 1, registrationDate: 1, registrationDateString: 1, reviews: 1, totalUniqueViews: 1, stripeAccountVerified: 1, activePendingDeliveries: 1, completedDeliveries: 1, totalPalletItemsInventoryList: 1, totalPalletWeight: 1 } }).then((user) => {
         if (!user) {
 
             console.log("User does NOT exist or could not be found.");

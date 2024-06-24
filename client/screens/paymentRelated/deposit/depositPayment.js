@@ -1,21 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { SafeAreaView, Text, View, StatusBar, TouchableOpacity, Image, ScrollView } from "react-native";
 import { Fonts, Colors, Sizes } from "../../../constants/styles";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import styles from "./depositPaymentStyles.js";           
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { BASE_URL } from "@env";
+import { connect } from "react-redux";
+import _ from "lodash";
 
-const DepositPaymentHelper = (props) => {
+const DepositPaymentHelper = ({ authData }) => {
 
     const navigation = useNavigation();
 
     const [state, setState] = useState({
         amount: '',
+        user: null
     })
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
 
     const { amount } = state;
+    
+    useEffect(() => {
+        const config = {
+            params: {
+                uniqueId: authData.uniqueId
+            }
+        }
+
+        axios.get(`${BASE_URL}/gather/general/information/user`, config).then((res) => {
+            if (res.data.message === "Gathered user successfully!") {
+                console.log(res.data);
+
+                const { user } = res.data;
+
+                setState(prevState => ({ ...prevState, user }));
+            } else {
+                console.log("Err", res.data);
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, []);
 
     const header = () => {
         return (
@@ -43,7 +70,7 @@ const DepositPaymentHelper = (props) => {
                     label={"Enter a dollar value amount ($$$)"}
                     staticLabel={true}
                     onBlur={() => {}}
-                    rightComponent={<TouchableOpacity onPress={() => {}}><Image style={styles.innerIconInput} source={require("../../../assets/images/icon/coin-average.png")} /></TouchableOpacity>}
+                    rightComponent={<TouchableOpacity onPress={() => {}}><Image style={styles.innerIconInput} source={require("../../../assets/images/bag_prev_ui.png")} /></TouchableOpacity>}
                     togglePassword={false}
                     onChangeText={(value) => updateState({ amount: value })}
                 />
@@ -91,11 +118,34 @@ const DepositPaymentHelper = (props) => {
         )
     }
 
+    const handleDeposit = () => {
+        const config = {
+            uniqueId: authData.uniqueId,
+            amount: state.amount, 
+            currency: "usd"
+        };
+
+        axios.post(`${BASE_URL}/attach/deposit/funds/into/account`, config).then((res) => {
+
+            const { message } = res.data;
+
+            if (message === "Successfully processed request!") {
+                console.log("ressssssss location (current) data:", res.data);
+
+                navigation.goBack()
+            } else {
+                console.log("err", res.data);
+            }
+        }).catch((err) => {
+            console.log("err", err);
+        });
+    };
+
     const depositButton = () => {
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.goBack()}
+                onPress={() => handleDeposit()}
                 style={styles.withdrawButtonStyle}>
                 <Text style={{ ...Fonts.white16Medium }}>
                     DEPOSIT DESIRED AMOUNT
@@ -107,7 +157,7 @@ const DepositPaymentHelper = (props) => {
     const processingTimeInfo = () => {
         return (
             <Text style={{ ...Fonts.black16Medium, alignSelf: 'center', marginTop: 15, textAlign: "center", fontWeight: "bold" }}>
-                Processing time varies but is typically fast ~ 1-2 hours of processing time
+                Processing time varies but is usually immediate
             </Text>
         )
     }
@@ -123,7 +173,7 @@ const DepositPaymentHelper = (props) => {
     const currentBalanceInfo = () => {
         return (
             <View style={{ alignItems: 'center' }}>
-                <Text style={styles.largeText}>${(Math.floor(Math.random() * (100000 - 1) + 100) / 100).toFixed(2)}</Text>
+                <Text style={styles.largeText}>${(typeof state.user !== "undefined" && _.has(state.user, "accountBalance") ? state.user.accountBalance : 0).toFixed(2)}</Text>
                 <Text style={{
                     ...Fonts.black13Medium,
                     marginBottom: Sizes.fixPadding * 3.0,
@@ -148,5 +198,9 @@ const DepositPaymentHelper = (props) => {
         </SafeAreaView>
     );
 }
-
-export default DepositPaymentHelper;
+const mapStateToProps = (state) => {
+    return {
+        authData: state.auth.data
+    }
+}
+export default connect(mapStateToProps, {  })(DepositPaymentHelper)

@@ -155,12 +155,12 @@ const renderItemSublist = (item, index, handleSubItemSelection, newData) => {
 
 const renderHeaderLogicData = (str1, str2) => {
     return (
-        <Fragment>
-            <Text style={styles.titleTopText}>{str1}</Text>
-            <View style={{ padding: 6.75, backgroundColor: "rgba(255, 255, 255, 0.675)", justifyContent: "center", alignContent: "center", alignItems: "center", borderWidth: 1.5, borderColor: "#000" }}>
-                <Text style={styles.label}>{str2}</Text>
+        <View style={{ backgroundColor: "rgba(0, 0, 0, 0.625)", padding: 10 }}> 
+            <Text style={[styles.titleTopText, { color: "#fff" }]}>{str1}</Text>
+            <View style={{ padding: 6.75, backgroundColor: "rgba(255, 255, 255, 0.375)", justifyContent: "center", alignContent: "center", alignItems: "center", borderWidth: 1.5, borderColor: "#000" }}>
+                <Text style={[styles.label, { color: "#fff" }]}>{str2}</Text>
             </View>
-        </Fragment>
+        </View>
     );
 }
 

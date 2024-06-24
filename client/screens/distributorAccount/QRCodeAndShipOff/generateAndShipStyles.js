@@ -14,6 +14,11 @@ const styles = StyleSheet.create({
         minWidth: 82.5,
         width: 82.5
     }, 
+    centeredTop: {
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center"
+    },
     centeredOnly: {
         justifyContent: "center",
         alignContent: "center",
@@ -24,12 +29,43 @@ const styles = StyleSheet.create({
         alignContent: "center",
         alignItems: "center"
     },
+    textFieldContainerStyle: {
+        marginHorizontal: Sizes.fixPadding * 2.0,
+        backgroundColor: "#DDD",
+        paddingVertical: Sizes.fixPadding + 3.0,
+        paddingHorizontal: Sizes.fixPadding + 5.0,
+        marginTop: 40,
+        width: "100%",
+        marginBottom: 40,
+        borderRadius: Sizes.fixPadding,
+        elevation: 1.0,
+        marginTop: Sizes.fixPadding * 2.0
+    },
+    labelCustom: {
+        flexShrink: 1, 
+        color: "darkblue", 
+        fontSize: 18, 
+        textDecorationLine: "underline", 
+        marginBottom: 5
+    },
     subbedText: {
         color: "#fff",
         textAlign: "left",
         backgroundColor: "#000",
         marginTop: 5.75,
         fontSize: 14.25
+    },
+    centered: {
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center"
+    },
+    hr: {
+        borderBottomColor: "lightgrey",
+        borderBottomWidth: 2,
+        marginTop: 12.25,
+        marginBottom: 7.25,
+        width: "100%"
     },
     lineChartParaContainer:  {
         backgroundColor: "#000",
@@ -174,5 +210,48 @@ const styles = StyleSheet.create({
         fontSize: 14,
         marginLeft: 10,
     },
+    videoTwo: {
+        flexDirection: 'row',
+        marginBottom: 20,
+    },
+    thumbnailTwo: {
+        width: '35%',
+        aspectRatio: 16 / 9,
+        borderRadius: 5,
+    },
+    subbexTextcustom: {
+        fontWeight: "bold",
+        fontSize: 15.25,
+        marginTop: 10,
+        marginBottom: 10
+    },  
+    detailsTwo: {
+        padding: 10,
+        width: '65%',
+    },
+    titleTwo: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    channelTwo: {
+        color: '#999',
+        fontSize: 14,
+        marginTop: 5,
+    },
+    viewCountTwo: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: 5,
+    },
+    
+    viewsTwo: {
+        color: '#999',
+        fontSize: 14,
+    },
+    durationTwo: {
+        color: '#999',
+        fontSize: 14,
+        marginLeft: 10,
+    }
 })
 export default styles;

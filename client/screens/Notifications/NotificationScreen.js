@@ -101,6 +101,7 @@ constructor(props) {
             case "dropoff-request":
                 this.setState({
                     selected: notification,
+                    notification,
                     alreadySelected: true
                 }, () => {
                     this.changeVisibilityState();
@@ -212,81 +213,89 @@ constructor(props) {
                     });
                 }}
                 renderItem={({ item }) => {
-                    console.log("item rendered result...:", item.user);
+                    console.log("item rendered result...:", item.notification);
                     // return JSX data after checking if notification was properly fetched with data
                     if (item.user !== null && typeof item.user !== "undefined") {
-                        // deconstruct core fetched users data related to notification being fetched.. (restricted data ONLY).
-                        const { firstName, lastName, username, profilePictures, registrationDate, registrationDateString, reviews, totalUniqueViews } = item.user;
+                        if (item.notification) {
+                            // deconstruct core fetched users data related to notification being fetched.. (restricted data ONLY).
+                            const { firstName, lastName, username, profilePictures, registrationDate, registrationDateString, reviews, totalUniqueViews } = item.user;
 
-                        const lastImage = (typeof profilePictures !== "undefined" && profilePictures.length > 0) ? { uri: `${BASE_ASSET_URL}/${profilePictures[profilePictures.length - 1].link}` } : require("../../assets/images/blank-profile-pic.png");
-                        // return notification data/jsx
-                        return (
-                            <View style={styles.notificationContainerWrapper}>
-                                <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                    <View style={styles.doctorImageContainerStyle}>
-                                        <Image
-                                            source={lastImage}
-                                            resizeMode="cover"
-                                            style={{
-                                                height: 125, width: 125, borderRadius: 75.0, left: -15, top: -15,
-                                                overflow: 'hidden'
-                                            }}
-                                        />
+                            const lastImage = (typeof profilePictures !== "undefined" && profilePictures.length > 0) ? { uri: `${BASE_ASSET_URL}/${profilePictures[profilePictures.length - 1].link}` } : require("../../assets/images/blank-profile-pic.png");
+                            // return notification data/jsx
+                            return (
+                                <View style={styles.notificationContainerWrapper}>
+                                    
+                                    <Text style={{ ...Fonts.black14Bold, marginLeft: 15, color: Colors.primaryColor }}>{item.notification.title}</Text>
+                                    <View style={styles.hr} />
+                                    <Text style={{ ...Fonts.black14Bold, marginLeft: 15 }}>{item.notification.description}</Text>
+                                    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                        <View style={styles.doctorImageContainerStyle}>
+                                            <Image
+                                                source={lastImage}
+                                                resizeMode="cover"
+                                                style={{
+                                                    height: 125, width: 125, borderRadius: 75.0, left: -15, top: -15,
+                                                    overflow: 'hidden'
+                                                }}
+                                            />
+                                        </View>
+
+                                        <View style={{ paddingTop: 15 }}>
+                                            <Text style={{ ...Fonts.black16Bold }}>{firstName} {lastName}</Text>
+                                            <Text style={{ ...Fonts.gray17Regular, marginTop: Sizes.fixPadding - 7.0, color: "darkblue" }}>{username}</Text>
+                                            <Text style={{ ...Fonts.primaryColor16Regular, marginTop: Sizes.fixPadding - 7.0, marginBottom: 12.5 }}>
+                                                Registered since {moment(registrationDate).format("MM/DD/YY")}{'\n'}(MM/DD/YY)
+                                            </Text>
+                                            <View style={{ flexDirection: 'row', flex: 1, flexWrap: 'wrap', alignItems: 'flex-start', marginTop: Sizes.fixPadding - 7.0 }}>
+                                                <View style={styles.columnized}>
+                                                    <Image
+                                                        source={require("../../assets/images/mag.png")}
+                                                        resizeMode={"contain"}
+                                                        style={{
+                                                            height: 35, width: 35, borderRadius: 25.0,
+                                                            overflow: 'hidden'
+                                                        }}
+                                                    />
+                                                    <Text style={{ ...Fonts.black16Regular, textAlign: "center", marginTop: 8.25 }}>
+                                                        {Number(totalUniqueViews)} Profile View(s)
+                                                    </Text>
+                                                </View>
+                                                <View style={styles.columnized}>
+                                                    <Image
+                                                        source={require("../../assets/images/starvibrant_prev_ui.png")}
+                                                        resizeMode={"contain"}
+                                                        style={{
+                                                            height: 35, width: 35, borderRadius: 25.0,
+                                                            overflow: 'hidden'
+                                                        }}
+                                                    />
+                                                    <Text style={{ ...Fonts.black16Regular, textAlign: "center", marginTop: 8.25 }}>
+                                                        {typeof reviews !== "undefined" && reviews.length > 0 ? reviews.length : 0} Review(s)
+                                                    </Text>
+                                                </View>
+                                            </View>
+                                        </View>
                                     </View>
 
-                                    <View>
-                                        <Text style={{ ...Fonts.black16Bold }}>{firstName} {lastName}</Text>
-                                        <Text style={{ ...Fonts.gray17Regular, marginTop: Sizes.fixPadding - 7.0 }}>{username}</Text>
-                                        <Text style={{ ...Fonts.primaryColor16Regular, marginTop: Sizes.fixPadding - 7.0, marginBottom: 12.5 }}>
-                                            Registered since {moment(registrationDate).format("MM/DD/YY")}{'\n'}(MM/DD/YY)
-                                        </Text>
-                                        <View style={{ flexDirection: 'row', flex: 1, flexWrap: 'wrap', alignItems: 'flex-start', marginTop: Sizes.fixPadding - 7.0 }}>
-                                            <View style={styles.columnized}>
-                                                <Image
-                                                    source={require("../../assets/images/icon/view-64.png")}
-                                                    resizeMode={"contain"}
-                                                    style={{
-                                                        height: 35, width: 35, borderRadius: 25.0,
-                                                        overflow: 'hidden'
-                                                    }}
-                                                />
-                                                <Text style={{ ...Fonts.black16Regular, textAlign: "center", marginTop: 8.25 }}>
-                                                    {Number(totalUniqueViews)} Profile View(s)
-                                                </Text>
+                                    <View style={styles.bookContainerStyle}>
+                                        <TouchableOpacity style={{ marginRight: 10 }} onPress={() => null}>
+                                            <View style={styles.bookVideoConsultButtonStyle}>
+                                                <Text style={{ ...Fonts.orangeColorBold, color: "#fff" }}>View User's Profile</Text>
                                             </View>
-                                            <View style={styles.columnized}>
-                                                <Image
-                                                    source={require("../../assets/images/icon/star.png")}
-                                                    resizeMode={"contain"}
-                                                    style={{
-                                                        height: 35, width: 35, borderRadius: 25.0,
-                                                        overflow: 'hidden'
-                                                    }}
-                                                />
-                                                <Text style={{ ...Fonts.black16Regular, textAlign: "center", marginTop: 8.25 }}>
-                                                    {typeof reviews !== "undefined" && reviews.length > 0 ? reviews.length : 0} Review(s)
-                                                </Text>
+                                        </TouchableOpacity>
+                                        <TouchableOpacity onPress={() => this.clickedNotification(item)}>
+                                            <View style={styles.bookAppointmentButtonStyle}>
+                                                <Text style={{ ...Fonts.primaryColorBold }}>View More Detail(s)</Text>
                                             </View>
-                                        </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                    <View style={styles.dividerStyle}>
                                     </View>
                                 </View>
+                            );
+                        } else {
 
-                                <View style={styles.bookContainerStyle}>
-                                    <TouchableOpacity style={{ marginRight: 10 }} onPress={() => null}>
-                                        <View style={styles.bookVideoConsultButtonStyle}>
-                                            <Text style={{ ...Fonts.orangeColorBold, color: "#fff" }}>View User's Profile</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => this.clickedNotification(item)}>
-                                        <View style={styles.bookAppointmentButtonStyle}>
-                                            <Text style={{ ...Fonts.primaryColorBold }}>View More Detail(s)</Text>
-                                        </View>
-                                    </TouchableOpacity>
-                                </View>
-                                <View style={styles.dividerStyle}>
-                                </View>
-                            </View>
-                        );
+                        }
                     } else {
                         return null;
                     }

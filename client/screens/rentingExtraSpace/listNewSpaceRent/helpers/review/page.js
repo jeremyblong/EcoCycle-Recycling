@@ -293,7 +293,7 @@ const RenderFinalReviewPostPage = ({ renderHeaderLogicData, storageData, saveUpd
         )
     }
     const renderContentBasedOnAvailableData = () => {
-        if (!_.isEmpty(storageData)) {
+        if (!_.isEmpty(storageData) && typeof mainCategory.name !== "undefined" && mainCategory.name !== null) {
             return (
                 <Fragment>
                     <View style={{ flex: 1 }}>

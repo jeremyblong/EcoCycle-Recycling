@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Text, Image, View, Dimensions, ScrollView } from "react-native";
 import {
     Placeholder,
@@ -7,10 +7,14 @@ import {
     Fade
 } from "rn-placeholder";
 import styles from "./viewManageActiveLoadsStyles.js";
+import moment from "moment";
+import { connect } from "react-redux";
+import { BASE_URL } from "@env";
+import axios from "axios";
 
 const { width, height } = Dimensions.get("window");
 
-const ManageDistributorActiveLoads = (props) => {
+const ManageDistributorActiveLoads = ({ userData }) => {
 
     const [ state, setState ] = useState({
         availableResults: []
@@ -24,10 +28,17 @@ const ManageDistributorActiveLoads = (props) => {
             }
         })
     } 
+
+    useEffect(() => {
+        
+    }, []);
+
     const { availableResults } = state;
+
+    console.log("availableResults", availableResults);
     
     const renderContentMain = () => {
-        if ((typeof availableResults !== "undefined" && availableResults.length > 0) && ready) {
+        if (typeof availableResults !== "undefined" && availableResults.length > 0) {
             return (
                 <SafeAreaView style={{ flex: 1, backgroundColor: Colors.bodyBackColor }}>
                     
@@ -162,4 +173,10 @@ const ManageDistributorActiveLoads = (props) => {
     }
     return renderContentMain();
 }
-export default ManageDistributorActiveLoads;
+
+const mapStateToProps = (state) => ({
+    currentLocation: state.location.currentLoc,
+    userData: state.auth.data
+});
+
+export default connect(mapStateToProps, {})(ManageDistributorActiveLoads)

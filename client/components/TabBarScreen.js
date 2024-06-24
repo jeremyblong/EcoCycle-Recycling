@@ -882,8 +882,6 @@ const SearchableDropoffLocationsHelper = ({ handleRedirectToucableCardClicked, l
                     <AwesomeButtonBlue textColor={"#fff"} backgroundShadow={"black"} backgroundDarker={"#000"} backgroundColor={Colors.primaryColor} style={styles.buttonSearchWithCriteria} onPress={() => handleSearchWithCriteria()} stretch={true}>Swap Back To Search Criteria</AwesomeButtonBlue>
                     <View style={styles.hrThick} />
                     {renderExistentOrNot()}
-                    <View style={styles.hrThick} />
-                    <AwesomeButtonBlue textColor={"#fff"} backgroundShadow={"black"} backgroundDarker={"#000"} backgroundColor={Colors.primaryColor} style={styles.buttonSearchWithCriteria} onPress={() => handleSearchWithCriteria()} stretch={true}>Swap Back To Search Criteria</AwesomeButtonBlue>
                 </Fragment>
             );
         }

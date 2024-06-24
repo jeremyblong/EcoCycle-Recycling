@@ -4,7 +4,8 @@ import {
     View,
     Image,
     Dimensions,
-    ScrollView
+    ScrollView,
+    TouchableOpacity
 } from 'react-native';
 import Modal from "react-native-modal";
 import { Colors } from '../../../../constants/styles.js';
@@ -45,6 +46,7 @@ const RenderModalContent = ({ modalVisibility, changeVisibilityState, selected, 
                 const { other } = selected.notification.metadata;
 
                 const newListData = [
+                    { time: 'Item Count', title: `${typeof selected.notification.metadata.cartData !== "undefined" ? selected.notification.metadata.cartData.length : "---"} items to dropoff with you.`, description: `I wanted to inform you that a user has approximately ${typeof selected.notification.metadata.cartData !== "undefined" ? selected.notification.metadata.cartData.length : "---"} items of e-waste ready for dropoff. Please only accept this delivery if you're available during the drop-off 'window'. Feel free to PM the user for more clarification.`, lineColor: Colors.secondaryColor, icon: require('../../../../assets/images/icon/openbox.png') },
                     { time: 'Date/Time', title: 'Drop-Off Date/Time', description: other.dateTime, lineColor: Colors.primaryColor, icon: require('../../../../assets/images/icon/timeline-2.png') },
                     { time: 'Window', title: 'Drop-Off Time-Window', lineColor: Colors.secondaryColor, description: calculateIntervalTranslation(other.interval), icon: require('../../../../assets/images/icon/timeline-3.png') },
                     { time: 'Phone \nNumber', title: `Phone # Of Contracted User`, lineColor: Colors.primaryColor, description: `${other.phoneNumberData.dialCode} ${other.phoneNumberData.phoneNumber}`, icon: require('../../../../assets/images/icon/timeline-1.png') },
@@ -56,12 +58,13 @@ const RenderModalContent = ({ modalVisibility, changeVisibilityState, selected, 
                 setGlobalReady(true);
             }
         },  1000);
-    }, [])
+    }, [selected])
 
     const handleAgreementSubmission = () => {
         const config = {
             selected,
-            authenticatedUserData: userData
+            authenticatedUserData: userData,
+            notification: selected.notification
         };
         // make API request to backend...
         axios.post(`${BASE_URL}/add/contract/to/active/contracts/dropoff`, config).then((res) => {
@@ -138,7 +141,7 @@ const RenderModalContent = ({ modalVisibility, changeVisibilityState, selected, 
                 <ScrollView contentContainerStyle={styles.contentContainer} style={{ flexGrow: 1 }}>
                     <View style={styles.modalInnerContainer}>
                         <ScrollView contentContainerStyle={styles.contentContainerInner} style={{ flexGrow: 1 }}>
-                            <Image source={require("../../../../assets/images/contract.png")} resizeMode={"cover"} style={styles.toppedImageBanner} />
+                            <Image source={require("../../../../assets/images/contractcustom.png")} resizeMode={"cover"} style={styles.toppedImageBanner} />
                             <View style={styles.hr} />
                             <Text style={styles.label}>Enter your response whether you'd like to 'AGREE' to accept this notification contract request (to decline, click 'reject')</Text>
                             <Input
@@ -181,6 +184,11 @@ const RenderModalContent = ({ modalVisibility, changeVisibilityState, selected, 
                         <View style={styles.hr} />
                         <AwesomeButtonBlue backgroundDarker={"#868686"} backgroundColor={Colors.primaryColor} onPress={() => {}} backgroundShadow={"black"} width={width * 0.8}>Reject Contract Request</AwesomeButtonBlue>
                         <View style={styles.hr} />
+                        <TouchableOpacity onPress={() => {
+                            changeVisibilityState();
+                        }}>
+                            <Text style={{ fontWeight: "bold" }}>Cancel/close</Text>
+                        </TouchableOpacity>
                     </View>
                 </ScrollView>
             </Modal>

@@ -83,6 +83,7 @@ const IntroductionToFreightShippingActivation = ({ updateMainState, updateFreigh
                                 checkedImage={<Image source={require('../../../../../assets/images/icon/checked.png')} style={styles.checkboxImage} />}
                                 unCheckedImage={<Image source={require('../../../../../assets/images/icon/unchecked.png')} style={styles.checkboxImage} />}
                                 isChecked={state.isChecked}
+                                rightTextStyle={{ color: "#000" }}
                                 rightText={"I acknowledge & agree to the 'Terms & Conditions' upon the creation of listing regarding shipping freight & properly processing, shipping & delivering all electronics in their recieved condition - any negligence is open to an account termination"}
                             />
                         </View>

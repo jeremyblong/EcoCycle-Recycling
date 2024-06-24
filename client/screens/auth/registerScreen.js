@@ -21,6 +21,25 @@ const { width, height } = Dimensions.get("window");
 //
 const optionsAccountType = [
     {
+        label: "E-Waste Donor Account",
+        value: "ewaste-donor-account",
+        description: "This account type is for individuals who want to donate their e-waste at a designated depot locations. Responsibilities include ensuring that the e-waste items are sorted and prepared according to depot guidelines and completing the drop-off process.",
+        responsibilities: [
+            "Sort and prepare e-waste items for donation",
+            "Transport e-waste to the nearest depot location",
+            "Adhere to depot guidelines for acceptable items and packaging",
+            "Accurately document the items being donated",
+            "Ensure proper disposal of hazardous materials as per regulations"
+        ],
+        benefits: [
+            "Contribute to environmental sustainability",
+            "Easy and convenient drop-off process",
+            "Potential to receive compensation or incentives for e-waste",
+            "Support local recycling efforts",
+            "Access to resources for safe and responsible e-waste disposal"
+        ]
+    },
+    {
         label: "Transporter/Transportation Account",
         value: "transport-account",
         description: "This account type is for individuals or businesses that provide transportation services for e-waste. Responsibilities include picking up e-waste from collection points and delivering it to designated recycling facilities using freight pallet-style shipping.",
@@ -39,7 +58,7 @@ const optionsAccountType = [
         ]
     },
     {
-        label: "3rd Party Distributor Account",
+        label: "Recycling Plant/Company",
         value: "3rd-party-distribution-account",
         description: "This account type is for recycling plants or companies that we partner with to receive and process e-waste. They process the waste and pay our company in exchange for the e-waste.",
         responsibilities: [

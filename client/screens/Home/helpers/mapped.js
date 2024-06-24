@@ -6,28 +6,28 @@ export const navigationalLinks = [
         navigationRouteName: "PriceEWasteLocateDropoff"
     },
     {
+        id: '4',
+        name: 'Post New Available Storage Space (Dropoff-Depot)',
+        image: require('../../../assets/images/house.jpg'),
+        navigationRouteName: "ListNewStorageSpaceForRentDropoff"
+    },
+    {
+        id: '2',
+        name: `View Our Available/Bookable Freight-Deliveries`,
+        image: require('../../../assets/images/semi.jpg'),
+        navigationRouteName: "AvailableFreightTruckingDeliveries"
+    },
+    {
         id: '1',
         name: `View/Manage Profile Setting's such as core-info, pictures, etc...`,
         image: require('../../../assets/images/vibrantprofile.jpg'),
         navigationRouteName: "EditProfile"
     },
     {
-        id: '2',
-        name: `View Our Available/Bookable Freight-Deliveries`,
-        image: require('../../../assets/images/semi.jpg'),
-        navigationRouteName: "PrivateMessagingMainView"
-    },
-    {
         id: '3',
         name: 'View Your Security Log(s) (Logs recording each authentication..)',
         image: require('../../../assets/images/logs.jpg'),
         navigationRouteName: "ViewSecurityAuthenticationLogs"
-    },
-    {
-        id: '4',
-        name: 'Post New Available Storage Space (Dropoff-Depot)',
-        image: require('../../../assets/images/house.jpg'),
-        navigationRouteName: "ListNewStorageSpaceForRentDropoff"
     },
     {
         id: '5',

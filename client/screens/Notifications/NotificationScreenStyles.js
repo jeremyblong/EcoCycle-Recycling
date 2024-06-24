@@ -12,6 +12,13 @@ const styles = StyleSheet.create({
     background: {
         backgroundColor: "#fff"
     },
+    hr: {
+        width: "100%",
+        marginTop: 12.75,
+        marginBottom: 12.75,
+        borderBottomWidth: 1,
+        borderBottomColor: "lightgrey"
+    },
     touchableText: {
         textAlign: "center"
     },

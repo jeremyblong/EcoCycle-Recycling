@@ -12,6 +12,12 @@ const styles = StyleSheet.create({
         minWidth: "100%",
         borderBottomWidth: 2,
         borderBottomColor: "lightgrey"
+    },
+    cardImage: {
+        minWidth: "100%",
+        maxWidth: "100%",
+        maxHeight: 200,
+        marginTop: 25
     }
 })
 

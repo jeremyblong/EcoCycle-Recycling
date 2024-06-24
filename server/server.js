@@ -134,6 +134,7 @@ app.post('/twilio-webhook', (req, res) => {
 });
 
 // routes go here...
+app.use("/gather/dropoffs/contracts/pending", require("./routes/electronicDropoff/activeDrops/gatherDrops/index.js"));
 app.use("/register/new/user", require("./routes/authentication/signup/signup.js"));
 app.use("/upload/misc/file/wo/saving", require("./routes/universal/imageUploads/base64upload.js"));
 app.use("/submit/authentication/code", require("./routes/authentication/twilio/verifyCode.js"));
@@ -190,7 +191,21 @@ app.use("/upload/misc/file/wo/save/cover/photo", require("./routes/profile/profi
 app.use("/initiate/new/label/creation", require("./routes/deliveries/initiateNewDelivery/newDelivery.js"));
 app.use("/send/email/shipping/label/link", require("./routes/emailRelated/shippingRelated/sendLabelShippingEmail.js"));
 app.use("/boost/profile/dropoff/account/type", require("./routes/distributorRelated/boostAccountProfile/boostProfile.js"));
-
+app.use("/gather/relevant/listing/qrcode/lookup", require("./routes/QRCodeRelated/fetchDetails/index.js"));
+app.use("/save/recycling/dropoff/facility", require("./routes/recyclingPartners/saveNewListing/index.js"));
+app.use("/gather/recycling/companies/nearby", require("./routes/recyclingPartners/fetchListings/fetch.js"));
+app.use("/initiate/shipment/recycling/facility/and/more", require("./routes/recyclingPartners/shipAndProcess/index.js"));
+app.use("/calculate/weight/via/ai", require("./routes/AIrelated/calculateWeightByStrings.js"));
+app.use("/handle/initiation/dropoff/generate", require("./routes/QRCodeRelated/dropoff/processDropoffGeneration.js"));
+app.use("/gather/qrcode/data/provide/code/dropoff", require("./routes/QRCodeRelated/dropoff/readCode.js"));
+app.use("/gather/general/information/dropoff", require("./routes/nearbyDropoffs/gatherIndividualDropoff/gather.js"));
+app.use("/initiate/stripe/ifnot/active", require("./routes/stripePayment/initiateAccountIfNotApplicable/initiate.js"));
+app.use("/onboarding/flow/stripe/links", require("./routes/stripePayment/onboarding/onboard.js"));
+app.use("/save/card/details", require("./routes/stripePayment/addPaymentMethod/add.js"));
+app.use("/attach/deposit/funds/into/account", require("./routes/stripePayment/depositFunds/deposit.js"));
+app.use("/gather/account/available/balance", require("./routes/stripePayment/availableBal/gather.js"));
+app.use("/cashout/balance/stripe", require("./routes/stripePayment/cashout/index.js"));
+app.use("/accept/responsibilty/delivery/transfer", require("./routes/recyclingPartners/acceptShipment/acceptAfterScanning.js"));
 
 io.on("connection", socket => {
 

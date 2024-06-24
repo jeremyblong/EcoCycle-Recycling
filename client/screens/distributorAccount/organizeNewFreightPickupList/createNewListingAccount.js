@@ -47,7 +47,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 1:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.565 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-1.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-1.png")}>
                             <IntroductionToFreightShippingActivation updateMainState={updateMainState} props={props} />
                         </ImageBackground>
                     </Fragment>
@@ -56,7 +56,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 2:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.4 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
                             <PageOneDistributorAccountCreation updateMainState={updateMainState} masterState={state} masterSetState={setState} props={props} />
                         </ImageBackground>
                     </Fragment>
@@ -65,7 +65,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 3:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.4 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-2.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-2.png")}>
                             <PageTwoRequestNewFreightHelper updateMainState={updateMainState} masterState={state} masterSetState={setState} props={props} />
                         </ImageBackground>
                     </Fragment>
@@ -74,7 +74,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 4:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.4 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-1.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-1.png")}>
                             <PageThreeRequestNewFreightHelper updateMainState={updateMainState} masterState={state} masterSetState={setState} props={props} />
                         </ImageBackground>
                     </Fragment>
@@ -83,7 +83,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 5:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.4 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
                             <PageFourDistributorAccountCreation updateMainState={updateMainState} masterState={state} masterSetState={setState} props={props} />
                         </ImageBackground>
                     </Fragment>
@@ -92,7 +92,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 6:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.4 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
                             <PageFiveDistributorAccountCreation updateMainState={updateMainState} masterState={state} masterSetState={setState} props={props} />
                         </ImageBackground>
                     </Fragment>
@@ -101,7 +101,7 @@ const NewFreightPickupRequestingMainView = (props) => {
             case 7:
                 return (
                     <Fragment>
-                        <ImageBackground imageStyle={{ opacity: 0.4 }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
+                        <ImageBackground imageStyle={{ opacity: 0.8, backgroundColor: "#000" }} resizeMode={"cover"} style={styles.imageBacked} source={require("../../../assets/images/design-3.png")}>
                             <PageSixDistributorAccountCreation updateMainState={updateMainState} masterState={state} masterSetState={setState} props={props} />
                         </ImageBackground>
                     </Fragment>

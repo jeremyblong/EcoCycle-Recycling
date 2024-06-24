@@ -29,6 +29,18 @@ const styles = StyleSheet.create({
         margin: 7.25,
         marginTop: 20
     },
+    hr: {
+        width: "100%",
+        marginTop: 12.75,
+        marginBottom: 12.75,
+        borderBottomWidth: 2,
+        borderBottomColor: "grey"
+    },
+    headerMain: {
+        fontWeight: "bold",
+        fontSize: 28.25,
+        textDecorationLine: "underline"
+    },
     inputFloatingMoveStyles: {
         paddingLeft: 7.75,
         textAlignVertical: "top",
@@ -247,7 +259,30 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: Colors.primaryColor
-    }
+    },
+    stepContainer: {
+        marginBottom: 15,
+    },
+    stepNumber: {
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    subPointContainer: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        marginLeft: 20,
+        marginTop: 5,
+    },
+    bulletPoint: {
+        fontSize: 18,
+        lineHeight: 22,
+        marginRight: 5,
+    },
+    subPointText: {
+        flex: 1,
+        fontSize: 16,
+        lineHeight: 22,
+    },
 });
 
 export default styles;

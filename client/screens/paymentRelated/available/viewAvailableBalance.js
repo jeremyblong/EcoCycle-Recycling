@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Text, View, SafeAreaView, StatusBar, FlatList, Image, TouchableOpacity } from "react-native";
 import { Fonts, Colors, Sizes } from "../../../constants/styles";
 import styles from "./viewAvailableBalanceStyles.js";
+import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { BASE_URL } from "@env";
+import { connect } from "react-redux";
+import _ from "lodash";
 
 const transactionList = [
     {
@@ -36,13 +41,14 @@ const transactionList = [
     },
 ];
 
-const ViewAvailableBalances = ({ navigation }) => {
+const ViewAvailableBalances = ({ navigation, authData }) => {
 
     const [ state, setState ] = useState({
         showModal: false,
         isSuccess: null,
         dateAndTime: '',
         amount: '',
+        availableBalance: 0
     })
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
@@ -54,6 +60,27 @@ const ViewAvailableBalances = ({ navigation }) => {
         amount
     } = state;
 
+    useEffect(() => {
+        const config = {
+            params: {
+                uniqueId: authData.uniqueId
+            }
+        }
+
+        axios.get(`${BASE_URL}/gather/account/available/balance`, config).then((res) => {
+            if (res.data.message === "Gathered user successfully!") {
+                const { availableBalance } = res.data;
+                
+                console.log("availableBalance.instant_available", availableBalance.instant_available[0].amount);
+
+                setState(prevState => ({ ...prevState, availableBalance: availableBalance.instant_available[0].amount }));
+            } else {
+                console.log("Err", res.data);
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
+    }, []);
 
     const depositeAndWithdrawnButton = () => {
         return (
@@ -87,7 +114,7 @@ const ViewAvailableBalances = ({ navigation }) => {
             <View style={{ alignItems: 'center', backgroundColor: 'white', paddingVertical: Sizes.fixPadding + 5.0 }}>
                 <Text style={{ ...Fonts.black17SemiBold, fontWeight: "bold", color: "#000", fontSize: 22.5, textDecorationLine: "underline" }}>USD ($)</Text>
                 <Text style={{ ...Fonts.gray13Medium, marginVertical: Sizes.fixPadding, fontWeight: "bold", color: "#000", fontSize: 22.5 }}>Available Balance</Text>
-                <Text style={styles.mainPrice}>$152</Text>
+                <Text style={styles.mainPrice}>${state.availableBalance}</Text>
                 {/* <Image source={require("../../../assets/images/icon/close.png")} style={styles.maxedIcon} /> */}
             </View>
         )
@@ -189,5 +216,9 @@ const ViewAvailableBalances = ({ navigation }) => {
         </SafeAreaView>
     );
 };
-
-export default ViewAvailableBalances;
+const mapStateToProps = (state) => {
+    return {
+        authData: state.auth.data
+    }
+}
+export default connect(mapStateToProps, {  })(ViewAvailableBalances)

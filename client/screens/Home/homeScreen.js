@@ -26,16 +26,27 @@ import {
     Fade
 } from "rn-placeholder";
 import moment from "moment";
-
+import Geolocation from '@react-native-community/geolocation';
+import MapView, { Marker, Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 
 const { width, height } = Dimensions.get("window");
 
-
 const HomeScreen = ({ userData, systemState }) => {
-
+    const mapViewRef = useRef(null);
     const [ state, setState ] = useState({
         users: [],
-        promotedUsers: []
+        promotedUsers: [],
+        statistics: [
+            { category: 'Total items recycled', value: 10565 },
+            { category: 'Total depots', value: 11 },
+            { category: 'Total users', value: 6427 },
+          
+            { category: 'Total batches processed', value: 907 },
+            { category: '$ paid out per deliveries', value: 1452 },
+            { category: '$ Paid to depots', value: 11565 },
+            { category: 'Lbs. of e-waste processed', value: 5650 },
+        ],
+        dropoffs: []
     });
 
     const { promotedUsers, users } = state;
@@ -48,6 +59,60 @@ const HomeScreen = ({ userData, systemState }) => {
 
         navigation.addListener('focus', () => {
             console.log("mounted");
+
+            Geolocation.getCurrentPosition(info => {
+
+                const { latitude, longitude } = info.coords;
+
+                const currentLoc = { latitude, longitude, latitudeDelta: 0.00875, longitudeDelta: 0.00875 };
+    
+                const config = {
+                    params: {
+                        currentLoc
+                    }
+                };
+        
+                axios.get(`${BASE_URL}/gather/dropoff/locations/points`, config).then((res) => {
+        
+                    if (res.data.message === "Gathered relevant location points!") {
+        
+                        console.log(res.data);
+        
+                        const { results } = res.data;
+
+                        updateState({ dropoffs: results });
+        
+                        Toast.show({
+                            type: 'success',
+                            text1: `Successfully gathered the relevant drop-off locations!`,
+                            text2: `We've successfully gathered the related drop-off locations which should now be displayed on the appropriate places on the map...`,
+                            visibilityTime: 3250,
+                            position: "bottom",
+                            onHide: () => {}
+                        });
+                    } else {
+                        console.log("Err", res.data);
+        
+                        Toast.show({
+                            type: 'error',
+                            text1: `An error occurred while fetching relevant results!`,
+                            text2: `We've encountered an error while attempting to fetch the desired/relevant drop-off locations, please try to load the page again or contact support if the problem persists...`,
+                            visibilityTime: 3250,
+                            position: "bottom"
+                        });
+                    }
+                }).catch((err) => {
+                    console.log(err);
+        
+                    Toast.show({
+                        type: 'error',
+                        text1: `An error occurred while fetching relevant results!`,
+                        text2: `We've encountered an error while attempting to fetch the desired/relevant drop-off locations, please try to load the page again or contact support if the problem persists...`,
+                        visibilityTime: 3250,
+                        position: "bottom"
+                    });
+                });
+            });
 
             const configMainUsers = {
                 params: {
@@ -219,9 +284,9 @@ const HomeScreen = ({ userData, systemState }) => {
                 <View style={styles.viewAllStyle}>
                     <View style={styles.columnOnly}>
                         <View style={styles.rowOnly}>
-                            <Text style={{ ...Fonts.black20Bold, color: "#fff", textDecorationLine: "underline", fontWeight: "bold", marginVertical: Sizes.fixPadding, padding: 2.5, marginHorizontal: Sizes.fixPadding - 5 }}>View "Boosted" Profile's</Text><Image source={require("../../assets/images/icon/right.png")} style={styles.iconRightSmallish} />
+                            <Text style={{ ...Fonts.black20Bold, color: "#fff", textDecorationLine: "underline", fontWeight: "bold", marginVertical: Sizes.fixPadding, padding: 2.5, marginHorizontal: Sizes.fixPadding - 5 }}>View "Boosted" Dropoff Depot's</Text><Image source={require("../../assets/images/icon/right.png")} style={styles.iconRightSmallish} />
                         </View>
-                        <Text style={styles.subHeaderText}>These are promoted/boosted profiles - these people are eager to meet new people and are our top users!</Text>
+                        <Text style={styles.subHeaderText}>These are promoted/boosted dropoff depots where you can deliver your e-waste for money! These users have promoted their location to aquire more business - use these dropoffs first.</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -283,30 +348,29 @@ const HomeScreen = ({ userData, systemState }) => {
     }
 
     const renderItem = ({ item, index }) => {
-
-        const { firstName, lastName, username, profilePictures, verificationCompleted, registrationDate, reviews, totalUniqueViews } = item;
-        const lastImage = (typeof profilePictures !== "undefined" && profilePictures.length > 0) ? `${BASE_ASSET_URL}/${profilePictures[profilePictures.length - 1].link}` : null;
-        const calculation = calculateStarRatingNumerical(reviews);
+        const { mainCategory, subCategory, dropoffLocationData, preciseMarkerCoords, contactRequiredOrNot, spaceMeasurementsDimensionsFeet, uploadedRelatedImages } = item.mainData;
+        const lastImage = `${BASE_ASSET_URL}/${uploadedRelatedImages[uploadedRelatedImages.length - 1].link}`;
+        const coordsMarker = { latitude: preciseMarkerCoords.latitude, longitude: preciseMarkerCoords.longitude, latitudeDelta: 0.1, longitudeDelta: 0.1 }
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.navigate('MainProfileViewScreen', { user: item })}
-                style={styles.labAndCheckUpContainer}
+                onPress={() => navigation.navigate('MainProfileViewScreen', { dropoff: item })}
+                style={styles.labAndCheckUpContainerTwo}
                 key={index}
             >
                <View style={styles.column}>
-                    <View style={styles.rowCustom}>
+                    <View style={styles.rowCustomOne}>
                         {lastImage !== null ? <Image
                             source={{ uri: lastImage }}
                             style={{
-                                height: "100%", width: "100%", borderTopLeftRadius: Sizes.fixPadding + 5.0,
+                                height: 125, width: "100%", borderTopLeftRadius: Sizes.fixPadding + 5.0,
                                 borderBottomLeftRadius: Sizes.fixPadding + 5.0, overflow: 'hidden'
                             }}
                             resizeMode="cover"
                         /> : <Image
                         source={require("../../assets/images/blank-profile-pic.png")}
                         style={{
-                            height: "100%", width: "100%", borderTopLeftRadius: Sizes.fixPadding + 5.0,
+                            height: 125, width: "100%", borderTopLeftRadius: Sizes.fixPadding + 5.0,
                             borderBottomLeftRadius: Sizes.fixPadding + 5.0, overflow: 'hidden'
                         }}
                         resizeMode="cover"
@@ -315,18 +379,32 @@ const HomeScreen = ({ userData, systemState }) => {
                     <View style={[ styles.rowCustom, styles.centerOnly ]}>
                         <View style={styles.labInformationContainer}>
                             <Text numberOfLines={3} style={{ ...Fonts.black16Bold, fontWeight: "bold", color: Colors.primaryColor, flexWrap: "nowrap" }}>
-                                {`${firstName} ${lastName}`} ~ @{username}
+                                {mainCategory.name} ~ {subCategory.name}
                             </Text>
                             <Text numberOfLines={2} style={{ ...Fonts.grayBold, color: "#000", marginTop: Sizes.fixPadding - 5.0 }}>
-                                Registered: <Text style={{ fontWeight: "bold" }}>{moment(registrationDate).fromNow(false)}</Text>
+                                Posted: <Text style={{ fontWeight: "bold" }}>{moment(item.date).fromNow(false)}</Text>
                             </Text>
-                            <View style={{ ...styles.row, position: "absolute", bottom: 5, left: 2.5, right: 2.5 }}>
+                            <MapView
+                                customMapStyle={{ minHeight: 125, height: 125 }}
+                                region={coordsMarker}
+                                ref={mapViewRef}
+                                style={styles.map}
+                                provider={PROVIDER_GOOGLE}
+                            >
+                                <Marker 
+                                    key={`${mainCategory.name} ~ ${subCategory.name}`}
+                                    coordinate={coordsMarker}
+                                    title={"This is the depot location"}
+                                    description={"This is a dropoff near your current location - click to view:"}
+                                />
+                            </MapView>
+                            <View style={{ ...styles.row, bottom: 5, left: 2.5, right: 2.5 }}>
                                 <View style={{ flexDirection: "column", display: "flex" }}>
-                                    <Text style={styles.topLineText}>{verificationCompleted === true ? "Account Verified!" : "Not Verified."}</Text>
-                                    <Text style={styles.bottomLineText}>{totalUniqueViews} Profile View's</Text>
+                                    <Text style={styles.topLineText}>Space.: {spaceMeasurementsDimensionsFeet.length} x {spaceMeasurementsDimensionsFeet.width} x {spaceMeasurementsDimensionsFeet.height} (ft.)</Text>
+                                    <Text style={styles.bottomLineText}>Contact Prior? {contactRequiredOrNot.name}</Text>
                                 </View>
                                 <Image source={require("../../assets/images/icon/vibrantstar_prev_ui.png")} style={{ ...styles.iconed, marginTop: 6.25, marginLeft: 2.25 }} />
-                                <Text style={styles.starTextNum}>({calculation})</Text>
+                                <Text style={styles.starTextNum}>({typeof item.reviews !== "undefined" ? item.reviews.length : 0})</Text>
                             </View>
                         </View>
           
@@ -759,6 +837,13 @@ const HomeScreen = ({ userData, systemState }) => {
             </Fragment>
         );
     }
+    const renderStatItem = ({ item }) => (
+        <View style={styles.statItem}>
+            <Text style={styles.statValue}>{item.value}</Text>
+            <Text style={styles.statsCategory}>{item.category}</Text>
+        </View>
+    );
+
     const renderContent = () => {
         return (
             <ParallaxScroll
@@ -788,43 +873,42 @@ const HomeScreen = ({ userData, systemState }) => {
                 parallaxBackgroundScrollSpeed={3}
                 parallaxForegroundScrollSpeed={1.05}
             >
-                <FlatList
-                    ListHeaderComponent={() => (
-                        <View>
-                            {renderQuickPowerButtons()}
-                            {header()}
-                            {title({ title: 'Quick Navigation - Core Functionality' })}
-                            {renderHorizontalScrollerLinks()}
-                            {viewAllText()}
-                        </View>
-                    )}
-                    contentContainerStyle={styles.centeredList}
-                    data={promotedUsers.slice(0, 8)}
-                    keyExtractor={(item) => `${item.uniqueId}`}
-                    renderItem={promotedRenderItem}
-                    numColumns={2}
-                    horizontal={false}
-                    ListEmptyComponent={renderSkelatonLoadingVertical}
-                    showsVerticalScrollIndicator={false}
-                />
-                <View style={styles.spacer}>
-                    <Text style={styles.headerText}>View our un-promoted user account's</Text>
-                    <Text style={styles.subHeaderText}>These are standard user accounts that've <Text style={{ textDecorationLine: "underline", fontWeight: "bold" }}>not</Text> been promoted but they are no different from promoted accounts, the promoted just paid to be shown via priority view(s)...</Text>
-                </View>
-                <View style={styles.flatlistContainer}>
+                <View style={styles.centeredList}>
+                    {renderQuickPowerButtons()}
+                    {header()}
+                    {title({ title: 'Quick Navigation - Core Functionality' })}
+                    {renderHorizontalScrollerLinks()}
+                    {viewAllText()}
                     <FlatList
-                        contentContainerStyle={styles.horizontalUsers}
-                        data={profilePicList.slice(0, 9)}
+                        data={state.dropoffs}
                         keyExtractor={(item) => `${item.uniqueId}`}
-                        renderItem={renderSliderImages}
+                        renderItem={renderItem}
                         horizontal={true}
-                        ListEmptyComponent={renderSkelatonLoadingVerticalHorizontal}
-                        showsHorizontalScrollIndicator={false}
+                        ListEmptyComponent={renderSkelatonLoadingVertical}
                     />
+                </View>
+                <View style={styles.spacer}>
+                    <Text style={styles.headerText}>Electronic Waste Recycling Statistics</Text>
+                    <Text style={styles.subHeaderText}>This report provides an overview of the electronic waste (e-waste) recycling efforts by EcyCycle Recycling. It includes statistics on the volume of e-waste collected, the percentage successfully recycled, and the types of devices processed.</Text>
+                </View>
+                <View style={styles.container}>
+                    <View style={styles.statsCard}>
+                        <Text style={styles.statsTitle}>Overall Stats</Text>
+                        <FlatList
+                            data={state.statistics}
+                            renderItem={renderStatItem}
+                            keyExtractor={(item, index) => index.toString()}
+                            numColumns={2}
+                        />
+                    </View>
+                </View>
+                <View style={styles.spacer}>
+                    <Text style={styles.headerText}>View our "drop-off" locations/depots</Text>
+                    <Text style={styles.subHeaderText}>These are our <Text style={{ textDecorationLine: "underline", fontWeight: "bold" }}>drop-off depots/points</Text> where you can deliver/drop-off your e-waste (electronic waste)</Text>
                 </View>
                 <FlatList
                     contentContainerStyle={styles.centeredListTwo}
-                    data={users}
+                    data={state.dropoffs}
                     keyExtractor={(item) => `${item.uniqueId}`}
                     renderItem={renderItem}
                     ListEmptyComponent={renderSkelatonLoadingVertical}

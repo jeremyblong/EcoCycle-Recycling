@@ -17,14 +17,10 @@ const SelectAndSendInvitationSheetPane = (props) => {
 
     const [ listItems, setListItems ] = useState([]);
     const [ responseItems, setResonseData ] = useState(null);
-    
-    const { user } = props.props.route.params;
 
     const { formData } = props.props;
 
-    console.log("formData", formData);
-
-    const { saveItemToEWasteCart } = props;
+    const { cartData, user, saveItemToEWasteCart } = props;
 
     useEffect(() => {
         const data = [{
@@ -60,7 +56,8 @@ const SelectAndSendInvitationSheetPane = (props) => {
         const config = {
             formData,
             userData: user,
-            authenticatedUserData
+            authenticatedUserData,
+            cartData
         };
 
         axios.post(`${BASE_URL}/send/invite/notification/drop/off/organization`, config).then((res) => {
@@ -217,4 +214,11 @@ const SelectAndSendInvitationSheetPane = (props) => {
         </View>
     );
 }
-export default connect(null, { saveItemToEWasteCart })(SelectAndSendInvitationSheetPane);
+const mapStateToProps = (state) => {
+    console.log("statttttttttttttttttttttttttttttttte", state.cartData.cartData);
+    return {
+        cartData: state.cartData.cartData
+    }
+};
+
+export default connect(mapStateToProps, { saveItemToEWasteCart })(SelectAndSendInvitationSheetPane);

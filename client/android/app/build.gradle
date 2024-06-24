@@ -35,7 +35,9 @@ android {
         exclude 'drawable-mdpi/assets_images_contract.jpg'
         exclude 'drawable-mdpi/assets_images_contract.png'
     }
-
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
     defaultConfig {
         applicationId "com.client"
         minSdkVersion rootProject.ext.minSdkVersion
@@ -168,9 +170,18 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
     implementation project(':react-native-config')
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
-    implementation "androidx.appcompat:appcompat:1.0.0"
+    implementation "androidx.appcompat:appcompat:1.4.2"
     implementation 'com.facebook.android:facebook-android-sdk:latest.release'
-    
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+
+    implementation ('com.google.android.material:material:1.6.0') {
+        version {
+            strictly '1.6.0'
+        }
+    }
+
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.fbjni'
     }

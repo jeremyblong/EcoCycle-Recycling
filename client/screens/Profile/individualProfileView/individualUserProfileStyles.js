@@ -13,6 +13,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginTop: Sizes.fixPadding,
         marginHorizontal: Sizes.fixPadding * 2.0,
+        position: "absolute",
+        top: 12.25,
+        left: 12.25
     },
     profileInfoWrapStyle: {
         marginHorizontal: Sizes.fixPadding * 2.0,
@@ -35,6 +38,13 @@ const styles = StyleSheet.create({
     subLabeled: {
         color: "#000",
         marginBottom: 16.25
+    },
+    listitem: {
+        minHeight: 50, 
+        marginBottom: 20,
+        borderWidth: 1,
+        borderColor: "grey",
+        padding: 10
     },
     hr: {
         width: "100%",

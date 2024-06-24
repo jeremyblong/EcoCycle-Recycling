@@ -11,7 +11,7 @@ const client = require('twilio')(accountSid, authToken);
 
 router.post("/", async (req, resppppp) => {
     // deconstruct data...
-    const { formData, userData, authenticatedUserData } = req.body;
+    const { formData, userData, authenticatedUserData, cartData } = req.body;
 
     const collection = Connection.db.db("test").collection("users");
 
@@ -29,7 +29,8 @@ router.post("/", async (req, resppppp) => {
                     attachment: null
                 },
                 from: authenticatedUserData.uniqueId,
-                other: formData
+                other: formData,
+                cartData
             },
             id: uuidv4(),
             date: new Date(),
@@ -59,27 +60,34 @@ router.post("/", async (req, resppppp) => {
 
                 console.log("phone", phone);
 
-                client.messages.create({
-                    body: `You have a NEW drop-off request from a user (${authenticatedUserData.username} ~ ${authenticatedUserData.firstName} ${authenticatedUserData.lastName}) who'd like to deliver e-waste electronics to your storage location/house. Sign-in to your account & check your notification page to see your updates!`,
-                    from: '+18449422827',
-                    to: `+1${phone}`
-                }).then(message => {
-
-                    console.log(message.sid);
-                    // return successful message response...
+                try {
+                    client.messages.create({
+                        body: `You have a NEW drop-off request from a user (${authenticatedUserData.username} ~ ${authenticatedUserData.firstName} ${authenticatedUserData.lastName}) who'd like to deliver e-waste electronics to your storage location/house. Sign-in to your account & check your notification page to see your updates!`,
+                        from: '+18449422827',
+                        to: `+1${phone}`
+                    }).then(message => {
+    
+                        console.log(message.sid);
+                        // return successful message response...
+                        resppppp.json({
+                            message: "Successfully executed logic & sent notification!",
+                            success: true
+                        });
+                        // catch error and return
+                    }).catch((err) => {
+                        console.log("ERRRRR sending SMS msg :", err);
+    
+                        resppppp.json({
+                            message: "An error occurred while sending SMS message...",
+                            err
+                        });
+                    });
+                } catch (e) {
                     resppppp.json({
                         message: "Successfully executed logic & sent notification!",
                         success: true
                     });
-                    // catch error and return
-                }).catch((err) => {
-                    console.log("ERRRRR sending SMS msg :", err);
-
-                    resppppp.json({
-                        message: "An error occurred while sending SMS message...",
-                        err
-                    });
-                });
+                }
             }
         });
     } else {

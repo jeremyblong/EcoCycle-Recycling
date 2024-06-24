@@ -34,7 +34,7 @@ const RenderPageNineHelperData = ({ renderHeaderLogicData, storageData, handleSu
                 {renderHeaderLogicData("Please include a 'welcome' message with breif/descriptive instructions", "Please describe any relevant details for driver's delivering electronic waste such as 'leave on porch on left side' or 'the house with the bright-red exterior paint' or 'call upon arriving & go through the white-picker gate/fence' OR any other important notes/details you'd like to include...")}
                 <TouchableOpacity onPress={() => setIsCollapsedState(prevState => !prevState)} style={styles.pointersWrapper}>
                     <Image source={require("../../../../../assets/images/icon/lightbulb.png")} style={styles.textHelperImageOne} />
-                    <Text style={styles.lightbulbHelperText}>See example(s)</Text>
+                    <Text style={[styles.lightbulbHelperText, { color: "#fff" }]}>See example(s)</Text>
                     <Image source={require("../../../../../assets/images/icon/up-arrow-2.png")} style={styles.textHelperImage} />
                 </TouchableOpacity>
                 <Collapsible collapsed={isCollapsed}>

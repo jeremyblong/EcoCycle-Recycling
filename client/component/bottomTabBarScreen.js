@@ -10,7 +10,7 @@ import ProfileScreen from "../screens/Profile/ProfileScreen";
 import { Colors, Sizes } from "../constants/styles.js";
 import { useNavigation } from "@react-navigation/native";
 import WaitingToHaveDeliveryAcceptedHelper from "../screens/dropoffDeliveries/waitToBeFulfilled/waitingForOrderConfirmation.js";
-
+import DraggableMenuIcon from "../draggableMenu.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -177,7 +177,7 @@ class BottomTabBarScreen extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-                <MyCustomTabs props={this.props} />
+                <DraggableMenuIcon Content={<MyCustomTabs props={this.props} />} />
             </View>
         )
     }

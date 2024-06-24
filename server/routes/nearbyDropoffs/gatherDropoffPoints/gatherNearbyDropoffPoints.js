@@ -15,7 +15,7 @@ router.get("/", (req, resppppp) => {
 
     collection.createIndex({ "newlyConstructedCoordsRandomizedNearby": "2dsphere" });
 
-    const milesConvertedToMeters = (1609 * 2.125); // 1609 === meters in mile
+    const milesConvertedToMeters = (1609 * 100000000); // 1609 === meters in mile
 
     collection.find({ "newlyConstructedCoordsRandomizedNearby": {
         $near: {

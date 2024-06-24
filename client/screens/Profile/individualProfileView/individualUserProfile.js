@@ -23,6 +23,8 @@ import _ from "lodash";
 import GoogleMap from "../../../component/googleMapScreen.js";
 import { Calendar } from "react-native-calendars";
 import SoundPlayer from 'react-native-sound-player'
+import { SliderBox } from "react-native-image-slider-box";
+
 
 const { width, height } = Dimensions.get("window");
 
@@ -56,7 +58,11 @@ const MainProfileScreenHelper = (props) => {
 
     const { authData } = props;
 
-    console.log("userrrrrrrr", props.route.params.user);
+    console.log("userrrrrrrr", props.route.params.dropoff);
+
+    const { dropoff } = props.route.params;
+
+    const { mainCategory, subCategory, environmentalConditions, dropoffLocationData, environmentBuildingType, preciseMarkerCoords, description, spaceMeasurementsDimensionsFeet, contactRequiredOrNot, welcomeMessage, uploadedRelatedImages } = dropoff.mainData;
 
     const [state, setState] = useState({
         showSavePopup: false,
@@ -66,7 +72,8 @@ const MainProfileScreenHelper = (props) => {
         refreshing: false,
         loaded: false,
         playingAudio: false,
-        userLocation: null
+        userLocation: null,
+        picturesCover: []
     })
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
@@ -103,22 +110,24 @@ const MainProfileScreenHelper = (props) => {
 
         const config = {
             params: {
-                uniqueId: props.route.params.user.uniqueId
+                dropoffID: dropoff.id
             }
         };
 
-        axios.get(`${BASE_URL}/gather/general/information/user`, config).then((res) => {
-            if (res.data.message === "Gathered user successfully!") {
+        axios.get(`${BASE_URL}/gather/general/information/dropoff`, config).then((res) => {
+            if (res.data.message === "Successfully gathered dropoff!") {
 
-                console.log("Succcccccccesssss: ", res.data);
+                console.log("Succcccccccesssss: ", res.data.dropoff);
 
-                const { user } = res.data; 
+                const { dropoff, user } = res.data; 
 
                 updateState({
                     currentUser: user,
+                    dropoff,
                     refreshing: false,
                     loaded: true,
-                    userLocation: { latitude: user.currentApproxLocation.geo.coordinates[0], longitude: user.currentApproxLocation.geo.coordinates[1] }
+                    userLocation: { latitude: dropoff.mainData.preciseMarkerCoords.latitude, longitude: dropoff.mainData.preciseMarkerCoords.longitude },
+                    picturesCover: dropoff.mainData.uploadedRelatedImages.map((item) => `${BASE_ASSET_URL}/${item.link}`)
                 });
             } else {
                 console.log("Else ran upon axios request...:", res.data);
@@ -158,21 +167,24 @@ const MainProfileScreenHelper = (props) => {
         
         const config = {
             params: {
-                uniqueId: props.route.params.user.uniqueId
+                dropoffID: dropoff.id
             }
         };
 
-        axios.get(`${BASE_URL}/gather/general/information/user`, config).then((res) => {
-            if (res.data.message === "Gathered user successfully!") {
+        axios.get(`${BASE_URL}/gather/general/information/dropoff`, config).then((res) => {
+            if (res.data.message === "Successfully gathered dropoff!") {
 
                 console.log("Succcccccccesssss: ", res.data);
 
-                const { user } = res.data; 
+                const { dropoff, user } = res.data; 
 
                 updateState({
                     currentUser: user,
+                    dropoff,
+                    refreshing: false,
                     loaded: true,
-                    userLocation: { latitude: user.currentApproxLocation.geo.coordinates[0], longitude: user.currentApproxLocation.geo.coordinates[1] }
+                    userLocation: { latitude: dropoff.mainData.preciseMarkerCoords.latitude, longitude: dropoff.mainData.preciseMarkerCoords.longitude },
+                    picturesCover: dropoff.mainData.uploadedRelatedImages.map((item) => `${BASE_ASSET_URL}/${item.link}`)
                 });
             } else {
                 console.log("Else ran upon axios request...:", res.data);
@@ -184,8 +196,10 @@ const MainProfileScreenHelper = (props) => {
                     visibilityTime: 4250,
                     position: "bottom"
                 });
+                updateState({ refreshing: false, loaded: true });
             }
         }).catch((err) => {
+            console.log("Errrrrrrrrrrrrrr", err);
 
             Toast.show({
                 type: 'error',
@@ -195,8 +209,49 @@ const MainProfileScreenHelper = (props) => {
                 position: "bottom"
             });
 
-            console.log("Errrrrrrrrrrrrrr", err);
+            updateState({ refreshing: false, loaded: true });
         });
+        // const config = {
+        //     params: {
+        //         uniqueId: props.route.params.user.uniqueId
+        //     }
+        // };
+
+        // axios.get(`${BASE_URL}/gather/general/information/user`, config).then((res) => {
+        //     if (res.data.message === "Gathered user successfully!") {
+
+        //         console.log("Succcccccccesssss: ", res.data);
+
+        //         const { user } = res.data; 
+
+        //         updateState({
+        //             currentUser: user,
+        //             loaded: true,
+        //             userLocation: { latitude: user.currentApproxLocation.geo.coordinates[0], longitude: user.currentApproxLocation.geo.coordinates[1] }
+        //         });
+        //     } else {
+        //         console.log("Else ran upon axios request...:", res.data);
+
+        //         Toast.show({
+        //             type: 'error',
+        //             text1: `Error occurred while fetching the desired user!`,
+        //             text2: `An error has occurred while attempting to fetch the related/desired user-data, please try reloading the page by pulling the screen down...`,
+        //             visibilityTime: 4250,
+        //             position: "bottom"
+        //         });
+        //     }
+        // }).catch((err) => {
+
+        //     Toast.show({
+        //         type: 'error',
+        //         text1: `Error occurred while fetching the desired user!`,
+        //         text2: `An error has occurred while attempting to fetch the related/desired user-data, please try reloading the page by pulling the screen down...`,
+        //         visibilityTime: 4250,
+        //         position: "bottom"
+        //     });
+
+        //     console.log("Errrrrrrrrrrrrrr", err);
+        // });
     }, []);
 
     const createCollectionDialog = () => {
@@ -285,9 +340,9 @@ const MainProfileScreenHelper = (props) => {
         if (state.userLocation !== null) {
             const { latitude, longitude } = state.userLocation;
             return (
-                <View style={{ marginTop: Sizes.fixPadding * 2.0, marginHorizontal: Sizes.fixPadding * 2.0, bottom: -75 }}>
+                <View style={{ marginTop: -30, marginHorizontal: Sizes.fixPadding * 2.0, bottom: -75 }}>
                     <Text style={styles.labeled}>
-                        User's Approx. Location (***Approx***)
+                        Dropoff/Depot Approx. Location (randomized slightly until booked):
                     </Text>
                     <View style={styles.borderedMapWrapper}>
                         <GoogleMap latitude={latitude} longitude={longitude} height={225} pinColor={Colors.primaryColor} />
@@ -332,8 +387,23 @@ const MainProfileScreenHelper = (props) => {
         return (
             <View style={{ marginHorizontal: Sizes.fixPadding * 2.0, }}>
                 <Text style={{ ...Fonts.grayColor14Regular }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit. Ullamcorper non sit pharetra diam eget.
+                    <Text style={{ fontWeight: "bold", color: "#000" }}>Description</Text>: {description}
+                </Text>
+                {environmentalConditions.map((item, index) => {
+                    return (
+                        <View style={index === 0 ? [styles.listitem, { marginTop: 15 }] : styles.listitem}>
+                            <Text style={{ ...Fonts.grayColor14Regular, color: "darkblue" }}>
+                                <Text style={{ fontWeight: "bold", textDecorationLine: "underline" }}>{item.name}</Text>{"\n"}{"\n"}
+                                {item.subtitle}
+                            </Text>
+                        </View>
+                    );
+                })}
+                <Text style={{ ...Fonts.grayColor14Regular }}>
+                    <Text style={{ fontWeight: "bold", color: "#000" }}>Residential OR Business</Text>: {environmentBuildingType.name}
+                </Text>
+                <Text style={{ ...Fonts.grayColor14Regular }}>
+                    <Text style={{ fontWeight: "bold", color: "#000" }}>Space Size</Text>: {spaceMeasurementsDimensionsFeet.length} length X {spaceMeasurementsDimensionsFeet.width} width X {spaceMeasurementsDimensionsFeet.height} height
                 </Text>
                 {linkAndSocialMediaInfo()}
                 {profileOtherInfo()}
@@ -385,6 +455,7 @@ const MainProfileScreenHelper = (props) => {
     }
 
     const creatorProfileInfo = () => {
+        const { picturesCover } = state;
 
         const calculatePictureRenderProfile = () => {
             const profilePictures = currentUser.profilePictures;
@@ -401,12 +472,13 @@ const MainProfileScreenHelper = (props) => {
                 />;
             }
         }
+        console.log("picturesCover", picturesCover);
         return (
             <View style={{ marginBottom: Sizes.fixPadding }}>
-                <ImageBackground
-                    source={_.has(currentUser, "coverPhoto") ? { uri: `${BASE_ASSET_URL}/${currentUser.coverPhoto.link}` } : require('../../../assets/images/design-3.png')}
+                <View 
                     style={{ width: '100%', height: 200.0 + StatusBar.currentHeight }}
                 >
+                    <SliderBox images={picturesCover} sliderBoxHeight={225} />
                     <View style={styles.backArrowWrapStyle}>
                         <TouchableOpacity onPress={() => sendPrivateMessageRef.current.open()} style={styles.iconMediumWrapper}>
                             <Image source={require("../../../assets/images/icon/chat-2.png")} style={styles.iconMedium} />
@@ -438,16 +510,16 @@ const MainProfileScreenHelper = (props) => {
                             </TouchableOpacity>
                         </View>
                     </View>
-                </ImageBackground>
+                </View>
                 <View style={styles.profileInfoWrapStyle}>
                     <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
                         {calculatePictureRenderProfile()}
                         <View style={{ flex: 1, marginLeft: Sizes.fixPadding + 5.0, }}>
-                            <Text style={{ ...Fonts.whiteColor18SemiBold }}>
-                                {`${currentUser.firstName} ${currentUser.lastName}`}
+                            <Text style={{ ...Fonts.whiteColor18SemiBold, color: "#000", fontWeight: "bold", textDecorationLine: "underline" }}>
+                                {`${mainCategory.name} ${subCategory.name}`}
                             </Text>
                             <Text style={{ lineHeight: 16.0, ...Fonts.whiteColor14Regular }}>
-                                @{currentUser.username}
+                                Contact Req: {contactRequiredOrNot.name}
                             </Text>
                         </View>
                     </View>

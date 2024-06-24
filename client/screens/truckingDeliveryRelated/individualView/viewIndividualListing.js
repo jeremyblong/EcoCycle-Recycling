@@ -1283,14 +1283,7 @@ const ViewIndividualFreightAvailableListing = (props) => {
                     {renderPhotoLargeViewModalHelper(liveListing)}
                     {renderCommentConfirmationDialog(liveListing)}
                     <CollapsingToolbar
-                        leftItem={
-                            <TouchableOpacity onPress={() => navigation.goBack()}>
-                                <Image
-                                    source={require('../../../assets/images/icon/go-back-looped.png')}
-                                    style={{ width: 27.5, height: 27.5, borderRadius: 9.25, tintColor: Colors.whiteColor }}
-                                />
-                            </TouchableOpacity>
-                        }
+                        leftItem={null}
                         rightItem={
                             <View
                                 activeOpacity={0.9}

@@ -236,16 +236,18 @@ const SecurityLogsListRenderHelper = ({ authData }) => {
     // return MAIN data/jsx....
     return (
         <ImageBackground source={require("../../assets/images/locktall.jpg")} style={{ flex: 1 }}>
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                ListHeaderComponentStyle={styles.listheaderStyles}
-                ListHeaderComponent={() => renderHeaderRelated()}
-                keyExtractor={keyExtractor}
-                ListEmptyComponent={renderEmptyListContent}
-                data={newlyFormmattedArrData}
-                renderItem={renderItem}
-                ListFooterComponent={renderFooterHelper}
-            />
+            <View style={{ backgroundColor: "rgba(0, 0, 0, 0.525)" }}>
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    ListHeaderComponentStyle={styles.listheaderStyles}
+                    ListHeaderComponent={() => renderHeaderRelated()}
+                    keyExtractor={keyExtractor}
+                    ListEmptyComponent={renderEmptyListContent}
+                    data={newlyFormmattedArrData}
+                    renderItem={renderItem}
+                    ListFooterComponent={renderFooterHelper}
+                />
+            </View>
         </ImageBackground>
     );
 };

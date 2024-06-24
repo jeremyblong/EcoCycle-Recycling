@@ -4,6 +4,10 @@ import { Fonts, Colors, Sizes } from "../../../constants/styles";
 import { FloatingLabelInput } from 'react-native-floating-label-input';
 import styles from "./withdrawlFundsStyles.js";           
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import { BASE_URL } from "@env";
+import { connect } from "react-redux";
+import _ from "lodash";
 
 const WithdrawlPaymentFunding = (props) => {
 
@@ -11,6 +15,8 @@ const WithdrawlPaymentFunding = (props) => {
 
     const [state, setState] = useState({
         amount: '',
+        withdrawlAmount: 0,
+        payout: null
     })
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }))
@@ -43,7 +49,7 @@ const WithdrawlPaymentFunding = (props) => {
                     label={"Enter a dollar value amount ($$$)"}
                     staticLabel={true}
                     onBlur={() => {}}
-                    rightComponent={<TouchableOpacity onPress={() => {}}><Image style={styles.innerIconInput} source={require("../../../assets/images/icon/coin-average.png")} /></TouchableOpacity>}
+                    rightComponent={<TouchableOpacity onPress={() => {}}><Image style={styles.innerIconInput} source={require("../../../assets/images/bag_prev_ui.png")} /></TouchableOpacity>}
                     togglePassword={false}
                     onChangeText={(value) => updateState({ amount: value })}
                 />
@@ -91,11 +97,35 @@ const WithdrawlPaymentFunding = (props) => {
         )
     }
 
+    const handleWithdrawl = () => {
+        const config = {
+            params: {
+                uniqueId: authData.uniqueId,
+                cardID: null,
+                amount: state.amount
+            }
+        };
+
+        axios.get(`${BASE_URL}/cashout/balance/stripe`, config).then((res) => {
+            if (res.data.message === "Successfully cashed out to the desired card!") {
+                console.log(res.data);
+
+                const { payout } = res.data;
+
+                setState(prevState => ({ ...prevState, payout }));
+            } else {
+                console.log("Err", res.data);
+            }
+        }).catch((err) => {
+            console.log(err);
+        })
+    };
+
     const withdrawButton = () => {
         return (
             <TouchableOpacity
                 activeOpacity={0.9}
-                onPress={() => navigation.goBack()}
+                onPress={() => handleWithdrawl()}
                 style={styles.withdrawButtonStyle}>
                 <Text style={{ ...Fonts.white16Medium }}>
                     WITHDRAW DESIRED AMOUNT
@@ -123,7 +153,7 @@ const WithdrawlPaymentFunding = (props) => {
     const currentBalanceInfo = () => {
         return (
             <View style={{ alignItems: 'center' }}>
-                <Text style={styles.largeText}>${(Math.floor(Math.random() * (100000 - 1) + 100) / 100).toFixed(2)}</Text>
+                <Text style={styles.largeText}>${(state.withdrawlAmount).toFixed(2)}</Text>
                 <Text style={{
                     ...Fonts.black13Medium,
                     marginBottom: Sizes.fixPadding * 3.0,

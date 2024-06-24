@@ -35,7 +35,7 @@ const RenderPageSixHelperData = ({ renderHeaderLogicData, storageData, handleSub
                 <View style={styles.mainContainer}>
                     <TouchableOpacity onPress={() => setIsCollapsedState(prevState => !prevState)} style={styles.pointersWrapper}>
                         <Image source={require("../../../../../assets/images/icon/lightbulb.png")} style={styles.textHelperImageOne} />
-                        <Text style={styles.lightbulbHelperText}>Tips for a great description</Text>
+                        <Text style={[styles.lightbulbHelperText, { color: "#fff" }]}>Tips for a great description</Text>
                         <Image source={require("../../../../../assets/images/icon/up-arrow-2.png")} style={styles.textHelperImage} />
                     </TouchableOpacity>
                     <Collapsible collapsed={isCollapsed}>

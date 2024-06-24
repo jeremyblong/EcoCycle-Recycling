@@ -144,8 +144,8 @@ const RenderPageSevenHelperData = ({ renderHeaderLogicData, storageData, handleS
                             <Image source={require("../../../../../assets/images/icon/checkmark-circled-green.png")} style={styles.leftIconStyle} />
                         </View>
                         <View style={styles.rightMainStyle}>
-                            <Text style={styles.titledHeaderText}>Accurate Measurement(s)</Text>
-                            <Text style={styles.subbedText}>If you list a 10' x 10' space, renters need to be able to use all 10' x 10'. If you can't visit or access your property right now, you can give it your best guess/estimate - just make sure you come back to update it later to it's actual/appropriate measurements so it's accurate.</Text>
+                            <Text style={[styles.titledHeaderText, { color: "#fff" }]}>Accurate Measurement(s)</Text>
+                            <Text style={[styles.subbedText, { color: "#fff" }]}>If you list a 10' x 10' space, renters need to be able to use all 10' x 10'. If you can't visit or access your property right now, you can give it your best guess/estimate - just make sure you come back to update it later to it's actual/appropriate measurements so it's accurate.</Text>
                         </View>
                     </View>
                     <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
@@ -154,8 +154,8 @@ const RenderPageSevenHelperData = ({ renderHeaderLogicData, storageData, handleS
                             <Image source={require("../../../../../assets/images/icon/measure-tape.png")} style={styles.leftIconStyle} />
                         </View>
                         <View style={styles.rightMainStyle}>
-                            <Text style={styles.titledHeaderText}>Different ways to measure</Text>
-                            <Text style={styles.subbedText}>Use a tape measure if you can (ideal tool/way), or if you're in a pinch you can just ballpark the general measurements and come back to confirm your estimates or make adjustments if needed.</Text>
+                            <Text style={[styles.titledHeaderText, { color: "#fff" }]}>Different ways to measure</Text>
+                            <Text style={[styles.subbedText, { color: "#fff" }]}>Use a tape measure if you can (ideal tool/way), or if you're in a pinch you can just ballpark the general measurements and come back to confirm your estimates or make adjustments if needed.</Text>
                         </View>
                     </View>
                     <View style={[styles.hr, { left: 7.5, marginTop: 12.5, marginBottom: 12.5 }]} />
