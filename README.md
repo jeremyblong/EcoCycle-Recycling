@@ -60,7 +60,7 @@ E-waste is the fastest-growing waste stream globally — yet it contains **highl
 
 ## 📺 Demo Video
 
-[![Watch on YouTube](https://blockchainsocialmedia.s3.us-east-1.amazonaws.com/Screenshot+2025-05-27+130056.png)](https://youtu.be/3VObhdueeEU)
+[![Watch on YouTube](https://blockchainsocialmedia.s3.us-east-1.amazonaws.com/Screenshot+2025-05-27+130644.png)](https://youtu.be/3VObhdueeEU)
 
 > Walkthrough includes user roles (donors, shippers, recyclers), the map interface, and backend logic for value estimation and crate tracking.
 
